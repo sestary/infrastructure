@@ -1,0 +1,8 @@
+# Helm
+*Chart.lock
+**/charts/*.tgz
+
+# Terraform
+**/.terraform/*
+*.tfstate
+*.tfstate.*

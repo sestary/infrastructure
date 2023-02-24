@@ -1,0 +1,9 @@
+projects:
+  - name: core
+    namespace: argocd
+    description: Kubernetes Core Services
+    sourceRepos:
+      - "https://github.com/sestary/infrastructure"
+    destinations:
+      - server: "https://kubernetes.default.svc"
+        namespace: "core-*"
