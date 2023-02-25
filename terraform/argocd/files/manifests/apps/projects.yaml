@@ -7,3 +7,6 @@ projects:
     destinations:
       - server: "https://kubernetes.default.svc"
         namespace: "core-*"
+    clusterResourceWhitelist:
+      - group: '*'
+        kind: '*'

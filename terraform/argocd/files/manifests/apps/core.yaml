@@ -18,8 +18,10 @@ applicationsets:
           path: '{{path}}'
         destination:
           server: https://kubernetes.default.svc
-          namespace: '{{path.basename}}'
+          namespace: 'core-{{path.basename}}'
         syncPolicy:
           syncOptions:
             - CreateNamespace=true
+          syncStrategy:
+            hook: {}
 
