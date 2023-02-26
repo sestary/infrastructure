@@ -1,0 +1,5 @@
+---
+cert-manager:
+  # We want to install the CRDs with the 
+  installCRDs: true
+

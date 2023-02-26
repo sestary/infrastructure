@@ -1,0 +1,16 @@
+apiVersion: v2
+name: cert-manager
+description: Deploy Certificate Manager
+
+type: application
+
+# This is the chart version, but is ignored by ArgoCD
+version: 0.1.0
+
+dependencies:
+  - name: cert-manager
+    version: 1.11.0
+    repository: https://charts.jetstack.io
+  - name: origin-ca-issuer
+    version: 0.5.0
+    repository: https://cloudflare.github.io/origin-ca-issuer/charts
