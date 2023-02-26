@@ -8,6 +8,7 @@ resource "kubernetes_config_map_v1" "argocd_helm_plugin" {
     "plugin.yaml"       = file("${path.module}/files/plugins/helm/plugin.yaml")
     "generate.sh"       = file("${path.module}/files/plugins/helm/generate.sh")
     "get-parameters.sh" = file("${path.module}/files/plugins/get-parameters.sh")
+    "init.sh"       = file("${path.module}/files/plugins/init.sh")
   }
 }
 
@@ -21,6 +22,7 @@ resource "kubernetes_config_map_v1" "argocd_helm_kustomize_plugin" {
     "plugin.yaml"       = file("${path.module}/files/plugins/helm-kustomize/plugin.yaml")
     "generate.sh"       = file("${path.module}/files/plugins/helm-kustomize/generate.sh")
     "get-parameters.sh" = file("${path.module}/files/plugins/get-parameters.sh")
+    "init.sh"       = file("${path.module}/files/plugins/init.sh")
   }
 }
 

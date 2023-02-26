@@ -4,6 +4,8 @@ metadata:
   name: helm-kustomize-plugin
 spec:
   version: v1.0
+  init:
+    command: [sh, /var/run/argocd/helm-plugin/init.sh]
   generate:
     command: [sh, /var/run/argocd/helm-plugin/generate.sh]
   discover:
