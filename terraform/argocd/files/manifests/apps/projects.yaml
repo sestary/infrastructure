@@ -12,3 +12,14 @@ projects:
     clusterResourceWhitelist:
       - group: '*'
         kind: '*'
+  - name: ingress
+    namespace: argocd
+    description: Kubernetes Ingress Services
+    sourceRepos:
+      - "https://github.com/sestary/infrastructure"
+    destinations:
+      - server: "https://kubernetes.default.svc"
+        namespace: "ingress-*"
+    clusterResourceWhitelist:
+      - group: '*'
+        kind: '*'

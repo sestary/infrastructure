@@ -24,4 +24,29 @@ applicationsets:
             - CreateNamespace=true
           syncStrategy:
             hook: {}
+  - name: ingress
+    namespace: argocd
+    generators:
+      - git:
+          repoURL: https://github.com/sestary/infrastructure
+          revision: HEAD
+          directories:
+            - path: manifests/ingress/*
+    template:
+      metadata:
+        name: '{{path.basename}}'
+      spec:
+        project: "ingress"
+        source:
+          repoURL: https://github.com/sestary/infrastructure
+          targetRevision: HEAD
+          path: '{{path}}'
+        destination:
+          server: https://kubernetes.default.svc
+          namespace: 'ingress-{{path.basename}}'
+        syncPolicy:
+          syncOptions:
+            - CreateNamespace=true
+          syncStrategy:
+            hook: {}
 

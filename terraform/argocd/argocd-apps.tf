@@ -10,8 +10,8 @@ resource "helm_release" "argocd_apps" {
   version    = "0.0.8"
 
   values = [
+    file("${path.module}/files/manifests/apps/appsets.yaml"),
     file("${path.module}/files/manifests/apps/projects.yaml"),
-    file("${path.module}/files/manifests/apps/core.yaml"),
   ]
 
   depends_on = [
