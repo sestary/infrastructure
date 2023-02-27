@@ -28,6 +28,10 @@ repoServer:
       args: [--loglevel, debug]
       image: ubuntu
       env:
+        - name: AVP_TYPE
+          value: sops
+        - name: SOPS_AGE_KEY_FILE
+          value: /age/key.txt
         - name: HELM_CACHE_HOME
           value: /helm-working-dir
         - name: HELM_CONFIG_HOME
@@ -38,6 +42,8 @@ repoServer:
             #runAsNonRoot: true
             #runAsUser: 999
       volumeMounts:
+        - mountPath: /age
+          name: argocd-vault-plugin-age-key
         - mountPath: /var/run/argocd
           name: var-files
         - mountPath: /etc/ssl
@@ -64,6 +70,9 @@ repoServer:
         name: argocd-plugin-${name}
       name: argocd-plugin-${name}
 %{ endfor ~}
+    - secret:
+        secretName: argocd-vault-plugin-age-key
+      name: argocd-vault-plugin-age-key
     - emptyDir: {}
       name: ssl-files
     - emptyDir: {}

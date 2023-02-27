@@ -1,6 +1,7 @@
 resource "helm_release" "argocd_apps" {
-  name        = "argocd-apps"
-  namespace   = "argocd"
+  name      = "argocd-apps"
+  namespace = kubernetes_namespace_v1.argocd.metadata[0].name
+
   description = "Declarative GitOps CD for Kubernetes"
 
   create_namespace = true

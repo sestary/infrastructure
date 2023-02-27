@@ -1,45 +1,10 @@
-locals {
-  argocd_plugins = {
-    "helm-vault" = {
-      files = [
-        "generate.sh",
-        "get-parameters.sh",
-        "init.sh",
-      ]
-    }
-    "kustomize-vault" = {
-      files = []
-    }
-    "vault" = {
-      files = []
-    }
-  }
-}
-
-resource "kubernetes_config_map_v1" "argocd_plugins" {
-  for_each = local.argocd_plugins
-
-  metadata {
-    name      = "argocd-plugin-${each.key}"
-    namespace = "argocd"
-  }
-
-  data = merge(
-    {
-      "plugin.yaml" = file("${path.module}/files/plugins/${each.key}/plugin.yaml")
-    },
-    {
-      for file in each.value.files : file => file("${path.module}/files/plugins/${each.key}/${file}")
-    }
-  )
-}
-
 resource "helm_release" "argocd" {
-  name        = "argocd"
-  namespace   = "argocd"
+  name      = "argocd"
+  namespace = kubernetes_namespace_v1.argocd.metadata[0].name
+
   description = "Declarative GitOps CD for Kubernetes"
 
-  create_namespace = true
+  create_namespace = false
 
   repository = "https://argoproj.github.io/argo-helm"
   chart      = "argo-cd"
@@ -54,6 +19,7 @@ resource "helm_release" "argocd" {
         plugins         = local.argocd_plugins
       }
     ),
+    file("${path.module}/files/manifests/argocd/server.yaml"),
   ]
 
   set {
@@ -64,6 +30,7 @@ resource "helm_release" "argocd" {
   depends_on = [
     kubernetes_manifest.argocd_crds,
     kubernetes_config_map_v1.argocd_plugins,
+    kubernetes_secret_v1.argocd_vault_plugin_age_key
   ]
 }
 

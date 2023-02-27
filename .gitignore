@@ -1,7 +1,11 @@
 # Helm
 *Chart.lock
 **/charts/*
+
 # Terraform
 **/.terraform/*
 *.tfstate
 *.tfstate.*
+
+# SOPS Secrets
+**/secrets.yaml
