@@ -3,4 +3,4 @@ ingress-nginx:
   controller:
     # Allow SSL passthrough for ArgoCD
     extraArgs:
-      - enable-ssl-passthrough
+      enable-ssl-passthrough
