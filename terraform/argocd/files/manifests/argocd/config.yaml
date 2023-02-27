@@ -1,0 +1,8 @@
+configs:
+  # General Argo CD configuration
+  ## Ref: https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-cm.yaml
+  cm:
+    resource.customizations.ignoreDifferences.apiextensions.k8s.io_CustomResourceDefinition: |
+      jqPathExpressions:
+      - '.spec.conversion.webhook.clientConfig.caBundle'
+

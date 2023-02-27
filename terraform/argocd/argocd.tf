@@ -38,6 +38,7 @@ resource "helm_release" "argocd" {
   version    = var.argocd_helm_version
 
   values = [
+    file("${path.module}/files/manifests/argocd/config.yaml"),
     file("${path.module}/files/manifests/argocd/repo-server.yaml"),
   ]
 
