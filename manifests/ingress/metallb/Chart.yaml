@@ -1,0 +1,13 @@
+apiVersion: v2
+name: metallb
+description: Deploy MetalLB
+
+type: application
+
+# This is the chart version, but is ignored by ArgoCD
+version: 0.1.0
+
+dependencies:
+  - name: metallb
+    version: 0.13.9
+    repository: https://metallb.github.io/metallb
