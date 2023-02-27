@@ -1,0 +1,7 @@
+apiVersion: metallb.io/v1beta1
+kind: IPAddressPool
+metadata:
+  name: srvphysical
+spec:
+  addresses:
+  - 10.2.0.160/27
