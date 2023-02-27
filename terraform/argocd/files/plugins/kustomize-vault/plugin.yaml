@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ConfigManagementPlugin
+metadata:
+  name: helm-kustomize-plugin
+spec:
+  version: v1.0
+  allowConcurrency: true
+  lockRepo: false
+  discover:
+    find:
+      command:
+        - find
+        - "."
+        - -name
+        - kustomization.yaml
+  generate:
+    command:
+      - sh
+      - "-c"
+      - "kustomize build --enable-helm . | argocd-vault-plugin generate -"

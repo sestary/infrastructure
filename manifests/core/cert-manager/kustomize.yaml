@@ -1,4 +1,0 @@
-bases:
-- all.yaml
-patchesStrategicMerge:
-- overlays/cloudflare-origin-issuer/rbac.yaml

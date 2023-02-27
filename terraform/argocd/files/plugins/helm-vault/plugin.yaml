@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ConfigManagementPlugin
 metadata:
-  name: helm-plugin
+  name: ${plugin}-plugin
 spec:
   version: v1.0
   init:
@@ -9,7 +9,11 @@ spec:
   generate:
     command: [sh, /var/run/argocd/helm-plugin/generate.sh]
   discover:
-    fileName: "./values.yaml"
+    find:
+      command:
+        - sh
+        - "-c"
+        - "find . -name 'Chart.yaml' && find . -name 'values.yaml' && find . -name 'secrets.yaml'"
   parameters:
     static:
       - name: values-files

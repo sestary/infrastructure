@@ -1,29 +1,37 @@
-resource "kubernetes_config_map_v1" "argocd_helm_plugin" {
-  metadata {
-    name      = "helm-plugin-config"
-    namespace = "argocd"
-  }
-
-  data = {
-    "plugin.yaml"       = file("${path.module}/files/plugins/helm/plugin.yaml")
-    "generate.sh"       = file("${path.module}/files/plugins/helm/generate.sh")
-    "get-parameters.sh" = file("${path.module}/files/plugins/get-parameters.sh")
-    "init.sh"       = file("${path.module}/files/plugins/init.sh")
+locals {
+  argocd_plugins = {
+    "helm-vault" = {
+      files = [
+        "generate.sh",
+        "get-parameters.sh",
+        "init.sh",
+      ]
+    }
+    "kustomize-vault" = {
+      files = []
+    }
+    "vault" = {
+      files = []
+    }
   }
 }
 
-resource "kubernetes_config_map_v1" "argocd_helm_kustomize_plugin" {
+resource "kubernetes_config_map_v1" "argocd_plugins" {
+  for_each = local.argocd_plugins
+
   metadata {
-    name      = "helm-kustomize-plugin-config"
+    name      = "argocd-plugin-${each.key}"
     namespace = "argocd"
   }
 
-  data = {
-    "plugin.yaml"       = file("${path.module}/files/plugins/helm-kustomize/plugin.yaml")
-    "generate.sh"       = file("${path.module}/files/plugins/helm-kustomize/generate.sh")
-    "get-parameters.sh" = file("${path.module}/files/plugins/get-parameters.sh")
-    "init.sh"       = file("${path.module}/files/plugins/init.sh")
-  }
+  data = merge(
+    {
+      "plugin.yaml" = file("${path.module}/files/plugins/${each.key}/plugin.yaml")
+    },
+    {
+      for file in each.value.files : file => file("${path.module}/files/plugins/${each.key}/${file}")
+    }
+  )
 }
 
 resource "helm_release" "argocd" {
@@ -35,11 +43,17 @@ resource "helm_release" "argocd" {
 
   repository = "https://argoproj.github.io/argo-helm"
   chart      = "argo-cd"
-  version    = var.argocd_helm_version
+  version    = var.charts_version["argocd"]
 
   values = [
     file("${path.module}/files/manifests/argocd/config.yaml"),
-    file("${path.module}/files/manifests/argocd/repo-server.yaml"),
+    templatefile(
+      "${path.module}/files/manifests/argocd/repo-server.yaml.tpl",
+      {
+        plugin_versions = var.plugins_version
+        plugins         = local.argocd_plugins
+      }
+    ),
   ]
 
   set {
@@ -49,8 +63,7 @@ resource "helm_release" "argocd" {
 
   depends_on = [
     kubernetes_manifest.argocd_crds,
-    kubernetes_config_map_v1.argocd_helm_plugin,
-    kubernetes_config_map_v1.argocd_helm_kustomize_plugin,
+    kubernetes_config_map_v1.argocd_plugins,
   ]
 }
 

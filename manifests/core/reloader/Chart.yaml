@@ -1,0 +1,13 @@
+apiVersion: v2
+name: reloader
+description: Deploy K8s Reloader
+
+type: application
+
+# This is the chart version, but is ignored by ArgoCD
+version: 0.1.0
+
+dependencies:
+  - name: reloader
+    version: v1.0.10
+    repository: https://stakater.github.io/stakater-charts

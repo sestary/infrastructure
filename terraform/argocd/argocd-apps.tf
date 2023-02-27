@@ -7,7 +7,7 @@ resource "helm_release" "argocd_apps" {
 
   repository = "https://argoproj.github.io/argo-helm"
   chart      = "argocd-apps"
-  version    = "0.0.8"
+  version    = var.charts_version["argocd-apps"]
 
   values = [
     file("${path.module}/files/manifests/apps/appsets.yaml"),
