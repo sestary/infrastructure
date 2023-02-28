@@ -15,4 +15,4 @@ spec:
         - -name
         - kustomization.yaml
   generate:
-    command: [sh, /var/run/argocd/helm-plugin/generate.sh]
+    command: [bash, /var/run/argocd/helm-plugin/generate.sh]

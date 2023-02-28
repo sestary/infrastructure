@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 yq e -o=json values.yaml | jq '{
   name: "helm-parameters",

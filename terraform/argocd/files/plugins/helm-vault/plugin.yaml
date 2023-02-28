@@ -14,9 +14,9 @@ spec:
         - "-c"
         - "find . -name 'Chart.yaml' && find . -name 'values.yaml'"
   init:
-    command: [sh, /var/run/argocd/helm-plugin/init.sh]
+    command: [bash, /var/run/argocd/helm-plugin/init.sh]
   generate:
-    command: [sh, /var/run/argocd/helm-plugin/generate.sh]
+    command: [bash, /var/run/argocd/helm-plugin/generate.sh]
   parameters:
     static:
       - name: helm-parameters
@@ -27,4 +27,4 @@ spec:
         collectionType: array
         array: ["values.yaml"]
     dynamic:
-      command: [sh, /var/run/argocd/helm-plugin/get-parameters.sh]
+      command: [bash, /var/run/argocd/helm-plugin/get-parameters.sh]
