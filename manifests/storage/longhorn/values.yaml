@@ -3,3 +3,16 @@ longhorn:
   csi:
     # The path on MicroK8s isn't the same as normal since it's a snap
     kubeletRootDir: "/var/snap/microk8s/common/var/lib/kubelet"
+
+  defaultSettings:
+    allowRecurringJobWhileVolumeDetached: true
+    defaultDataLocality: best-effort
+    nodeDownPodDeletionPolicy: delete-both-statefulset-and-deployment-pod
+    replicaAutoBalance: best-effort
+    removeSnapshotsDuringFilesystemTrim: true
+
+  persistence:
+    defaultClassReplicaCount: 2
+    reclaimPolicy: Delete
+    migratable: false
+    removeSnapshotsDuringFilesystemTrim: true
