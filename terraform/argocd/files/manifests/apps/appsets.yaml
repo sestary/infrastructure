@@ -1,3 +1,4 @@
+---
 applicationsets:
   - name: core 
     namespace: argocd
@@ -49,4 +50,3 @@ applicationsets:
             - CreateNamespace=true
           syncStrategy:
             hook: {}
-

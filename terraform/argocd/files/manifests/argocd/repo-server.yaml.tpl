@@ -1,3 +1,4 @@
+---
 repoServer:
   deploymentAnnotations:
     reloader.stakater.com/auto: "true"
@@ -38,9 +39,9 @@ repoServer:
           value: /helm-working-dir
         - name: HELM_DATA_HOME
           value: /helm-working-dir
-            # securityContext:
-            #runAsNonRoot: true
-            #runAsUser: 999
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 999
       volumeMounts:
         - mountPath: /age
           name: argocd-vault-plugin-age-key

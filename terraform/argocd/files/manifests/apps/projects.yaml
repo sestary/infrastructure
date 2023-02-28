@@ -1,3 +1,4 @@
+---
 projects:
   - name: core
     namespace: argocd

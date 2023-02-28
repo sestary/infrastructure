@@ -1,3 +1,4 @@
+---
 server:
   ingress:
     enabled: true
@@ -8,3 +9,11 @@ server:
     hosts:
       - argocd.on.sestary.eu
     https: true
+
+  certificate:
+    enabled: true
+    secretName: argocd-server-tls
+    domain: argocd.on.sestary.eu
+    issuer:
+      kind: "ClusterIssuer"
+      name: "letsencrypt"

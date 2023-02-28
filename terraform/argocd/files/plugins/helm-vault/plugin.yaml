@@ -1,7 +1,8 @@
+---
 apiVersion: argoproj.io/v1alpha1
 kind: ConfigManagementPlugin
 metadata:
-  name: ${plugin}-plugin
+  name: helm-vault-plugin
 spec:
   version: v1.0
   init:
@@ -13,12 +14,15 @@ spec:
       command:
         - sh
         - "-c"
-        - "find . -name 'Chart.yaml' && find . -name 'values.yaml' && find . -name 'secrets.yaml'"
+        - "find . -name 'Chart.yaml' && find . -name 'values.yaml'"
   parameters:
     static:
+      - name: helm-parameters
+        title: Helm Parameters
+        collectionType: map
       - name: values-files
-        title: VALUES FILES
+        title: Values Files
         collectionType: array
+        array: ["values.yaml"]
     dynamic:
       command: [sh, /var/run/argocd/helm-plugin/get-parameters.sh]
-

@@ -1,7 +1,8 @@
+---
 apiVersion: argoproj.io/v1alpha1
 kind: ConfigManagementPlugin
 metadata:
-  name: helm-kustomize-plugin
+  name: kustomize-vault-plugin
 spec:
   version: v1.0
   allowConcurrency: true
