@@ -1,2 +1,5 @@
 ---
-# Empty placeholder
+longhorn:
+  csi:
+    # The path on MicroK8s isn't the same as normal since it's a snap
+    kubeletRootDir: "/var/snap/microk8s/common/var/lib/kubelet"
