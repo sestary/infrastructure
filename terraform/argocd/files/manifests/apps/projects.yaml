@@ -24,3 +24,14 @@ projects:
     clusterResourceWhitelist:
       - group: '*'
         kind: '*'
+  - name: storage
+    namespace: argocd
+    description: Kubernetes Storage Services
+    sourceRepos:
+      - "https://github.com/sestary/infrastructure"
+    destinations:
+      - server: "https://kubernetes.default.svc"
+        namespace: "storage-*"
+    clusterResourceWhitelist:
+      - group: '*'
+        kind: '*'
