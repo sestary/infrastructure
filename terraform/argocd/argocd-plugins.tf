@@ -8,7 +8,9 @@ locals {
       ]
     }
     "kustomize-vault" = {
-      files = []
+      files = [
+        "generate.sh",
+      ]
     }
     "vault" = {
       files = []

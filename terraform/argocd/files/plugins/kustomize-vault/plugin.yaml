@@ -15,7 +15,4 @@ spec:
         - -name
         - kustomization.yaml
   generate:
-    command:
-      - sh
-      - "-c"
-      - "kustomize build --enable-helm . | argocd-vault-plugin generate -"
+    command: [sh, /var/run/argocd/helm-plugin/generate.sh]

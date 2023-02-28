@@ -5,16 +5,18 @@ metadata:
   name: helm-vault-plugin
 spec:
   version: v1.0
-  init:
-    command: [sh, /var/run/argocd/helm-plugin/init.sh]
-  generate:
-    command: [sh, /var/run/argocd/helm-plugin/generate.sh]
+  allowConcurrency: true
+  lockRepo: false
   discover:
     find:
       command:
         - sh
         - "-c"
         - "find . -name 'Chart.yaml' && find . -name 'values.yaml'"
+  init:
+    command: [sh, /var/run/argocd/helm-plugin/init.sh]
+  generate:
+    command: [sh, /var/run/argocd/helm-plugin/generate.sh]
   parameters:
     static:
       - name: helm-parameters
