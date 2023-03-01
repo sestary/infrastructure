@@ -16,7 +16,7 @@ agent:
 
       loki.relabel "grafana_cloud" {
         forward_to = [
-          loki.write.grafana_cloud.reciever,
+          loki.write.grafana_cloud.receiver,
         ]
 
         rule {
