@@ -36,8 +36,8 @@ agent:
           replacement = "$1"
           separator = "/"
           source_labels = [
-            "__meta_kubernetes_namespace"
-            "__meta_kubernetes_pod_name"
+            "__meta_kubernetes_namespace",
+            "__meta_kubernetes_pod_name",
           ]
           target_label = "job"
         }
@@ -49,7 +49,7 @@ agent:
           ]
           target_label ="namespace"
         }
-  
+
         rule {
           action = "replace"
           source_labels = [
