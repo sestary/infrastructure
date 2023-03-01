@@ -92,7 +92,7 @@ agent:
 
       loki.process "pods" {
         // Extracts the level info from the log line
-        stage.logmft {
+        stage.logfmt {
           mapping = {
             level = "",
           }
