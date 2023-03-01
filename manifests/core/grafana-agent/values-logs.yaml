@@ -7,16 +7,9 @@ agent:
          role = "pod"
       }
 
-      loki.source.kubernetes "pods" {
-        targets    = discovery.kubernetes.pods.targets
-        forward_to = [
-         loki.write.grafana_cloud.receiver,
-        ]
-      }
-
-      loki.relabel "grafana_cloud" {
-        forward_to = [
-          loki.write.grafana_cloud.receiver,
+      discovery.relabel "pods" {
+        targets = [
+          discovery.kubernetes.pods,
         ]
 
         rule {
@@ -25,7 +18,7 @@ agent:
             "__meta_kubernetes_pod_node_name",
           ]
           regex = env("HOSTNAME")
-      }
+        }
 
         rule {
           source_labels = [
@@ -83,6 +76,13 @@ agent:
           ]
           target_label = "__path__"
         }
+      }
+
+      loki.source.kubernetes "pods" {
+        targets    = discovery.relabel.pods.targets
+        forward_to = [
+         loki.write.grafana_cloud.receiver,
+        ]
       }
 
       loki.write "grafana_cloud" {
