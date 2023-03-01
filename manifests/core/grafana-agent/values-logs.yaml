@@ -8,7 +8,7 @@ agent:
       }
 
       loki.source.kubernetes "pds" {
-        targets    = discover.kubernetes.pods.targets
+        targets    = discovery.kubernetes.pods.targets
         forward_to = [
          loki.write.grafana_cloud.receiver,
         ]
