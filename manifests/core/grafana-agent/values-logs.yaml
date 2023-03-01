@@ -18,8 +18,8 @@ agent:
         endpoint {
           url = "<path:secrets.enc.yaml#loki-url>"
           basic_auth {
-            username: "<path:secrets.enc.yaml#loki-tennent>"
-            password: "<path:secrets.enc.yaml#loki-token>"
+            username = "<path:secrets.enc.yaml#loki-tennent>"
+            password = "<path:secrets.enc.yaml#loki-token>"
           }
         }
       }
