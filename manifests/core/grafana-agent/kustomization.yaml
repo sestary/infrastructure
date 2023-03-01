@@ -1,0 +1,14 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+helmCharts:
+  - name: grafana-agent
+    namespace: core-grafana-agent
+    releaseName: grafana-agent-logs
+    repo: https://grafana.github.io/helm-charts
+    valuesFile: values-logs.yaml
+    version: 0.8.0
+
+patches:
+  - path: overlays/deamonset.yaml

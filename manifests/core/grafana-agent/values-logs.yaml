@@ -1,0 +1,28 @@
+---
+agent:
+  configMap:
+    create: true
+    content: |
+      discovery.kubernetes "pods" {
+         role = "pod"
+      }
+
+      loki.source.kubernetes "pds" {
+        targets    = discover.kubernetes.pods.targets
+        forward_to = [
+         loki.write.grafana_cloud.receiver,
+        ]
+      }
+
+      loki.write "grafana_cloud" {
+        endpoint {
+          url = <path:secrets.enc.yaml#loki_url>
+          basic_auth {
+            username: <path:secrets.enc.yaml#loki_username>
+            password: <path:secrets.enc.yaml#loki_password>
+          }
+        }
+      }
+
+configReloader:
+  enabled: false
