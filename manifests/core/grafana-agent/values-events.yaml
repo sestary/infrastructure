@@ -1,0 +1,32 @@
+---
+agent:
+  configMap:
+    create: true
+    content: |
+      loki.source.kubernetes_events "events" {
+        job_name = "integrations/kubernetes/eventhandler"
+
+        forward_to = [
+          loki.write.grafana_cloud.receiver,
+        ]
+      }
+
+      loki.write "grafana_cloud" {
+        endpoint {
+          url = "<path:secrets.enc.yaml#loki-url>"
+
+          basic_auth {
+            username = "<path:secrets.enc.yaml#tennent-id>"
+            password = "<path:secrets.enc.yaml#access-policy-token>"
+          }
+
+          batch_size = "256KiB"
+        }
+      }
+controller:
+  type: "deployment"
+  # Only want to grab one set of K8s events
+  replicas: 1
+
+configReloader:
+  enabled: false
