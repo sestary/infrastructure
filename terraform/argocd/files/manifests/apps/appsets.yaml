@@ -1,6 +1,31 @@
 ---
 applicationsets:
-  - name: core 
+  - name: auth
+    namespace: argocd
+    generators:
+      - git:
+          repoURL: https://github.com/sestary/infrastructure
+          revision: HEAD
+          directories:
+            - path: manifests/auth/*
+    template:
+      metadata:
+        name: '{{path.basename}}'
+      spec:
+        project: "auth"
+        source:
+          repoURL: https://github.com/sestary/infrastructure
+          targetRevision: HEAD
+          path: '{{path}}'
+        destination:
+          server: https://kubernetes.default.svc
+          namespace: 'auth-{{path.basename}}'
+        syncPolicy:
+          syncOptions:
+            - CreateNamespace=true
+          syncStrategy:
+            hook: {}
+  - name: core
     namespace: argocd
     generators:
       - git:
@@ -75,4 +100,3 @@ applicationsets:
             - CreateNamespace=true
           syncStrategy:
             hook: {}
-
