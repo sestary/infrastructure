@@ -16,10 +16,10 @@ agent:
 
       loki.write "grafana_cloud" {
         endpoint {
-          url = <path:secrets.enc.yaml#loki-url>
+          url = "<path:secrets.enc.yaml#loki-url>"
           basic_auth {
-            username: <path:secrets.enc.yaml#loki-tennent>
-            password: <path:secrets.enc.yaml#loki-token>
+            username: "<path:secrets.enc.yaml#loki-tennent>"
+            password: "<path:secrets.enc.yaml#loki-token>"
           }
         }
       }
