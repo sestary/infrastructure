@@ -79,6 +79,18 @@ agent:
       loki.source.kubernetes "pods" {
         targets    = discovery.relabel.pods.output
         forward_to = [
+         loki.process.pods.receiver,
+        ]
+      }
+
+      loki.process "pods" {
+        stage.labels {
+          values = {
+            level  = "",         // Sets up an 'level' label, based on the 'level' extracted value.
+          }
+        }
+
+        forward_to = [
          loki.write.grafana_cloud.receiver,
         ]
       }
