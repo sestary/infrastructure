@@ -59,7 +59,7 @@ repoServer:
         - mountPath: /usr/local/bin
           name: plugin-tools
 %{ for file in spec.files ~}
-        - mountPath: /var/run/argocd/helm-plugin/${file}
+        - mountPath: /var/run/argocd/plugin/${file}
           subPath: ${file}
           name: argocd-plugin-${name}
 %{ endfor ~}

@@ -1,0 +1,37 @@
+---
+authentik:
+  authentik:
+    avatars: none
+
+    email:
+      from: <path:secrets.enc.yaml#email-from>
+      host: <path:secrets.enc.yaml#email-host>
+      username: <path:secrets.enc.yaml#email-from>
+      password: <path:secrets.enc.yaml#email-password>
+      port: 587
+      use_tls: true
+
+    error_reporting:
+      enabled: false
+
+    postgresql:
+      password: <path:secrets.enc.yaml#postgres-password>
+
+    secret_key: <path:secrets.enc.yaml#secret-key>
+
+  ingress:
+    enabled: true
+    hosts:
+      - host: sso.sestary.eu
+        paths:
+          - path: "/"
+            pathType: Prefix
+    tls:
+      - sso.sestary.eu
+
+  postgres:
+    enabled: true
+    postgresqlPassword: <path:secrets.enc.yaml#postgres-password>
+
+  redis:
+    enabled: true
