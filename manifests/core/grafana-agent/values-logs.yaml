@@ -22,7 +22,14 @@ agent:
           source_labels = [
             "__meta_kubernetes_pod_node_name",
           ]
-          target_label = "__host__"
+          target_label = "node_name"
+        }
+
+        rule {
+          source_labels = [
+            "__meta_kubernetes_pod_container_image",
+          ]
+          target_label = "image"
         }
 
         rule {
