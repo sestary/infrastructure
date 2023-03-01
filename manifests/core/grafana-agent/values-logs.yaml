@@ -9,7 +9,7 @@ agent:
 
       discovery.relabel "pods" {
         targets = [
-          discovery.kubernetes.pods,
+          discovery.kubernetes.pods.targets,
         ]
 
         rule {
@@ -79,7 +79,7 @@ agent:
       }
 
       loki.source.kubernetes "pods" {
-        targets    = discovery.relabel.pods.targets
+        targets    = discovery.relabel.pods.outputs
         forward_to = [
          loki.write.grafana_cloud.receiver,
         ]
