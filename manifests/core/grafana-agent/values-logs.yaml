@@ -91,9 +91,17 @@ agent:
       }
 
       loki.process "pods" {
+        // Extracts the level info from the log line
+        stage.logmft {
+          mapping = {
+            level = "",
+          }
+        }
+
+        // Sets up an 'level' label, based on the 'level' extracted value.
         stage.labels {
           values = {
-            level  = "",         // Sets up an 'level' label, based on the 'level' extracted value.
+            level  = "",
           }
         }
 
