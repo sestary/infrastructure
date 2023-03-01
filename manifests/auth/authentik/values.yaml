@@ -23,6 +23,7 @@ authentik:
     enabled: true
     annotations:
       cert-manager.io/cluster-issuer: "letsencrypt"
+    ingressClassName: nginx
     hosts:
       - host: sso.sestary.eu
         paths:
