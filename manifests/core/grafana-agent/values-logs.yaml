@@ -20,6 +20,14 @@ agent:
         ]
 
         rule {
+          action = "drop"
+          source_labels = [
+            "__meta_kubernetes_pod_node_name"
+          ]
+          regex = env("HOSTNAME")
+      }
+
+        rule {
           source_labels = [
             "__meta_kubernetes_pod_node_name",
           ]
@@ -78,7 +86,6 @@ agent:
       }
 
       loki.write "grafana_cloud" {
-
         endpoint {
           url = "<path:secrets.enc.yaml#loki-url>"
 
@@ -87,7 +94,7 @@ agent:
             password = "<path:secrets.enc.yaml#access-policy-token>"
           }
 
-          batch_size = "262144B"
+          batch_size = "256KiB"
         }
       }
 
