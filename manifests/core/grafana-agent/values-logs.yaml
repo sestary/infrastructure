@@ -41,7 +41,7 @@ agent:
           ]
           target_label = "job"
         }
-        
+
         rule {
           action = "replace"
           source_labels = [
@@ -49,7 +49,7 @@ agent:
           ]
           target_label ="namespace"
         }
-          
+  
         rule {
           action = "replace"
           source_labels = [
@@ -82,8 +82,8 @@ agent:
           url = "<path:secrets.enc.yaml#loki-url>"
 
           basic_auth {
-            username = "<path:secrets.enc.yaml#loki-tennent>"
-            password = "<path:secrets.enc.yaml#loki-token>"
+            username = "<path:secrets.enc.yaml#tennent-id>"
+            password = "<path:secrets.enc.yaml#access-policy-token>"
           }
         }
       }
