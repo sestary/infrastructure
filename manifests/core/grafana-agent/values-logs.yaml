@@ -78,6 +78,7 @@ agent:
       }
 
       loki.write "grafana_cloud" {
+
         endpoint {
           url = "<path:secrets.enc.yaml#loki-url>"
 
@@ -85,6 +86,8 @@ agent:
             username = "<path:secrets.enc.yaml#tennent-id>"
             password = "<path:secrets.enc.yaml#access-policy-token>"
           }
+
+          batch_size = "262144B"
         }
       }
 
