@@ -4,12 +4,26 @@ authentik:
     avatars: none
 
     email:
-      from: <path:secrets.enc.yaml#email-from>
-      host: <path:secrets.enc.yaml#email-host>
-      username: <path:secrets.enc.yaml#email-from>
+      from: systems@sestary.eu
+      host: mail.gandi.net
+      username: systems@sestary.eu
       password: <path:secrets.enc.yaml#email-password>
       port: 587
       use_tls: true
+
+    envValueFrom:
+      AUTHENTIK_BOOTSTRAP_EMAIL:
+        secretKeyRef:
+          name: authentik_bootstrap
+          key: email
+      AUTHENTIK_BOOTSTRAP_PASSWORD:
+        secretKeyRef:
+          name: authentik_bootstrap
+          key: password
+      AUTHENTIK_BOOTSTRAP_TOKEN:
+        secretKeyRef:
+          name: authentik_bootstrap
+          key: token
 
     error_reporting:
       enabled: false

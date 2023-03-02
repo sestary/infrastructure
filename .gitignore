@@ -11,4 +11,5 @@
 *.tfstate.*
 
 # SOPS Secrets
+**/secrets.auto.tfvars
 **/secrets.yaml
