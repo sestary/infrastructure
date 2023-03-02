@@ -11,20 +11,6 @@ authentik:
       port: 587
       use_tls: true
 
-    envValueFrom:
-      AUTHENTIK_BOOTSTRAP_EMAIL:
-        secretKeyRef:
-          name: authentik_bootstrap
-          key: email
-      AUTHENTIK_BOOTSTRAP_PASSWORD:
-        secretKeyRef:
-          name: authentik_bootstrap
-          key: password
-      AUTHENTIK_BOOTSTRAP_TOKEN:
-        secretKeyRef:
-          name: authentik_bootstrap
-          key: token
-
     error_reporting:
       enabled: false
 
@@ -32,6 +18,20 @@ authentik:
       password: <path:secrets.enc.yaml#postgres-password>
 
     secret_key: <path:secrets.enc.yaml#secret-key>
+
+  envValueFrom:
+    AUTHENTIK_BOOTSTRAP_EMAIL:
+      secretKeyRef:
+        name: authentik_bootstrap
+        key: email
+    AUTHENTIK_BOOTSTRAP_PASSWORD:
+      secretKeyRef:
+        name: authentik_bootstrap
+        key: password
+    AUTHENTIK_BOOTSTRAP_TOKEN:
+      secretKeyRef:
+        name: authentik_bootstrap
+        key: token
 
   ingress:
     enabled: true
