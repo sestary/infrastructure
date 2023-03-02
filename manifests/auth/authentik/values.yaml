@@ -22,15 +22,15 @@ authentik:
   envValueFrom:
     AUTHENTIK_BOOTSTRAP_EMAIL:
       secretKeyRef:
-        name: authentik_bootstrap
+        name: authentik-bootstrap
         key: email
     AUTHENTIK_BOOTSTRAP_PASSWORD:
       secretKeyRef:
-        name: authentik_bootstrap
+        name: authentik-bootstrap
         key: password
     AUTHENTIK_BOOTSTRAP_TOKEN:
       secretKeyRef:
-        name: authentik_bootstrap
+        name: authentik-bootstrap
         key: token
 
   ingress:
