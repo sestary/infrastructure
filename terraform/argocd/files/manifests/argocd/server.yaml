@@ -1,5 +1,10 @@
 ---
 server:
+  pdb:
+    enabled: true
+    minAvailable: 1
+
+  %{ if enable_ingress ~}
   ingress:
     enabled: true
     annotations:
@@ -17,3 +22,4 @@ server:
     issuer:
       kind: "ClusterIssuer"
       name: "letsencrypt"
+  %{ endif ~}

@@ -11,7 +11,13 @@ resource "helm_release" "argocd" {
   version    = var.charts_version["argocd"]
 
   values = [
-    file("${path.module}/files/manifests/argocd/config.yaml"),
+    templatefile(
+      "${path.module}/files/manifests/argocd/config.yaml",
+      {
+        enable_oidc = var.enable_oidc
+        oidc        = {}
+      }
+    ),
     templatefile(
       "${path.module}/files/manifests/argocd/repo-server.yaml.tpl",
       {
@@ -19,7 +25,12 @@ resource "helm_release" "argocd" {
         plugins         = local.argocd_plugins
       }
     ),
-    file("${path.module}/files/manifests/argocd/server.yaml"),
+    templatefile(
+      "${path.module}/files/manifests/argocd/server.yaml",
+      {
+        enable_ingress = var.enable_ingress
+      }
+    ),
   ]
 
   set {

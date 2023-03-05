@@ -35,3 +35,22 @@ configs:
     resource.customizations.ignoreDifferences.apiextensions.k8s.io_CustomResourceDefinition: |
       jqPathExpressions:
       - '.spec.conversion.webhook.clientConfig.caBundle'
+
+    %{ if enable_oidc ~}
+    # Dex configuration
+    dex.config: |
+      connectors:
+        - config:
+            issuer: ${oidc["issuer"]}
+            clientID: ${oidc["client_id"]}
+            clientSecret: ${oidc["client_secret"]}
+            insecureEnableGroups: true
+            scopes:
+              - openid
+              - profile
+              - email
+              - groups
+          name: authentik
+          type: oidc
+          id: authentik
+    %{ endif ~}
