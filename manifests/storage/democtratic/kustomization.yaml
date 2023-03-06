@@ -4,7 +4,7 @@ kind: Kustomization
 
 helmCharts:
   - name: democratic-csi
-    namespace: core-democratic
+    namespace: storage-democratic
     releaseName: democratic-csi-nfs
     repo: https://democratic-csi.github.io/charts/
     valuesFile: values-nfs.yaml
