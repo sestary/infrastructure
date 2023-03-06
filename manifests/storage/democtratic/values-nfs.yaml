@@ -1,0 +1,10 @@
+---
+csiDriver:
+  name: "org.democratic-csi.nfs"
+
+node:
+  kubeletHostPath: "/var/snap/microk8s/common/var/lib/kubelet"
+
+driver:
+  config:
+    driver: node-manual
