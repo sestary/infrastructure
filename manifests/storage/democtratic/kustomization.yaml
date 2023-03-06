@@ -6,6 +6,6 @@ helmCharts:
   - name: democratic-csi
     namespace: core-democratic
     releaseName: democratic-csi-nfs
-    repo: https://grafana.github.io/helm-charts
+    repo: https://democratic-csi.github.io/charts/
     valuesFile: values-nfs.yaml
     version: 0.13.5
