@@ -8,3 +8,9 @@ node:
 driver:
   config:
     driver: node-manual
+
+controller:
+  # This manual driver does not support any of these functions
+  externalProvisioner: false
+  externalResizer: false
+  externalSnapshotter: false
