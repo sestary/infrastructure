@@ -7,7 +7,9 @@ resource "authentik_provider_oauth2" "argocd" {
     "http://localhost:8085/auth/callback",
   ]
 
-  signing_key = authentik_certificate_key_pair.sso.name
+  signing_key = authentik_certificate_key_pair.sso.id
+
+  authorization_flow = data.authentik_flow.default_authorization_flow.id
 }
 
 resource "authentik_application" "argocd" {

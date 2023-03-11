@@ -1,5 +1,6 @@
 output "argocd_oidc" {
   description = "ArgoCD OIDC config"
+  sensitive   = true
 
   value = {
     issuer        = data.authentik_provider_oauth2_config.argocd.issuer_url
