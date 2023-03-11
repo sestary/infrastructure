@@ -1,66 +1,65 @@
 ---
 authentik:
-  authentik:
-    avatars: none
+  avatars: none
 
-    email:
-      from: systems@sestary.eu
-      host: mail.gandi.net
-      username: systems@sestary.eu
-      password: <path:secrets.enc.yaml#email-password>
-      port: 587
-      use_tls: true
+  email:
+    from: systems@sestary.eu
+    host: mail.gandi.net
+    username: systems@sestary.eu
+    password: <path:secrets.enc.yaml#email-password>
+    port: 587
+    use_tls: true
 
-    error_reporting:
-      enabled: false
-
-    postgresql:
-      password: <path:secrets.enc.yaml#postgres-password>
-
-    secret_key: <path:secrets.enc.yaml#secret-key>
-
-  envValueFrom:
-    AUTHENTIK_BOOTSTRAP_EMAIL:
-      secretKeyRef:
-        name: authentik-bootstrap
-        key: email
-    AUTHENTIK_BOOTSTRAP_PASSWORD:
-      secretKeyRef:
-        name: authentik-bootstrap
-        key: password
-    AUTHENTIK_BOOTSTRAP_TOKEN:
-      secretKeyRef:
-        name: authentik-bootstrap
-        key: token
-
-  ingress:
-    enabled: true
-    annotations:
-      cert-manager.io/cluster-issuer: "letsencrypt"
-    ingressClassName: nginx
-    hosts:
-      - host: sso.sestary.eu
-        paths:
-          - path: "/"
-            pathType: Prefix
-    tls:
-      - hosts:
-          - sso.sestary.eu
-        secretName: ingress-tls
+  error_reporting:
+    enabled: false
 
   postgresql:
-    enabled: true
-    postgresqlPassword: <path:secrets.enc.yaml#postgres-password>
+    password: <path:secrets.enc.yaml#postgres-password>
 
-  redis:
-    enabled: true
+  secret_key: <path:secrets.enc.yaml#secret-key>
 
-  volumes:
-    - name: authentik-media-files
-      configMap:
-        name: authentik-media-files
+envValueFrom:
+  AUTHENTIK_BOOTSTRAP_EMAIL:
+    secretKeyRef:
+      name: authentik-bootstrap
+      key: email
+  AUTHENTIK_BOOTSTRAP_PASSWORD:
+    secretKeyRef:
+      name: authentik-bootstrap
+      key: password
+  AUTHENTIK_BOOTSTRAP_TOKEN:
+    secretKeyRef:
+      name: authentik-bootstrap
+      key: token
 
-  volumeMounts:
-    - name: authentik-media-files
-      mountPath: "/media"
-      readOnly: true
+ingress:
+  enabled: true
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt"
+  ingressClassName: nginx
+  hosts:
+    - host: sso.sestary.eu
+      paths:
+        - path: "/"
+          pathType: Prefix
+  tls:
+    - hosts:
+        - sso.sestary.eu
+      secretName: ingress-tls
+
+postgresql:
+  enabled: true
+  postgresqlPassword: <path:secrets.enc.yaml#postgres-password>
+
+redis:
+  enabled: true
+
+volumes:
+  - name: authentik-media-files
+    configMap:
+      name: authentik-media-files
+
+volumeMounts:
+  - name: authentik-media-files
+    mountPath: "/media"
+    readOnly: true

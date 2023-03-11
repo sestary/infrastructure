@@ -1,0 +1,20 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+helmCharts:
+  - name: authentik
+    releaseName: authentik
+    repo: https://charts.goauthentik.io
+    valuesFile: values.yaml
+    version: 2023.2.4
+
+configMapGenerator:
+  - name: authentik-media-files
+    files:
+      - files/background.jpg
+      - files/favicon.ico
+      - files/logo.png
+
+resources:
+  - resources/secret.yaml
