@@ -4,7 +4,7 @@ kind: ConfigMap
 metadata:
   name: authentic-media-files
 binaryData:
-  {{- range $path, $_ :=  .Files.Glob  "**.yaml"}}
+  {{- range $path, $_ :=  .Files.Glob  "files/**"}}
   {{$path | base}}: |-
       {{- $.Files.Get $path | b64enc | nindent 4}}
   {{- end}}
