@@ -10,6 +10,10 @@ helmCharts:
     valuesFile: values.yaml
     version: 2023.2.4
 
+generatorOptions:
+  annotations:
+    argocd.argoproj.io/sync-options: Replace=True
+
 configMapGenerator:
   - name: authentik-media-files
     files:
