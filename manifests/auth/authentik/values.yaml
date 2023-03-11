@@ -61,5 +61,5 @@ volumes:
 
 volumeMounts:
   - name: authentik-media-files
-    mountPath: "/media"
+    mountPath: "/media/sestary"
     readOnly: true
