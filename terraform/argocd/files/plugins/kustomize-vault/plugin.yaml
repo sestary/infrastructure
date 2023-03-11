@@ -10,9 +10,8 @@ spec:
   discover:
     find:
       command:
-        - find
-        - "."
-        - -name
-        - kustomization.yaml
+        - sh
+        - "-c"
+        - "find . -name 'kustomization.yaml'"
   generate:
     command: [bash, /var/run/argocd/plugin/generate.sh]

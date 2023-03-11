@@ -4,6 +4,7 @@ kind: Kustomization
 
 helmCharts:
   - name: authentik
+    namespace: auth-authentik
     releaseName: authentik
     repo: https://charts.goauthentik.io
     valuesFile: values.yaml

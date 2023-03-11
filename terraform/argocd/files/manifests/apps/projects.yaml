@@ -35,6 +35,17 @@ projects:
     clusterResourceWhitelist:
       - group: '*'
         kind: '*'
+  - name: monitoring
+    namespace: argocd
+    description: Kubernetes Monitoring Services
+    sourceRepos:
+      - "https://github.com/sestary/infrastructure"
+    destinations:
+      - server: "https://kubernetes.default.svc"
+        namespace: "monitoring-*"
+    clusterResourceWhitelist:
+      - group: '*'
+        kind: '*'
   - name: storage
     namespace: argocd
     description: Kubernetes Storage Services

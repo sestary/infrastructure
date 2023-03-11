@@ -11,11 +11,11 @@ repoServer:
         - -c
         - |
             apt-get update && apt-get install -y ca-certificates wget
-            wget https://get.helm.sh/helm-v${plugin_versions["helm"]}-linux-amd64.tar.gz -O - | tar xz && mv linux-amd64/helm /tools/helm && chmod +x /tools/helm
-            wget https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv${plugin_versions["kustomize"]}/kustomize_v${plugin_versions["kustomize"]}_linux_amd64.tar.gz -O - | tar xz && mv kustomize /tools/kustomize && chmod a+x /tools/kustomize
-            wget https://github.com/stedolan/jq/releases/download/jq-${plugin_versions["jq"]}/jq-linux64 -O /tools/jq && chmod +x /tools/jq
-            wget https://github.com/mikefarah/yq/releases/download/v${plugin_versions["yq"]}/yq_linux_amd64 -O /tools/yq && chmod +x /tools/yq
-            wget https://github.com/argoproj-labs/argocd-vault-plugin/releases/download/v${plugin_versions["argo-vault-plugin"]}/argocd-vault-plugin_${plugin_versions["argo-vault-plugin"]}_linux_amd64 -O /tools/argocd-vault-plugin && chmod +x /tools/argocd-vault-plugin
+            wget -q https://get.helm.sh/helm-v${plugin_versions["helm"]}-linux-amd64.tar.gz -O - | tar xz && mv linux-amd64/helm /tools/helm && chmod +x /tools/helm
+            wget -q https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv${plugin_versions["kustomize"]}/kustomize_v${plugin_versions["kustomize"]}_linux_amd64.tar.gz -O - | tar xz && mv kustomize /tools/kustomize && chmod a+x /tools/kustomize
+            wget -q https://github.com/stedolan/jq/releases/download/jq-${plugin_versions["jq"]}/jq-linux64 -O /tools/jq && chmod +x /tools/jq
+            wget -q https://github.com/mikefarah/yq/releases/download/v${plugin_versions["yq"]}/yq_linux_amd64 -O /tools/yq && chmod +x /tools/yq
+            wget -q https://github.com/argoproj-labs/argocd-vault-plugin/releases/download/v${plugin_versions["argo-vault-plugin"]}/argocd-vault-plugin_${plugin_versions["argo-vault-plugin"]}_linux_amd64 -O /tools/argocd-vault-plugin && chmod +x /tools/argocd-vault-plugin
       volumeMounts:
         - mountPath: /etc/ssl
           name: ssl-files

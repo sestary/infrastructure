@@ -75,6 +75,31 @@ applicationsets:
             - CreateNamespace=true
           syncStrategy:
             hook: {}
+  - name: monitoring
+    namespace: argocd
+    generators:
+      - git:
+          repoURL: https://github.com/sestary/infrastructure
+          revision: HEAD
+          directories:
+            - path: manifests/monitoring/*
+    template:
+      metadata:
+        name: '{{path.basename}}'
+      spec:
+        project: "monitoring"
+        source:
+          repoURL: https://github.com/sestary/infrastructure
+          targetRevision: HEAD
+          path: '{{path}}'
+        destination:
+          server: https://kubernetes.default.svc
+          namespace: 'monitoring-{{path.basename}}'
+        syncPolicy:
+          syncOptions:
+            - CreateNamespace=true
+          syncStrategy:
+            hook: {}
   - name: storage
     namespace: argocd
     generators:
