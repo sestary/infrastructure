@@ -1,6 +1,8 @@
 ---
 ingress-nginx:
   controller:
+    replicaCount: 2
+
     # Allow SSL passthrough for ArgoCD
     extraArgs:
       enable-ssl-passthrough: ""
@@ -8,3 +10,6 @@ ingress-nginx:
     ingressClassResource:
       # We want this ingress to be the default
       default: true
+
+    service:
+      externalTrafficPolicy: local
