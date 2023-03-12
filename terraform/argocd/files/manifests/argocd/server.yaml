@@ -1,5 +1,7 @@
 ---
 server:
+  insecure: true
+
   pdb:
     enabled: true
     minAvailable: 1
@@ -8,18 +10,15 @@ server:
   ingress:
     enabled: true
     annotations:
-      nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
-      nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+      cert-manager.io/cluster-issuer: "letsencrypt"
     ingressClassName: nginx
     hosts:
       - argocd.on.sestary.eu
-    https: true
+    tls:
+      - hosts:
+          - argocd.on.sestary.eu
+        secretName: ingress-tls
 
   certificate:
-    enabled: true
-    secretName: argocd-server-tls
-    domain: argocd.on.sestary.eu
-    issuer:
-      kind: "ClusterIssuer"
-      name: "letsencrypt"
+    enabled: false
   %{~ endif ~}
