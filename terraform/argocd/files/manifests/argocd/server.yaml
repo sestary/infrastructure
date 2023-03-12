@@ -1,7 +1,5 @@
 ---
 server:
-  insecure: true
-
   pdb:
     enabled: true
     minAvailable: 1
@@ -11,6 +9,7 @@ server:
     enabled: true
     annotations:
       cert-manager.io/cluster-issuer: "letsencrypt"
+      nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
     ingressClassName: nginx
     hosts:
       - argocd.on.sestary.eu
@@ -18,7 +17,8 @@ server:
       - hosts:
           - argocd.on.sestary.eu
         secretName: ingress-tls
-
+    https: true
+  
   certificate:
     enabled: false
   %{~ endif ~}
