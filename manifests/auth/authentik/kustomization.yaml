@@ -22,8 +22,5 @@ configMapGenerator:
       - files/favicon.ico
       - files/logo.png
 
-patches:
-  - path: patches/deployment.yaml
-
 resources:
   - resources/secret.yaml
