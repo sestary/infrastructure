@@ -1,12 +1,12 @@
 resource "authentik_flow" "enrollment_invite" {
   name        = "sestary-enrollment-invite"
-  title       = "Enter your information:"
+  title       = "Sign Up"
   slug        = "sestary-enrollment-invite"
   designation = "enrollment"
 
   layout = "sidebar_left"
 
-  background = "/media/sestary/background.jpg"
+  background = "/sestary/background.jpg"
 }
 
 # Invitation Verification

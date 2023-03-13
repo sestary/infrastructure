@@ -1,12 +1,12 @@
 resource "authentik_flow" "authentication" {
   name        = "sestary-authenticate"
-  title       = "Welcome, please login:"
+  title       = "Welcome! Please login"
   slug        = "sestary-authenticate"
   designation = "authentication"
 
   layout = "sidebar_left"
 
-  background = "/media/sestary/background.jpg"
+  background = "/sestary/background.jpg"
 }
 
 # Identification Stage

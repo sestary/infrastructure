@@ -15,7 +15,13 @@ resource "authentik_provider_oauth2" "argocd" {
 resource "authentik_application" "argocd" {
   name              = "ArgoCD"
   slug              = "argocd"
+  group = "Systems"
+
   protocol_provider = authentik_provider_oauth2.argocd.id
+
+  meta_description = "Declarative continuous delivery with a fully-loaded UI."
+  meta_icon = "/sestary/argocd.png"
+  meta_publisher = "ArgoCD"
 }
 
 resource "authentik_group" "argocd_admins" {
