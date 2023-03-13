@@ -12,7 +12,7 @@ helmCharts:
 
 generatorOptions:
   annotations:
-    argocd.argoproj.io/sync-options: Replace=true
+    argocd.argoproj.io/sync-options: Replace=true,PruneLast=true
 
 configMapGenerator:
   - name: authentik-media-files
