@@ -12,14 +12,18 @@ helmCharts:
 
 generatorOptions:
   annotations:
-    argocd.argoproj.io/sync-options: Replace=True
+    argocd.argoproj.io/sync-options: Replace=true
 
 configMapGenerator:
   - name: authentik-media-files
     files:
+      - files/argocd.png
       - files/background.jpg
       - files/favicon.ico
       - files/logo.png
+
+patches:
+  - path: patches/deployment.yaml
 
 resources:
   - resources/secret.yaml
