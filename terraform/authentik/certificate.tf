@@ -1,6 +1,6 @@
 resource "tls_private_key" "sso" {
-  algorithm   = "ECDSA"
-  ecdsa_curve = "P384"
+  algorithm = "RSA"
+  rsa_bits  = 4096
 }
 
 resource "tls_self_signed_cert" "sso" {

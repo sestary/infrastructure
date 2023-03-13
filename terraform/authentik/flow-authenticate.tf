@@ -6,7 +6,7 @@ resource "authentik_flow" "authentication" {
 
   layout = "sidebar_left"
 
-  background = "/sestary/background.jpg"
+  background = "/static/dist/media/background.jpg"
 }
 
 # Identification Stage

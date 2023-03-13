@@ -12,13 +12,20 @@ server:
       nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
     ingressClassName: nginx
     hosts:
-      - argocd.on.sestary.eu
+      - ${hostname}
     tls:
       - hosts:
-          - argocd.on.sestary.eu
+          - ${hostname}
         secretName: ingress-tls
     https: true
-  
+  %{~ endif ~}
+
+  %{~ if enable_oidc ~}
   certificate:
-    enabled: false
+    enabled: true
+    secretName: argocd-server-tls
+    domain: ${hostname}
+    issuer:
+      kind: "ClusterIssuer"
+      name: "letsencrypt"
   %{~ endif ~}

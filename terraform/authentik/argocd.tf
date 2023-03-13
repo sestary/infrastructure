@@ -1,9 +1,15 @@
+resource "random_password" "client_secret" {
+  length           = 40
+  special          = false
+}
+
 resource "authentik_provider_oauth2" "argocd" {
   name      = "argocd"
   client_id = "argocd"
+  client_secret = random_password.client_secret.result 
 
   redirect_uris = [
-    "http://argocd.on.sestary.eu/api/dex/callback",
+    "https://argocd.on.sestary.eu/api/dex/callback",
     "http://localhost:8085/auth/callback",
   ]
 
@@ -20,12 +26,13 @@ resource "authentik_application" "argocd" {
   protocol_provider = authentik_provider_oauth2.argocd.id
 
   meta_description = "Declarative continuous delivery with a fully-loaded UI."
-  meta_icon = "/sestary/argocd.png"
+  meta_icon = "/static/dist/media/argocd.png"
+  meta_launch_url = "https://argocd.on.sestary.eu/auth/login?return_url=https%3A%2F%2Fargocd.on.sestary.eu%2Fapplications"
   meta_publisher = "ArgoCD"
 }
 
 resource "authentik_group" "argocd_admins" {
-  name = "argo-admins"
+  name = "argocd-admins"
 
   lifecycle {
     ignore_changes = [

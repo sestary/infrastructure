@@ -1,7 +1,7 @@
 variable "enable_ingress" {
   description = "This allows you to disable the ArgoCD ingress resource"
   type        = bool
-  default     = true
+  default     = false
 }
 
 variable "enable_oidc" {
@@ -24,4 +24,16 @@ variable "charts_version" {
 variable "plugins_version" {
   description = "The ArgoCD plugins versions"
   type        = map(string)
+}
+
+variable "log_level_services" {
+  description = "The service specific log levels"
+  type        = map(string)
+  default     = {}
+}
+
+variable "log_level_default" {
+  description = "The default log level"
+  type        = string
+  default     = "warn"
 }

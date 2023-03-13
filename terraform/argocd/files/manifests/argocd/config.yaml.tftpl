@@ -3,6 +3,8 @@ configs:
   # General Argo CD configuration
   ## Ref: https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-cm.yaml
   cm:
+    url: ${url}
+
     kustomize.buildOptions: --enable-helm
     resource.customizations.health.cert-manager.io_ClusterIssuer: |
       hs = {}
@@ -36,21 +38,32 @@ configs:
       jqPathExpressions:
       - '.spec.conversion.webhook.clientConfig.caBundle'
 
-    %{ if enable_oidc ~}
+  %{~ if enable_oidc ~}
+    # Disable the admin login
+    admin.enabled: 'false'
     # Dex configuration
     dex.config: |
+      logger:
+        level: debug
       connectors:
-        - config:
-            issuer: ${oidc["issuer"]}
-            clientID: ${oidc["client_id"]}
-            clientSecret: ${oidc["client_secret"]}
-            insecureEnableGroups: true
-            scopes:
-              - openid
-              - profile
-              - email
-              - groups
-          name: authentik
-          type: oidc
-          id: authentik
-    %{ endif ~}
+      - name: authentik
+        type: oidc
+        id: authentik
+        config:
+          issuer: ${oidc["issuer"]}
+          clientID: ${oidc["client_id"]}
+          clientSecret: $dex.authentik.clientSecret
+          insecureEnableGroups: true
+          scopes:
+            - openid
+            - profile
+            - email
+            - groups
+  secret:
+    extra:
+      dex.authentik.clientSecret: ${oidc["client_secret"]}
+
+  rbac:
+    policy.csv: |
+      g, argocd-admins, role:admin
+  %{~ endif ~}
