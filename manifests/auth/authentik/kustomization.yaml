@@ -24,3 +24,6 @@ configMapGenerator:
 
 resources:
   - resources/secret.yaml
+
+patches:
+  - path: patches/secret.yaml
