@@ -20,14 +20,13 @@ jobs:
   push-ghcr:
     name: Build and push image
     runs-on: ubuntu-20.04
+    defaults:
+      run:
+        working-directory: images/argocd-plugin
     steps:
       # Checkout push-to-registry action github repository
       - name: Checkout Push to Registry action
         uses: actions/checkout@v3
-
-      - name: Install latest podman
-        run: |
-          bash .github/install_latest_podman.sh
 
       # Build image using Buildah action
       - name: Build Image
@@ -35,12 +34,12 @@ jobs:
         uses: redhat-actions/buildah-build@v2
         with:
           containerfiles: |
-            images/argocd-plugin/Containerfile
+            ./Containerfile
 
       # Push the image to GHCR (Image Registry)
       - name: Push To GHCR
-        uses: ./
-        id: push
+        id: push-to-qhcr
+        uses: redhat-actions/push-to-registry@v2
         with:
           image: ${{ steps.build_image.outputs.image }}
           tags: ${{ steps.build_image.outputs.tags }}
