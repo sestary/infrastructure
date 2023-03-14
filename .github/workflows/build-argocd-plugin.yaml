@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-20.04
     defaults:
       run:
-        working-directory: images/argcd-plugin
+        working-directory: images/argocd-plugin
     steps:
       # Checkout push-to-registry action github repository
       - name: Checkout Push to Registry action
