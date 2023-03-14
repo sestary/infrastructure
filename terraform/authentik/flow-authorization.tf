@@ -1,3 +1,8 @@
-data "authentik_flow" "default_authorization_flow" {
-  slug = "default-provider-authorization-implicit-consent"
+resource "authentik_flow" "authorization_implicit_consent" {
+  name        = "Authorize Application"
+  title       = "Logging you into %(app)"
+  slug        = "sestary-authorization-implicit-consent"
+  designation = "authorization"
+
+  background = "/static/dist/media/background.jpg"
 }

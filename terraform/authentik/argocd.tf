@@ -15,7 +15,7 @@ resource "authentik_provider_oauth2" "argocd" {
 
   signing_key = authentik_certificate_key_pair.sso.id
 
-  authorization_flow = data.authentik_flow.default_authorization_flow.id
+  authorization_flow = authentik_flow.authorization_implicit_consent.uuid
 
   property_mappings = data.authentik_scope_mapping.oidc.ids
 }

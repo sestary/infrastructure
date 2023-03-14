@@ -4,8 +4,6 @@ resource "authentik_flow" "enrollment_invite" {
   slug        = "sestary-enrollment-invite"
   designation = "enrollment"
 
-  layout = "sidebar_left"
-
   background = "/static/dist/media/background.jpg"
 }
 

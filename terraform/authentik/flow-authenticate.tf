@@ -4,8 +4,6 @@ resource "authentik_flow" "authentication" {
   slug        = "sestary-authenticate"
   designation = "authentication"
 
-  layout = "sidebar_left"
-
   background = "/static/dist/media/background.jpg"
 }
 
