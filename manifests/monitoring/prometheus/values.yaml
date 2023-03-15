@@ -24,7 +24,7 @@ alertmanager:
     tls:
       - hosts:
           - alertmanager.on.sestary.eu
-        secretName: ingress-tls
+        secretName: ingress-tls-alertmanger
 
 prometheus:
   ingress:
@@ -43,7 +43,7 @@ prometheus:
     tls:
       - hosts:
           - prometheus.on.sestary.eu
-        secretName: ingress-tls
+        secretName: ingress-tls-prometheus
 
 # Using Grafana Cloud
 grafana:

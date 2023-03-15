@@ -10,3 +10,6 @@ helmCharts:
     valuesFile: values.yaml
     version: 45.7.1
     includeCRDs: true
+
+patches:
+  - path: patches/crds.yaml
