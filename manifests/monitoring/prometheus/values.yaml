@@ -1,5 +1,13 @@
 ---
 alertmanager:
+  defaultRules:
+    create: true
+    rules:
+      etcd: false
+      kubeControllerManager: false
+      kubeProxy: false
+      network: true
+
   ingress:
     enabled: true
 
@@ -41,6 +49,14 @@ prometheus:
 grafana:
   enabled: false
 
-# MicroK8s doesn't use Etcd
+# MicroK8s doesn't use anye of these
+coreDns:
+  enabled: false
 kubeEtcd:
+  enabled: false
+kubeControllerManager:
+  enabled: false
+kubeProxy:
+  enabled: false
+kubeScheduler:
   enabled: false
