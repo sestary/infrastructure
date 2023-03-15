@@ -21,6 +21,7 @@ configMapGenerator:
       - files/background.jpg
       - files/favicon.ico
       - files/logo.png
+      - files/longhorn.png
       - files/prometheus.png
       - files/prometheusalerts.png
 
