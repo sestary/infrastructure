@@ -15,9 +15,9 @@ resource "authentik_application" "longhorn" {
 
   protocol_provider = authentik_provider_proxy.longhorn.id
 
-  meta_description = "longhorn is an open-source systems monitoring toolkit."
+  meta_description = "Cloud native distributed block storage for Kubernetes"
   meta_icon        = "/static/dist/media/longhorn.png"
-  meta_publisher   = "longhorn"
+  meta_publisher   = "Longhorn"
 }
 
 resource "authentik_group" "longhorn_admins" {
