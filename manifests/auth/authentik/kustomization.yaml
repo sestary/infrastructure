@@ -23,6 +23,7 @@ configMapGenerator:
       - files/logo.png
 
 resources:
+  - resources/ingress.yaml
   - resources/secret.yaml
 
 patches:
