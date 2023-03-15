@@ -33,7 +33,7 @@ prometheus:
     annotations:
       cert-manager.io/cluster-issuer: "letsencrypt"
       nginx.ingress.kubernetes.io/auth-url: |-
-        http://ak-outpost-authentik-embedded-outpost.auth-authentik.svc.cluster.local:9000/outpost.goauthentik.io/auth/prometheus
+        http://ak-outpost-authentik-embedded-outpost.auth-authentik.svc.cluster.local:9000/outpost.goauthentik.io/nginx
       nginx.ingress.kubernetes.io/auth-signin: |-
         https://prometheus.on.sestary.eu/outpost.goauthentik.io/start?rd=$escaped_request_uri
       nginx.ingress.kubernetes.io/auth-response-headers: |-
