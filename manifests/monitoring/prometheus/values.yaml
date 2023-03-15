@@ -1,0 +1,46 @@
+---
+alertmanager:
+  ingress:
+    enabled: true
+
+    annotations:
+      cert-manager.io/cluster-issuer: "letsencrypt"
+
+    ingressClassName: nginx
+
+    hosts:
+      - alertmanager.on.sestary.eu
+    paths:
+      - /
+
+    tls:
+      - hosts:
+          - alertmanager.on.sestary.eu
+        secretName: ingress-tls
+
+prometheus:
+  ingress:
+    enabled: true
+
+    annotations:
+      cert-manager.io/cluster-issuer: "letsencrypt"
+
+    ingressClassName: nginx
+
+    hosts:
+      - prometheus.on.sestary.eu
+    paths:
+      - /
+
+    tls:
+      - hosts:
+          - prometheus.on.sestary.eu
+        secretName: ingress-tls
+
+# Using Grafana Cloud
+grafana:
+  enabled: false
+
+# MicroK8s doesn't use Etcd
+kubeEtcd:
+  enabled: false
