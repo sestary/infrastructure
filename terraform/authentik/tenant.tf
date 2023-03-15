@@ -6,5 +6,5 @@ resource "authentik_tenant" "sestary" {
   branding_favicon = "/static/dist/media/favicon.ico"
 
   flow_authentication = authentik_flow.authentication.uuid
-  flow_invalidation = authentik_flow.invalidation.uuid
+  flow_invalidation   = authentik_flow.invalidation.uuid
 }

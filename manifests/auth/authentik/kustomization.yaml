@@ -21,6 +21,7 @@ configMapGenerator:
       - files/background.jpg
       - files/favicon.ico
       - files/logo.png
+      - files/prometheus.png
 
 resources:
   - resources/secret.yaml
