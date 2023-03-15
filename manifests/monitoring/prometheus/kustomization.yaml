@@ -9,3 +9,4 @@ helmCharts:
     repo: https://prometheus-community.github.io/helm-charts
     valuesFile: values.yaml
     version: 45.7.1
+    includeCRDs: true
