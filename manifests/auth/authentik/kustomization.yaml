@@ -20,6 +20,7 @@ configMapGenerator:
       - files/argocd.png
       - files/background.jpg
       - files/favicon.ico
+      - files/grafana.png
       - files/logo.png
       - files/longhorn.png
       - files/prometheus.png
