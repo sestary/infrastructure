@@ -15,8 +15,8 @@ resource "authentik_application" "prometheus_alerts" {
 
   protocol_provider = authentik_provider_proxy.prometheus_alerts.id
 
-  meta_description = "Prometheus is an open-source systems monitoring and alerting toolkit."
-  meta_icon        = "/static/dist/media/prometheus.png"
+  meta_description = "Prometheus AlertManager is an open-source systems alerting toolkit."
+  meta_icon        = "/static/dist/media/prometheusalerts.png"
   meta_publisher   = "Prometheus"
 }
 

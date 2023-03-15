@@ -22,6 +22,7 @@ configMapGenerator:
       - files/favicon.ico
       - files/logo.png
       - files/prometheus.png
+      - files/prometheusalerts.png
 
 resources:
   - resources/secret.yaml
