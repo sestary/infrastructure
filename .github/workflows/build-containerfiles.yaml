@@ -41,7 +41,7 @@ jobs:
         uses: redhat-actions/buildah-build@v2
         with:
           image: ${{ matrix.image }}
-          tags: ${{ steps.read_action_js.outputs['image_tag'] }} ${{ github.sha }}
+          tags: ${{ steps.image_tag.outputs['image_tag'] }} ${{ github.sha }}
           containerfiles: |
             images/${{ matrix.image }}/Containerfile
 
