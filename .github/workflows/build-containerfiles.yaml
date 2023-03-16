@@ -42,6 +42,8 @@ jobs:
         with:
           image: ${{ matrix.image }}
           tags: ${{ steps.image_tag.outputs['image_tag'] }} ${{ github.sha }}
+          build-args:
+            IMAGE_TAG=${{ steps.image_tag.outputs['image_tag'] }}
           containerfiles: |
             images/${{ matrix.image }}/Containerfile
 

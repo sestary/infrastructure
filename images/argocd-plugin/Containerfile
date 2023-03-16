@@ -1,4 +1,5 @@
-FROM ubuntu:latest AS downloader
+ARG IMAGE_TAG
+FROM ubuntu:${IMAGE_TAG} AS downloader
 
 # Copy the versions yaml file
 COPY images/argocd-plugin/versions.yaml ./
@@ -16,7 +17,7 @@ RUN export VERSION=$(yq ".helm" versions.yaml); wget -q https://get.helm.sh/helm
 RUN export VERSION=$(yq ".kustomize" versions.yaml); wget -q https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv${VERSION}/kustomize_v${VERSION}_linux_amd64.tar.gz -O - | tar xz && mv kustomize /tools/kustomize && chmod a+x /tools/kustomize
 
 # Build a clean container
-FROM ubuntu:latest
+FROM ubuntu:${IMAGE_TAG}
 
 # Copy all the files we actually want from the builder
 COPY --from=downloader /usr/local/bin/yq /tools/* /usr/local/bin
