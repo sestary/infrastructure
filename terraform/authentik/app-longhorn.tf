@@ -9,7 +9,7 @@ resource "authentik_provider_proxy" "longhorn" {
 }
 
 resource "authentik_application" "longhorn" {
-  name  = "longhorn"
+  name  = "Longhorn"
   slug  = "longhorn"
   group = "Systems"
 
