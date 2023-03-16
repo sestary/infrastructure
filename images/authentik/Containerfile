@@ -1,4 +1,4 @@
 FROM ghcr.io/goauthentik/server:2023.3.0
 
 # Copy the files over
-COPY files/* /web/dist/media
+COPY images/authentik/files/* /web/dist/media
