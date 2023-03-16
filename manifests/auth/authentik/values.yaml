@@ -2,10 +2,6 @@
 authentik:
   avatars: none
 
-  image:
-    repository: ghcr.io/sestary/authentik
-    tag: latest
-
   email:
     from: systems@sestary.eu
     host: mail.gandi.net
@@ -21,6 +17,10 @@ authentik:
     password: <path:secrets.enc.yaml#postgres-password>
 
   secret_key: <path:secrets.enc.yaml#secret-key>
+
+image:
+  repository: ghcr.io/sestary/authentik
+  tag: latest
 
 envValueFrom:
   AUTHENTIK_BOOTSTRAP_EMAIL:
