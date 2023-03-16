@@ -2,6 +2,10 @@
 authentik:
   avatars: none
 
+  image:
+    repository: ghcr.io/sestary/authentik
+    tag: latest
+
   email:
     from: systems@sestary.eu
     host: mail.gandi.net

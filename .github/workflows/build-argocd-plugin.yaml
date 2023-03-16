@@ -1,25 +1,28 @@
 ---
-name: Build ArgoCD Plugin container
+name: Build container images
 on:
   push:
     branches:
       - main
     paths:
-      - images/argocd-plugin/**
+      - images/**
   workflow_dispatch:
   schedule:
     - cron: '0 0 * * 1'  # every monday at midnight
 env:
-  IMAGE_NAME: argocd-plugin
   IMAGE_TAGS: latest ${{ github.sha }}
   IMAGE_REGISTRY: ghcr.io/${{ github.repository_owner }}
   REGISTRY_USER: ${{ github.actor }}
   REGISTRY_PASSWORD: ${{ github.token }}
-
 jobs:
   push-ghcr:
     name: Build and push image
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        image:
+          - argocd-plugin
+          - authentik
     steps:
       # Checkout push-to-registry action github repository
       - name: Checkout Push to Registry action
@@ -30,7 +33,7 @@ jobs:
         id: build_image
         uses: redhat-actions/buildah-build@v2
         with:
-          image: ${{ env.IMAGE_NAME }}
+          image: ${{ matrix.image }}
           tags: ${{ env.IMAGE_TAGS }}
           containerfiles: |
             images/argocd-plugin/Containerfile

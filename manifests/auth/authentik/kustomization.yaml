@@ -10,22 +10,6 @@ helmCharts:
     valuesFile: values.yaml
     version: 2023.3.0
 
-generatorOptions:
-  annotations:
-    argocd.argoproj.io/sync-options: Replace=true,PruneLast=true
-
-configMapGenerator:
-  - name: authentik-media-files
-    files:
-      - files/argocd.png
-      - files/background.jpg
-      - files/favicon.ico
-      - files/grafana.png
-      - files/logo.png
-      - files/longhorn.png
-      - files/prometheus.png
-      - files/prometheusalerts.png
-
 resources:
   - resources/secret.yaml
 
