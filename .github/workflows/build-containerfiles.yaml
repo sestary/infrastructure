@@ -36,7 +36,7 @@ jobs:
           image: ${{ matrix.image }}
           tags: ${{ env.IMAGE_TAGS }}
           containerfiles: |
-            images/argocd-plugin/Containerfile
+            images/${{ matrix.image }}/Containerfile
 
       # Push the image to GHCR (Image Registry)
       - name: Push To GHCR
