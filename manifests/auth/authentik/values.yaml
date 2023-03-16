@@ -57,13 +57,3 @@ postgresql:
 
 redis:
   enabled: true
-
-volumes:
-  - name: authentik-media-files
-    configMap:
-      name: authentik-media-files
-
-volumeMounts:
-  - name: authentik-media-files
-    mountPath: "/web/dist/media"
-    readOnly: true
