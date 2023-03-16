@@ -20,7 +20,6 @@ authentik:
 
 image:
   repository: ghcr.io/sestary/authentik
-  tag: latest
 
 envValueFrom:
   AUTHENTIK_BOOTSTRAP_EMAIL:
