@@ -10,7 +10,6 @@ on:
   schedule:
     - cron: '0 0 * * 1'  # every monday at midnight
 env:
-  IMAGE_TAGS: latest ${{ github.sha }}
   IMAGE_REGISTRY: ghcr.io/${{ github.repository_owner }}
   REGISTRY_USER: ${{ github.actor }}
   REGISTRY_PASSWORD: ${{ github.token }}
@@ -23,10 +22,18 @@ jobs:
         image:
           - argocd-plugin
           - authentik
+
     steps:
       # Checkout push-to-registry action github repository
       - name: Checkout Push to Registry action
         uses: actions/checkout@v3
+
+      # Read the tag from the YAML file
+      - name: Get image tag
+        id: image_tag
+        uses: pietrobolcato/action-read-yaml@1.0.0
+        with:
+          config: images/${{ matrix.image }}/versions.yaml
 
       # Build image using Buildah action
       - name: Build Image
@@ -34,13 +41,13 @@ jobs:
         uses: redhat-actions/buildah-build@v2
         with:
           image: ${{ matrix.image }}
-          tags: ${{ env.IMAGE_TAGS }}
+          tags: ${{ steps.read_action_js.outputs['image_tag'] }} ${{ github.sha }}
           containerfiles: |
             images/${{ matrix.image }}/Containerfile
 
       # Push the image to GHCR (Image Registry)
       - name: Push To GHCR
-        id: push-to-qhcr
+        id: push_ghcr
         uses: redhat-actions/push-to-registry@v2
         with:
           image: ${{ steps.build_image.outputs.image }}
@@ -53,4 +60,4 @@ jobs:
 
       - name: Echo outputs
         run: |
-          echo "${{ toJSON(steps.push.outputs) }}"
+          echo "${{ toJSON(steps.push_ghcr.outputs) }}"

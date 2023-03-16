@@ -1,4 +1,5 @@
 ---
+image_tag: "latest"
 argocd-vault-plugin: 1.13.1
 helm: 3.11.1
 kustomize: 5.0.0

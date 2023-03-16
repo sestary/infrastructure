@@ -1,4 +1,5 @@
-FROM ghcr.io/goauthentik/server:2023.3.0
+ARG IMAGE_TAG
+FROM ghcr.io/goauthentik/server:${IMAGE_TAG}
 
 # Copy the files over
 COPY images/authentik/files/* /static/dist/media
