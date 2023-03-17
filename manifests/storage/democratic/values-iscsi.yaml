@@ -22,7 +22,7 @@ driver:
 
     httpConnection:
       protocol: https
-      host: https://nas1.on.sestary.eu
+      host: nas1.on.sestary.eu
       port: 443
       apiKey: <path:secrets.enc.yaml#truenas_api_key>
 
