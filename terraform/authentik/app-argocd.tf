@@ -23,7 +23,7 @@ resource "authentik_provider_oauth2" "argocd" {
 resource "authentik_application" "argocd" {
   name  = "ArgoCD"
   slug  = "argocd"
-  group = "Systems"
+  group = "Kubernetes"
 
   protocol_provider = authentik_provider_oauth2.argocd.id
 

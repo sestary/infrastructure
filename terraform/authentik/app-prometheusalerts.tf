@@ -11,7 +11,7 @@ resource "authentik_provider_proxy" "prometheus_alerts" {
 resource "authentik_application" "prometheus_alerts" {
   name  = "Prometheus Alerts"
   slug  = "prometheusalerts"
-  group = "Systems"
+  group = "Monitoring"
 
   protocol_provider = authentik_provider_proxy.prometheus_alerts.id
 

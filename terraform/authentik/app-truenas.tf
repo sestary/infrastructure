@@ -1,7 +1,7 @@
 resource "authentik_application" "truenas_nas1" {
   name  = "TrueNAS 1"
   slug  = "truenas-nas1"
-  group = "Systems"
+  group = "Storage"
 
   meta_description = "TrueNAS SCALE is an Open Source Hyperconverged Infrastructure solution."
   meta_icon        = "/static/dist/media/truenas.png"
@@ -13,7 +13,7 @@ resource "authentik_application" "truenas_nas1" {
 resource "authentik_application" "truenas_nas2" {
   name  = "TrueNAS 2"
   slug  = "truenas-nas2"
-  group = "Systems"
+  group = "Storage"
 
   meta_description = "TrueNAS SCALE is an Open Source Hyperconverged Infrastructure solution."
   meta_icon        = "/static/dist/media/truenas.png"

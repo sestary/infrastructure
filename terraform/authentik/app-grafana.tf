@@ -1,7 +1,7 @@
 resource "authentik_application" "grafana" {
   name  = "Grafana"
   slug  = "grafana"
-  group = "Systems"
+  group = "Monitoring"
 
   meta_description = "Grafana is a multi-platform open source analytics and interactive visualization web application."
   meta_icon        = "/static/dist/media/grafana.png"

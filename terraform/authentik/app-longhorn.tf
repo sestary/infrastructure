@@ -11,7 +11,7 @@ resource "authentik_provider_proxy" "longhorn" {
 resource "authentik_application" "longhorn" {
   name  = "Longhorn"
   slug  = "longhorn"
-  group = "Systems"
+  group = "Kubernetes"
 
   protocol_provider = authentik_provider_proxy.longhorn.id
 
