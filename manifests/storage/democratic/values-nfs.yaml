@@ -5,15 +5,46 @@ csiDriver:
 node:
   kubeletHostPath: "/var/snap/microk8s/common/var/lib/kubelet"
 
+storageClasses:
+  - name: freenas-nfs-csi
+    defaultClass: false
+    reclaimPolicy: Delete
+    volumeBindingMode: Immediate
+    allowVolumeExpansion: true
+    parameters:
+      fsType: nfs
+    mountOptions:
+      - noatime
+      - nfsvers=4
+
 driver:
   config:
-    driver: node-manual
+    driver: freenas-api-nfs
 
-controller:
-  # This manual driver does not support any of these functions
-  externalProvisioner: 
-    enabled: false
-  externalResizer:
-    enabled: false
-  externalSnapshotter:
-    enabled: false
+    instance_id:
+
+    httpConnection:
+      protocol: https
+      host: https://nas1.on.sestary.eu
+      port: 443
+      apiKey: <path:secrets.enc.yaml#truenas_api_key>
+
+    zfs:
+      datasetProperties:
+        "org.freenas:description": "{{ parameters.[csi.storage.k8s.io/pvc/namespace] }}/{{ parameters.[csi.storage.k8s.io/pvc/name] }}"
+        #  "org.freenas:test": "{{ parameters.foo }}"
+        #  "org.freenas:test2": "some value"
+
+      datasetParentName: common/k8s/nfs/vols
+      detachedSnapshotsDatasetParentName: common/k8s/nfs/snaps
+
+    nfs:
+      shareCommentTemplate: "{{ parameters.[csi.storage.k8s.io/pvc/namespace] }}-{{ parameters.[csi.storage.k8s.io/pvc/name] }}"
+      shareHost: nas1.on.sestary.eu
+      shareAlldirs: false
+      shareAllowedHosts: []
+      shareAllowedNetworks: []
+      shareMaprootUser: root
+      shareMaprootGroup: root
+      shareMapallUser: ""
+      shareMapallGroup: ""

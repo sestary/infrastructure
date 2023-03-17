@@ -5,6 +5,12 @@ kind: Kustomization
 helmCharts:
   - name: democratic-csi
     namespace: storage-democratic
+    releaseName: democratic-csi-iscsi
+    repo: https://democratic-csi.github.io/charts/
+    valuesFile: values-iscsi.yaml
+    version: 0.13.5
+  - name: democratic-csi
+    namespace: storage-democratic
     releaseName: democratic-csi-nfs
     repo: https://democratic-csi.github.io/charts/
     valuesFile: values-nfs.yaml
