@@ -19,6 +19,7 @@ server:
   %{~ endif ~}
 
   %{~ if enable_oidc ~}
+  # This certificate is for ArgoCD itself so that Dex can contact the server
   certificate:
     enabled: true
     secretName: argocd-server-tls
