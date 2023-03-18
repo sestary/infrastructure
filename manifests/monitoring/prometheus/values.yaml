@@ -5,6 +5,7 @@ alertmanager:
     rules:
       etcd: false
       kubeControllerManager: false
+      kubelet: false
       kubeProxy: false
       network: true
 
@@ -32,14 +33,15 @@ alertmanager:
       - hosts:
           - prometheusalerts.sestary.eu
 
-  storage:
-    volumeClaimTemplate:
-      spec:
-        storageClassName: longhorn
-        accessModes: ["ReadWriteOnce"]
-        resources:
-          requests:
-            storage: 10Gi
+  alertmanagerSpec:
+    storage:
+      volumeClaimTemplate:
+        spec:
+          storageClassName: longhorn
+          accessModes: ["ReadWriteOnce"]
+          resources:
+            requests:
+              storage: 10Gi
 
 prometheus:
   ingress:
@@ -66,14 +68,15 @@ prometheus:
       - hosts:
           - prometheus.sestary.eu
 
-  storage:
-    volumeClaimTemplate:
-      spec:
-        storageClassName: longhorn
-        accessModes: ["ReadWriteOnce"]
-        resources:
-          requests:
-            storage: 50Gi
+  prometheusSpec:
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          storageClassName: longhorn
+          accessModes: ["ReadWriteOnce"]
+          resources:
+            requests:
+              storage: 50Gi
 
 
 # Using Grafana Cloud
@@ -86,6 +89,8 @@ coreDns:
 kubeEtcd:
   enabled: false
 kubeControllerManager:
+  enabled: false
+kubelet:
   enabled: false
 kubeProxy:
   enabled: false
