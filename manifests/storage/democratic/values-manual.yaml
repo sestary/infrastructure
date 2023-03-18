@@ -1,0 +1,13 @@
+---
+csiDriver:
+  name: "org.democratic-csi.node-manual"
+
+node:
+  kubeletHostPath: "/var/snap/microk8s/common/var/lib/kubelet"
+
+controller:
+  enabled: false
+
+driver:
+  config:
+    driver: node-manual
