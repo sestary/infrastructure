@@ -2,6 +2,9 @@
 controller:
   replicaCount: 2
 
+  config:
+    force-ssl-redirect: true
+
   extraArgs:
     default-ssl-certificate: "ingress-nginx/default-tls-certificate"
 
