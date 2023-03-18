@@ -12,9 +12,8 @@ alertmanager:
     enabled: true
 
     annotations:
-      cert-manager.io/cluster-issuer: "letsencrypt"
       nginx.ingress.kubernetes.io/auth-url: |-
-        http://ak-outpost-sestary-prometheus.monitoring-prometheus.svc.cluster.local:9000/outpost.goauthentik.io/auth/nginx
+        http://ak-outpost-sestary-outpost.auth-authentik.svc.cluster.local:9000/outpost.goauthentik.io/auth/nginx
       nginx.ingress.kubernetes.io/auth-signin: |-
         https://prometheusalerts.sestary.eu/outpost.goauthentik.io/start?rd=$escaped_request_uri
       nginx.ingress.kubernetes.io/auth-response-headers: |-
@@ -32,16 +31,14 @@ alertmanager:
     tls:
       - hosts:
           - prometheusalerts.sestary.eu
-        secretName: ingress-tls-alertmanger
 
 prometheus:
   ingress:
     enabled: true
 
     annotations:
-      cert-manager.io/cluster-issuer: "letsencrypt"
       nginx.ingress.kubernetes.io/auth-url: |-
-        http://ak-outpost-sestary-prometheus.monitoring-prometheus.svc.cluster.local:9000/outpost.goauthentik.io/auth/nginx
+        http://ak-outpost-sestary-outpost.auth-authentik.svc.cluster.local:9000/outpost.goauthentik.io/auth/nginx
       nginx.ingress.kubernetes.io/auth-signin: |-
         https://prometheus.sestary.eu/outpost.goauthentik.io/start?rd=$escaped_request_uri
       nginx.ingress.kubernetes.io/auth-response-headers: |-
@@ -59,7 +56,6 @@ prometheus:
     tls:
       - hosts:
           - prometheus.sestary.eu
-        secretName: ingress-tls-prometheus
 
 # Using Grafana Cloud
 grafana:

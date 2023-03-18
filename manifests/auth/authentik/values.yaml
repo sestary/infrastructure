@@ -37,8 +37,6 @@ envValueFrom:
 
 ingress:
   enabled: true
-  annotations:
-    cert-manager.io/cluster-issuer: "letsencrypt"
   ingressClassName: nginx
   hosts:
     - host: sso.sestary.eu
@@ -48,7 +46,6 @@ ingress:
   tls:
     - hosts:
         - sso.sestary.eu
-      secretName: ingress-tls
 
 postgresql:
   enabled: true

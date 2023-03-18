@@ -1,5 +1,5 @@
 locals {
-  hostname = "argocd.on.sestary.eu"
+  hostname = "argocd.sestary.eu"
   url      = "https://${local.hostname}"
 }
 

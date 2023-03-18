@@ -16,7 +16,7 @@ locals {
     kubernetes_ingress_class_name = null
     kubernetes_disabled_components = []
     kubernetes_ingress_annotations = {}
-    kubernetes_ingress_secret_name = "ingress-tls"
+    kubernetes_ingress_secret_name = ""
   }
 }
 
@@ -25,40 +25,15 @@ resource "authentik_service_connection_kubernetes" "sestary" {
   local = true
 }
 
-resource "authentik_outpost" "prometheus" {
-  name = "sestary-prometheus"
+resource "authentik_outpost" "sestary" {
+  name = "sestary-outpost"
 
-  config = jsonencode(
-    merge(
-      local.outpost_config,
-      {
-        kubernetes_namespace = "monitoring-prometheus"
-      }
-    )
-  )
-
-  protocol_providers = [
-    authentik_provider_proxy.prometheus.id,
-    authentik_provider_proxy.prometheus_alerts.id,
-  ]
-
-  service_connection = authentik_service_connection_kubernetes.sestary.id
-}
-
-resource "authentik_outpost" "longhorn" {
-  name = "sestary-longhorn"
-
-  config = jsonencode(
-    merge(
-      local.outpost_config,
-      {
-        kubernetes_namespace = "storage-longhorn"
-      }
-    )
-  )
+  config = jsonencode(local.outpost_config)
 
   protocol_providers = [
     authentik_provider_proxy.longhorn.id,
+    authentik_provider_proxy.prometheus.id,
+    authentik_provider_proxy.prometheus_alerts.id,
   ]
 
   service_connection = authentik_service_connection_kubernetes.sestary.id
