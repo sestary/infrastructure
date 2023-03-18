@@ -6,7 +6,7 @@ locals {
     docker_network                = null
     container_image               = null
     docker_map_ports              = true
-    kubernetes_replicas           = 2
+    kubernetes_replicas           = 1
     kubernetes_namespace          = "auth-authentik"
     authentik_host_browser        = ""
     object_naming_template        = "ak-outpost-%(name)s"
