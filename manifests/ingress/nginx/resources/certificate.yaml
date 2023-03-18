@@ -1,0 +1,14 @@
+---
+apiVersion: cert-manager.io/v1alpha2
+kind: Certificate
+metadata:
+  name: default-tls-certificate
+spec:
+  secretName: default-tls-certificate
+  issuerRef:
+    group: cert-manager.io
+    kind: ClusterIssuer
+    name: letsencrypt
+  commonName: "*.sestary.eu"
+  dnsNames:
+    - "*.sestary.eu"
