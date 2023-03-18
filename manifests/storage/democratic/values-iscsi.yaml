@@ -16,7 +16,7 @@ storageClasses:
 
 driver:
   config:
-    driver: freenas-api-iscsi
+    driver: truenas-api-iscsi
 
     instance_id:
 

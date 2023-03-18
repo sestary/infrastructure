@@ -25,7 +25,7 @@ storageClasses:
 
 driver:
   config:
-    driver: freenas-api-nfs
+    driver: truenas-api-nfs
 
     instance_id:
 
@@ -46,8 +46,8 @@ driver:
       datasetEnableQuotas: true
       datasetEnableReservation: false
       datasetPermissionsMode: "0777"
-      datasetPermissionsUser: root
-      datasetPermissionsGroup: wheel
+      datasetPermissionsUser: 0
+      datasetPermissionsGroup: 0
 
     nfs:
       shareCommentTemplate: "{{ parameters.[csi.storage.k8s.io/pvc/namespace] }}-{{ parameters.[csi.storage.k8s.io/pvc/name] }}"
