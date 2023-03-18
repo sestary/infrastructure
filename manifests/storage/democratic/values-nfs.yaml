@@ -12,10 +12,16 @@ storageClasses:
     volumeBindingMode: Immediate
     allowVolumeExpansion: true
     parameters:
-      fsType: nfs
+      csi.storage.k8s.io/fstype: nfs
     mountOptions:
       - noatime
       - nfsvers=4
+    secrets:
+      provisioner-secret:
+      controller-publish-secret:
+      node-stage-secret:
+      node-publish-secret:
+      controller-expand-secret:
 
 driver:
   config:
@@ -37,6 +43,11 @@ driver:
 
       datasetParentName: common/k8s/nfs/vols
       detachedSnapshotsDatasetParentName: common/k8s/nfs/snaps
+      datasetEnableQuotas: true
+      datasetEnableReservation: false
+      datasetPermissionsMode: "0777"
+      datasetPermissionsUser: root
+      datasetPermissionsGroup: wheel
 
     nfs:
       shareCommentTemplate: "{{ parameters.[csi.storage.k8s.io/pvc/namespace] }}-{{ parameters.[csi.storage.k8s.io/pvc/name] }}"

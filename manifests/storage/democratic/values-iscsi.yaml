@@ -12,7 +12,7 @@ storageClasses:
     volumeBindingMode: Immediate
     allowVolumeExpansion: true
     parameters:
-      fsType: ext4
+      csi.storage.k8s.io/fstype: ext4
 
 driver:
   config:
