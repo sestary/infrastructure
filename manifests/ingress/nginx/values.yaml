@@ -3,7 +3,7 @@ controller:
   replicaCount: 2
 
   extraArgs:
-    default-ssl-certificate: "ingress-nginx/default-tls-cert"
+    default-ssl-certificate: "ingress-nginx/default-tls-certificate"
 
   ingressClassResource:
     # We want this ingress to be the default
