@@ -6,7 +6,7 @@ node:
   kubeletHostPath: "/var/snap/microk8s/common/var/lib/kubelet"
 
 storageClasses:
-  - name: freenas-iscsi-csi
+  - name: truenas-iscsi-csi
     defaultClass: false
     reclaimPolicy: Delete
     volumeBindingMode: Immediate
@@ -16,7 +16,7 @@ storageClasses:
 
 driver:
   config:
-    driver: truenas-api-iscsi
+    driver: freenas-api-iscsi
 
     instance_id:
 
