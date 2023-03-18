@@ -32,6 +32,15 @@ alertmanager:
       - hosts:
           - prometheusalerts.sestary.eu
 
+  storage:
+    volumeClaimTemplate:
+      spec:
+        storageClassName: longhorn
+        accessModes: ["ReadWriteOnce"]
+        resources:
+          requests:
+            storage: 10Gi
+
 prometheus:
   ingress:
     enabled: true
@@ -56,6 +65,16 @@ prometheus:
     tls:
       - hosts:
           - prometheus.sestary.eu
+
+  storage:
+    volumeClaimTemplate:
+      spec:
+        storageClassName: longhorn
+        accessModes: ["ReadWriteOnce"]
+        resources:
+          requests:
+            storage: 50Gi
+
 
 # Using Grafana Cloud
 grafana:
