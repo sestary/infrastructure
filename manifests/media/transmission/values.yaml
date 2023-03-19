@@ -46,6 +46,6 @@ persistence:
     accessMode: ReadWriteMany
     size: 25Ti
     mountPath: /downloads
-    subPath: /downloads
+    subPath: downloads/
     storageClass: "-"
     volumeName: truenas-media
