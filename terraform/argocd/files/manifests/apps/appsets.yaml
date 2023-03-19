@@ -75,6 +75,31 @@ applicationsets:
             - CreateNamespace=true
           syncStrategy:
             hook: {}
+  - name: media
+    namespace: argocd
+    generators:
+      - git:
+          repoURL: https://github.com/sestary/infrastructure
+          revision: HEAD
+          directories:
+            - path: manifests/media/*
+    template:
+      metadata:
+        name: '{{path.basename}}'
+      spec:
+        project: "media"
+        source:
+          repoURL: https://github.com/sestary/infrastructure
+          targetRevision: HEAD
+          path: '{{path}}'
+        destination:
+          server: https://kubernetes.default.svc
+          namespace: 'media-{{path.basename}}'
+        syncPolicy:
+          syncOptions:
+            - CreateNamespace=true
+          syncStrategy:
+            hook: {}
   - name: monitoring
     namespace: argocd
     generators:
