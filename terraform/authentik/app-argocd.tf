@@ -29,7 +29,7 @@ resource "authentik_application" "argocd" {
 
   meta_description = "Declarative continuous delivery with a fully-loaded UI."
   meta_icon        = "/static/dist/media/argocd.png"
-  meta_launch_url  = "https://argocd.sestary.eu/auth/login?return_url=https%3A%2F%2Fargocd.on.sestary.eu%2Fapplications"
+  meta_launch_url  = "https://argocd.sestary.eu/auth/login?return_url=https%3A%2F%2Fargocd.sestary.eu%2Fapplications"
   meta_publisher   = "ArgoCD"
 }
 

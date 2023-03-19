@@ -91,4 +91,4 @@ persistence:
     mountPath: /downloads
     subPath: downloads/
     storageClass: "-"
-    volumeName: truenas-media
+    volumeName: truenas-media-transmission
