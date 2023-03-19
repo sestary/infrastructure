@@ -28,7 +28,7 @@ ingress:
           - path: /
             pathType: Prefix
             service:
-              port: http
+              name: http
 
 # -- Configure persistence settings for the chart under this key.
 persistence:
@@ -46,5 +46,6 @@ persistence:
     accessMode: ReadWriteMany
     size: 25Ti
     mountPath: /downloads
+    subPath: /downloads
     storageClass: "-"
     volumeName: truenas-media
