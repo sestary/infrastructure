@@ -2,8 +2,6 @@
 image:
   # -- image repository
   repository: linuxserver/transmission
-  # -- image pull policy
-  pullPolicy: IfNotPresent
   # -- image tag
   tag: 4.0.2
 
