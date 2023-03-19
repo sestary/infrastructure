@@ -50,7 +50,7 @@ addons:
     # -- All variables specified here will be added to the vpn sidecar container
     # See the documentation of the VPN image for all config values
     env:
-      FIREWALL_OUTBOUND_SUBNETS: 10.3.0.0/16
+      FIREWALL_INPUT_PORTS: 9091
       FIREWALL_VPN_INPUT_PORTS: 62067
       SERVER_CITIES: Toronto
       VPN_SERVICE_PROVIDER: mullvad
