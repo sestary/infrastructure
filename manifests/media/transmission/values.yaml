@@ -27,8 +27,6 @@ ingress:
         paths:
           - path: /
             pathType: Prefix
-            service:
-              name: http
     tls:
       - hosts:
           - transmission.sestary.eu
