@@ -13,3 +13,6 @@ commonAnnotations:
   meta.helm.sh/release-namespace: *releaseNamespace
 commonLabels:
   app.kubernetes.io/managed-by: Helm
+
+resources:
+  - resources/pv.yaml
