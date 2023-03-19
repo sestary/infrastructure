@@ -29,6 +29,9 @@ ingress:
             pathType: Prefix
             service:
               name: http
+    tls:
+      - hosts:
+          - transmission.sestary.eu
 
 # -- Configure persistence settings for the chart under this key.
 persistence:
