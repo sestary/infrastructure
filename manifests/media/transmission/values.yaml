@@ -50,23 +50,12 @@ addons:
     # -- All variables specified here will be added to the vpn sidecar container
     # See the documentation of the VPN image for all config values
     env:
+      FIREWALL_VPN_INPUT_PORTS: 62067
+      SERVER_CITIES: Toronto
       VPN_SERVICE_PROVIDER: mullvad
       VPN_TYPE: wireguard
       WIREGUARD_ADDRESSES: 10.67.61.121/32
       WIREGUARD_PRIVATE_KEY: <path:secrets.enc.yaml#wireguard_private_key>
-      SERVER_CITIES: Toronto
-
-    # -- Optionally specify a livenessProbe, e.g. to check if the connection is
-    # still being protected by the VPN
-    livenessProbe:
-      exec:
-        command:
-          - sh
-          - -c
-          - if [ $(curl -s https://ipinfo.io/country) == 'CA' ]; then exit 0; else exit $?; fi
-      initialDelaySeconds: 30
-      periodSeconds: 60
-      failureThreshold: 1
 
     networkPolicy:
       # -- If set to true, will deploy a network policy that blocks all outbound
