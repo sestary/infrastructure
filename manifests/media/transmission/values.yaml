@@ -51,8 +51,8 @@ addons:
     # See the documentation of the VPN image for all config values
     env:
       VPN_SERVICE_PROVIDER: mullvad
-      VPN_TYPE: openvpn
-      WIREGUARD_ADDRESS: 10.67.61.121/32
+      VPN_TYPE: wireguard
+      WIREGUARD_ADDRESSES: 10.67.61.121/32
       WIREGUARD_PRIVATE_KEY: <path:secrets.enc.yaml#wireguard_private_key>
       SERVER_CITIES: Toronto
 
