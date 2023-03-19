@@ -50,8 +50,8 @@ addons:
     # -- All variables specified here will be added to the vpn sidecar container
     # See the documentation of the VPN image for all config values
     env:
-      VPN_SERVICE_PROVIDER: mulvard
-      VPN_TYPE: openvpn
+      VPN_SERVICE_PROVIDER: mullvad
+      VPN_TYPE: wireguard
       WIREGUARD_PRIVATE_KEY: <path:secrets.enc.yaml#wireguard_private_key>
       SERVER_CITIES: Toronto
 
