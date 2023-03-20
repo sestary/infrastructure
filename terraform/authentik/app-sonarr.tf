@@ -17,7 +17,7 @@ resource "authentik_application" "sonarr" {
 
   meta_description = "Manage TV shows"
   meta_icon        = "/static/dist/media/sonarr.png"
-  meta_publisher   = "sonarr"
+  meta_publisher   = "Sonarr"
 }
 
 resource "authentik_policy_binding" "sonarr_media_admins" {

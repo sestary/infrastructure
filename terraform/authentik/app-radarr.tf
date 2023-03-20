@@ -17,7 +17,7 @@ resource "authentik_application" "radarr" {
 
   meta_description = "Manage Movies"
   meta_icon        = "/static/dist/media/radarr.png"
-  meta_publisher   = "radarr"
+  meta_publisher   = "Radarr"
 }
 
 resource "authentik_policy_binding" "radarr_media_admins" {

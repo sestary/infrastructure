@@ -17,7 +17,7 @@ resource "authentik_application" "transmission" {
 
   meta_description = "Transmission is an easy, powerful torrent client."
   meta_icon        = "/static/dist/media/transmission.png"
-  meta_publisher   = "transmission"
+  meta_publisher   = "Transmission"
 }
 
 resource "authentik_policy_binding" "transmission_media_admins" {

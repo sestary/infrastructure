@@ -15,7 +15,7 @@ resource "authentik_application" "ombi" {
 
   protocol_provider = authentik_provider_proxy.ombi.id
 
-  meta_description = "Manage Movies"
+  meta_description = "Request new Movies and TV Shows"
   meta_icon        = "/static/dist/media/ombi.png"
-  meta_publisher   = "ombi"
+  meta_publisher   = "OMBI"
 }
