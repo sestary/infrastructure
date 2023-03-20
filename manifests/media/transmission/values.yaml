@@ -10,7 +10,7 @@ strategy:
 
 env:
   PUID: 1000
-  GUID: 1000
+  PGID: 1000
 
 # -- Configures service settings for the chart.
 service:
