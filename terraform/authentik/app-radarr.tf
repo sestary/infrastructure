@@ -6,7 +6,7 @@ resource "authentik_provider_proxy" "radarr" {
   authorization_flow = authentik_flow.authorization_implicit_consent.uuid
 
   external_host = "http://radarr.sestary.eu"
-  
+
   access_token_validity = "hours=8"
 }
 

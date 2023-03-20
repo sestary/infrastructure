@@ -8,7 +8,7 @@ resource "authentik_provider_ldap" "emby" {
   base_dn   = "dc=emby"
   bind_flow = data.authentik_flow.default-authentication-flow.id
 
-  search_group      = authentik_group.ldap_search.id
+  search_group = authentik_group.ldap_search.id
 }
 
 resource "authentik_application" "emby" {
