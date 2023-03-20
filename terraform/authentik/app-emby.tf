@@ -7,6 +7,8 @@ resource "authentik_provider_ldap" "emby" {
 
   base_dn   = "dc=emby"
   bind_flow = data.authentik_flow.default-authentication-flow.id
+
+  search_group      = authentik_group.ldap_search.id
 }
 
 resource "authentik_application" "emby" {
@@ -16,6 +18,7 @@ resource "authentik_application" "emby" {
 
   protocol_provider = authentik_provider_ldap.emby.id
 
+  meta_launch_url  = "https://emby.sestary.eu"
   meta_description = "Watch Movies and TV Shows."
   meta_icon        = "/static/dist/media/emby.png"
   meta_publisher   = "Emby"
