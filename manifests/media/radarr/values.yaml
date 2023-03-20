@@ -8,6 +8,10 @@ image:
 strategy:
   type: Recreate
 
+env:
+  PUID: 1000
+  PGID: 1000
+
 # -- Configures service settings for the chart.
 service:
   main:
