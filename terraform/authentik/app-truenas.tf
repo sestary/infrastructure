@@ -5,7 +5,7 @@ resource "authentik_application" "truenas_nas1" {
 
   meta_description = "TrueNAS SCALE is an Open Source Hyperconverged Infrastructure solution."
   meta_icon        = "/static/dist/media/truenas.png"
-  meta_launch_url  = "https://nas.on.sestary.eu" # This is wrong right now waiting for this fix to go in https://github.com/goauthentik/authentik/pull/4957
+  meta_launch_url  = "https://nas1.on.sestary.eu" # This is wrong right now waiting for this fix to go in https://github.com/goauthentik/authentik/pull/4957
 
   meta_publisher = "TrueNAS"
 }
@@ -17,7 +17,7 @@ resource "authentik_application" "truenas_nas2" {
 
   meta_description = "TrueNAS SCALE is an Open Source Hyperconverged Infrastructure solution."
   meta_icon        = "/static/dist/media/truenas.png"
-  meta_launch_url  = "https://nas.on.sestary.eu" # This is wrong right now waiting for this fix to go in https://github.com/goauthentik/authentik/pull/4957
+  meta_launch_url  = "https://nas2.on.sestary.eu" # This is wrong right now waiting for this fix to go in https://github.com/goauthentik/authentik/pull/4957
   meta_publisher   = "TrueNAS"
 }
 
