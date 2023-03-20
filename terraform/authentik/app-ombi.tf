@@ -6,6 +6,8 @@ resource "authentik_provider_proxy" "ombi" {
   authorization_flow = authentik_flow.authorization_implicit_consent.uuid
 
   external_host = "http://ombi.sestary.eu"
+
+  access_token_validity = "hours=8"
 }
 
 resource "authentik_application" "ombi" {
