@@ -3,7 +3,7 @@ image:
   # -- image repository
   repository: lscr.io/linuxserver/ombi
   # -- image tag
-  tag: v4.35.10-ls152 Latest
+  tag: v4.35.10-ls152
 
 strategy:
   type: Recreate
