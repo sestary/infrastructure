@@ -31,6 +31,7 @@ resource "authentik_outpost" "sestary" {
   config = jsonencode(local.outpost_config)
 
   protocol_providers = [
+    authentik_provider_proxy.ombi.id,
     authentik_provider_proxy.prowlarr.id,
     authentik_provider_proxy.radarr.id,
     authentik_provider_proxy.sonarr.id,
