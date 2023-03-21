@@ -53,6 +53,6 @@ persistence:
     type: pvc
     accessMode: ReadWriteMany
     size: 25Ti
-    mountPath: /media
+    mountPath: /srv/media
     storageClass: "-"
     volumeName: truenas-media-filebrowser
