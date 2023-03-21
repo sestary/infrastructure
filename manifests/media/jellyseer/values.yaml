@@ -8,6 +8,9 @@ image:
 strategy:
   type: Recreate
 
+env:
+  JELLYFIN_TYPE: emby
+
 # -- Configures service settings for the chart.
 service:
   main:
