@@ -54,4 +54,4 @@ persistence:
     size: 25Ti
     mountPath: /media
     storageClass: "-"
-    volumeName: truenas-media-sonarr
+    volumeName: truenas-media-filebrowser
