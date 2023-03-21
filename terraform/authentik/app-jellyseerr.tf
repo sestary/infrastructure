@@ -9,7 +9,8 @@ resource "authentik_provider_oauth2" "jellyseerr" {
   client_secret = random_password.client_secret.result
 
   redirect_uris = [
-    "https://reqeusts.sestary.eu/login",
+    "http://requests.sestary.eu/login/oidc/callback",
+    "https://requests.sestary.eu/login/oidc/callback",
   ]
 
   signing_key = authentik_certificate_key_pair.sso.id
@@ -28,7 +29,8 @@ resource "authentik_application" "jellyseerr" {
 
   meta_description = "Request new Movies and TV Shows"
   meta_icon        = "/static/dist/media/jellyseerr.png"
-  meta_publisher   = "OMBI"
+  meta_launch_url  = "https://requests.sestary.eu/api/v1/auth/oidc-login"
+  meta_publisher   = "JellySeerr"
 }
 
 resource "authentik_group" "jellyseerr_admins" {

@@ -23,6 +23,9 @@ ingress:
   main:
     enabled: true
 
+    annotations:
+      nginx.ingress.kubernetes.io/app-root: /api/v1/auth/oidc-login
+
     ingressClassName: nginx
     hosts:
       - host: requests.sestary.eu
