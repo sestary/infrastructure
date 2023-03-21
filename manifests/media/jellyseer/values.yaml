@@ -3,7 +3,7 @@ image:
   # -- image repository
   repository: lscr.io/linuxserver/jellyseerr
   # -- image tag
-  tag: v4.35.10-ls152
+  tag: preview-pr184
 
 strategy:
   type: Recreate
