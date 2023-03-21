@@ -37,5 +37,5 @@ persistence:
     type: pvc
     accessMode: ReadWriteOnce
     size: 10Gi
-    mountPath: /config
+    mountPath: /app/config
     storageClass: longhorn
