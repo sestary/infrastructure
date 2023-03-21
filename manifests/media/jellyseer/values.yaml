@@ -1,7 +1,7 @@
 ---
 image:
   # -- image repository
-  repository: lscr.io/linuxserver/jellyseerr
+  repository: fallenbagel/jellyseerr
   # -- image tag
   tag: preview-pr184
 
