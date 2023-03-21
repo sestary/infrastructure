@@ -20,9 +20,9 @@ resource "authentik_provider_oauth2" "jellyseerr" {
 }
 
 resource "authentik_application" "jellyseerr" {
-  name  = "jellyseerr"
+  name  = "Requests"
   slug  = "jellyseerr"
-  group = "Kubernetes"
+  group = "Media"
 
   protocol_provider = authentik_provider_oauth2.jellyseerr.id
 
