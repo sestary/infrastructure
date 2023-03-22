@@ -49,3 +49,12 @@ persistence:
     mountPath: /media
     storageClass: "-"
     volumeName: truenas-media-plex
+  srv:
+    enabled: true
+    type: pvc
+    accessMode: ReadWriteMany
+    size: 25Ti
+    mountPath: /srv/video
+    subPath: video/
+    storageClass: "-"
+    volumeName: truenas-media-plex
