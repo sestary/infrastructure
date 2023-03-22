@@ -12,13 +12,10 @@ env:
   PUID: 1000
   PGID: 1000
 
-# Temporarily disable the deployment
-controller:
-  replicas: 0
-
 # -- Configures service settings for the chart.
 service:
   main:
+    type: LoadBalancer
     ports:
       http:
         port: 32400
@@ -27,8 +24,6 @@ ingress:
   # -- Enable and configure ingress settings for the chart under this key.
   main:
     enabled: false
-
-    type: LoadBalancer
 
 # -- Configure persistence settings for the chart under this key.
 persistence:
