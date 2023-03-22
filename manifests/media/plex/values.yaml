@@ -57,4 +57,4 @@ persistence:
     mountPath: /srv/video
     subPath: video/
     storageClass: "-"
-    volumeName: truenas-media-plex
+    volumeName: truenas-media-plex-srv
