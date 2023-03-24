@@ -5,7 +5,7 @@ image:
   # -- image tag
   tag: latest
 
-securityContext:
+podSecurityContext:
   runAsUser: 1000
   fsGroup: 1000
 
