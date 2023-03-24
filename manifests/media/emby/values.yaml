@@ -15,7 +15,7 @@ env:
 # This turns on the GPU
 resources:
   limits:
-    cpu: 24
+    cpu: 16
     memory: "32Gi"
     nvidia.com/gpu: 1
 
