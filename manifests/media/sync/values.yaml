@@ -5,6 +5,10 @@ image:
   # -- image tag
   tag: latest
 
+securityContext:
+  runAsUser: 1000
+  fsGroup: 1000
+
 strategy:
   type: Recreate
 
