@@ -12,6 +12,11 @@ env:
   PUID: 1000
   PGID: 1000
 
+# This turns on the GPU
+resources:
+  limits:
+    nvidia.com/gpu: 1
+
 # -- Configures service settings for the chart.
 service:
   main:
