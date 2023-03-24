@@ -15,6 +15,8 @@ env:
 # This turns on the GPU
 resources:
   limits:
+    cpu: 24
+    memory: "32Gi"
     nvidia.com/gpu: 1
 
 # -- Configures service settings for the chart.
