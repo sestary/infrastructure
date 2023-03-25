@@ -49,12 +49,12 @@ persistence:
     # otherwise this will not work.
     enabled: true
     type: hostPath
-    path: /var/run/dbus
+    hostPath: /var/run/dbus
     mountPath: /var/run/dbus
   dbus:
     # Enable this to expose DBus (required for Avahi). Make sure DBus is
     # running on the host otherwise this will not work.
     enabled: true
     type: hostPath
-    path: /var/run/avahi-daemon/socket
+    hostPath: /var/run/avahi-daemon/socket
     mountPath: /var/run/avahi-daemon/socket
