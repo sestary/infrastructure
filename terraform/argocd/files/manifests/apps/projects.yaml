@@ -24,6 +24,17 @@ projects:
     clusterResourceWhitelist:
       - group: '*'
         kind: '*'
+  - name: home
+    namespace: argocd
+    description: Home Services
+    sourceRepos:
+      - "https://github.com/sestary/infrastructure"
+    destinations:
+      - server: "https://kubernetes.default.svc"
+        namespace: "home-*"
+    clusterResourceWhitelist:
+      - group: '*'
+        kind: '*'
   - name: ingress
     namespace: argocd
     description: Kubernetes Ingress Services
@@ -37,7 +48,7 @@ projects:
         kind: '*'
   - name: media
     namespace: argocd
-    description: Kubernetes Monitoring Services
+    description: Media Services
     sourceRepos:
       - "https://github.com/sestary/infrastructure"
     destinations:
