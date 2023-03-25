@@ -44,17 +44,3 @@ persistence:
     size: 40Gi
     mountPath: /server/volume
     storageClass: longhorn
-  avahi:
-    # Enable this to expose Avahi. Make sure Avahi is running on the host
-    # otherwise this will not work.
-    enabled: true
-    type: hostPath
-    hostPath: /var/run/dbus
-    mountPath: /var/run/dbus
-  dbus:
-    # Enable this to expose DBus (required for Avahi). Make sure DBus is
-    # running on the host otherwise this will not work.
-    enabled: true
-    type: hostPath
-    hostPath: /var/run/avahi-daemon/socket
-    mountPath: /var/run/avahi-daemon/socket
