@@ -48,7 +48,7 @@ persistence:
     # Enable this to expose Avahi. Make sure Avahi is running on the host
     # otherwise this will not work.
     enabled: true
-    type: hostpath
+    type: hostPath
     path: /var/run/dbus
     mountPath: /var/run/dbus
   dbus:
