@@ -5,6 +5,12 @@ image:
   # -- image tag
   tag: latest
 
+# This turns the cron jobs on, make sure you have backends configured in
+# watchstate before you turn this on
+env:
+  WS_CRON_IMPORT: 1
+  WS_CRON_EXPORT: 1
+
 podSecurityContext:
   runAsUser: 1000
   fsGroup: 1000
