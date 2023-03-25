@@ -13,6 +13,10 @@ service:
     ports:
       http:
         port: 11080
+      homekitbridge:
+        port: 48892
+      cameragarage:
+        port: 34177
 
 ingress:
   # -- Enable and configure ingress settings for the chart under this key.
