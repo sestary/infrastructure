@@ -7,21 +7,16 @@ image:
 strategy:
   type: Recreate
 
+# Needed due to the HomeKit plugin
+hostNetwork: true
+dnsPolicy: ClusterFirstWithHostNet
+
 # -- Configures service settings for the chart.
 service:
   main:
     ports:
       http:
         port: 11080
-  homekit:
-    type: NodePort
-    ports:
-      homekitbridge:
-        port: 31000
-        nodePort: 31000
-      cameragarage:
-        port: 31001
-        nodePort: 31001
 
 ingress:
   # -- Enable and configure ingress settings for the chart under this key.
