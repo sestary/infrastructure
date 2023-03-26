@@ -3,7 +3,7 @@ image:
   # -- image repository
   repository: ghcr.io/koush/scrypted
   # -- image tag
-  tag: 18-bullseye-full-v0.7.29
+  tag: 18-bullseye-full-v0.7.32
 strategy:
   type: Recreate
 
@@ -14,12 +14,14 @@ service:
       http:
         port: 11080
   homekit:
-    type: LoadBalancer
+    type: NodePort
     ports:
       homekitbridge:
-        port: 48892
+        port: 31000
+        nodePort: 31000
       cameragarage:
-        port: 34177
+        port: 31001
+        nodePort: 31001
 
 ingress:
   # -- Enable and configure ingress settings for the chart under this key.
@@ -49,12 +51,12 @@ persistence:
     # otherwise this will not work.
     enabled: true
     type: hostPath
-    hostPath: /var/run/dbus
-    mountPath: /var/run/dbus
+    hostPath: /var/run/avahi-daemon/socket
+    mountPath: /var/run/avahi-daemon/socket
   dbus:
     # Enable this to expose DBus (required for Avahi). Make sure DBus is
     # running on the host otherwise this will not work.
     enabled: true
     type: hostPath
-    hostPath: /var/run/avahi-daemon/socket
-    mountPath: /var/run/avahi-daemon/socket
+    hostPath: /var/run/dbus
+    mountPath: /var/run/dbus
