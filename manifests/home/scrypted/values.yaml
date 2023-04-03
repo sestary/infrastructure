@@ -3,7 +3,7 @@ image:
   # -- image repository
   repository: ghcr.io/koush/scrypted
   # -- image tag
-  tag: 18-bullseye-full-v0.7.32
+  tag: 18-bullseye-full-v0.7.43
 strategy:
   type: Recreate
 
