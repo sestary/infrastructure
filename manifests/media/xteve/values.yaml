@@ -5,11 +5,8 @@ image:
   # -- image tag
   tag: latest
 
-command:
-  - /bin/sleep
-
-args:
-  - 1h
+env:
+  XTEVE_PORT: 34400
 
 strategy:
   type: Recreate
