@@ -8,6 +8,14 @@ image:
 strategy:
   type: Recreate
 
+probes:
+  startup:
+    spec:
+      initialDelaySeconds: 30
+      timeoutSeconds: 1
+      periodSeconds: 10
+      failureThreshold: 60
+
 # -- Configures service settings for the chart.
 service:
   main:
