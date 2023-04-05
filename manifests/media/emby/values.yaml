@@ -49,6 +49,13 @@ persistence:
     size: 40Gi
     mountPath: /config
     storageClass: truenas-iscsi-csi
+  library:
+    enabled: true
+    type: pvc
+    accessMode: ReadWriteOnce
+    size: 100Gi
+    mountPath: /library
+    storageClass: longhorn
   transcode:
     enabled: true
     type: pvc
