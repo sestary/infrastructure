@@ -31,6 +31,10 @@ ingress:
   main:
     enabled: true
 
+    annotations:
+      nginx.ingress.kubernetes.io/proxy-send-timeout: 3600
+      nginx.ingress.kubernetes.io/proxy-read-timeout: 3600
+
     ingressClassName: nginx
     hosts:
       - host: threadfin.sestary.eu
