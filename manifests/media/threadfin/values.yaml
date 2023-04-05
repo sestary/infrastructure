@@ -11,7 +11,10 @@ env:
 probes:
   startup:
     spec:
-      initialDelaySeconds: 120
+      initialDelaySeconds: 60
+      timeoutSeconds: 5
+      periodSeconds: 10
+      failureThreshold: 60
 
 strategy:
   type: Recreate
