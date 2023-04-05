@@ -11,8 +11,8 @@ strategy:
 probes:
   startup:
     spec:
-      initialDelaySeconds: 30
-      timeoutSeconds: 1
+      initialDelaySeconds: 60
+      timeoutSeconds: 5
       periodSeconds: 10
       failureThreshold: 60
 
