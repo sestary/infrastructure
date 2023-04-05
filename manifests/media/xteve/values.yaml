@@ -5,8 +5,11 @@ image:
   # -- image tag
   tag: latest
 
-env:
-  XTEVE_DEBUG: 1
+command:
+  - /bin/sleep
+
+args:
+  - 1h
 
 strategy:
   type: Recreate
