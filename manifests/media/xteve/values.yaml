@@ -5,6 +5,9 @@ image:
   # -- image tag
   tag: latest
 
+env:
+  XTEVE_DEBUG: 1
+
 strategy:
   type: Recreate
 
