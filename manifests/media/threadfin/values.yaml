@@ -8,6 +8,11 @@ image:
 env:
   THREADFIN_PORT: 34400
 
+probes:
+  startup:
+    spec:
+      initialDelaySeconds: 120
+
 strategy:
   type: Recreate
 
