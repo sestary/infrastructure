@@ -28,7 +28,7 @@ service:
   internal:
     type: LoadBalancer
     ports:
-      http:
+      https:
         port: 8920
         protocol: HTTPS
 
@@ -42,6 +42,8 @@ ingress:
         paths:
           - path: /
             pathType: Prefix
+            service:
+              port: http
     tls:
       - hosts:
           - emby.sestary.eu
