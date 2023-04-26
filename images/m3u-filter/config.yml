@@ -1,0 +1,48 @@
+---
+api:
+  host: 127.0.0.1
+  port: 8901
+  web_root: /home/m3u-filter/web
+threads: 0
+working_dir: /home/m3u-filter/data
+templates:
+  - name: CA_CHAN
+    value: >-
+      Group ~ "^CA:.*" AND
+      NOT Group ~ "^CA: Canada FR"
+  - name: US_CHAN
+    value: >-
+      Group ~ "^USA Documentary.*" OR
+      Group ~ "^USA Entertainment.*" OR
+      Group ~ "^USA Family.*" OR
+      Group ~ "^USA Movie.*" OR
+      Group ~ "^USA NBA.*" OR
+      Group ~ "^USA NBC.*" OR
+      Group ~ "^USA NFL.*" OR
+      Group ~ "^USA NHL.*" OR
+      Group ~ "^USA Sports.*"
+  - name: SPORT_CHAN
+    value: >-
+      Group ~ "^Sport.*" AND
+      NOT Group ~ "^Sport Golf" AND
+      NOT Group ~ "^Sports Series"
+  - name: ALL_CHAN
+    value: >-
+      !CA_CHAN! OR
+      !US_CHAN! OR
+      !SPORT_CHAN!
+sources:
+  - input:
+      url: iptv.m3u
+    targets:
+      - name: pl1
+        filename: playlist_1.m3u
+        type: m3u
+        filter: '!ALL_CHAN!'
+        sort:
+          order: asc
+        rename:
+          - field: title
+            pattern: >-
+              ^\w{2,3}\s(.*)\s\d{5,8}
+            new_name: $1
