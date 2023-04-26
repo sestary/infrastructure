@@ -28,6 +28,9 @@ service:
   internal:
     type: LoadBalancer
     ports:
+      http:
+        port: 8096
+        protocol: HTTP
       https:
         port: 8920
         protocol: HTTPS
