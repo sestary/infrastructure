@@ -1,0 +1,57 @@
+---
+image:
+  # -- image repository
+  repository: oznu/homebridge
+  # -- image tag
+  tag: 2023-01-08
+strategy:
+  type: Recreate
+
+# Needed due to the HomeKit plugin
+hostNetwork: true
+dnsPolicy: ClusterFirstWithHostNet
+
+# -- Configures service settings for the chart.
+service:
+  main:
+    ports:
+      http:
+        port: 8581
+
+ingress:
+  # -- Enable and configure ingress settings for the chart under this key.
+  main:
+    enabled: true
+    ingressClassName: nginx
+    hosts:
+      - host: homebridge.sestary.eu
+        paths:
+          - path: /
+            pathType: Prefix
+    tls:
+      - hosts:
+          - homebridge.sestary.eu
+
+# -- Configure persistence settings for the chart under this key.
+persistence:
+  config:
+    enabled: true
+    type: pvc
+    accessMode: ReadWriteOnce
+    size: 40Gi
+    mountPath: /homebridge
+    storageClass: longhorn
+  avahi:
+    # Enable this to expose Avahi. Make sure Avahi is running on the host
+    # otherwise this will not work.
+    enabled: true
+    type: hostPath
+    hostPath: /var/run/avahi-daemon/socket
+    mountPath: /var/run/avahi-daemon/socket
+  dbus:
+    # Enable this to expose DBus (required for Avahi). Make sure DBus is
+    # running on the host otherwise this will not work.
+    enabled: true
+    type: hostPath
+    hostPath: /var/run/dbus
+    mountPath: /var/run/dbus
