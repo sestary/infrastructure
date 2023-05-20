@@ -4,8 +4,12 @@ image:
   repository: oznu/homebridge
   # -- image tag
   tag: 2023-01-08
+
 strategy:
   type: Recreate
+
+env:
+  ENABLE_AVAHI: 0
 
 # Needed due to the HomeKit plugin
 hostNetwork: true
