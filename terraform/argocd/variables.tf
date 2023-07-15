@@ -10,12 +10,6 @@ variable "enable_oidc" {
   default     = false
 }
 
-variable "enable_service_monitor" {
-  description = "This allows you to disable the Prometheus Service Monitor"
-  type        = bool
-  default     = false
-}
-
 variable "charts_version" {
   description = "The helm chart versions"
   type        = map(string)

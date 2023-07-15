@@ -74,3 +74,4 @@ data "kubernetes_secret_v1" "argocd_initial_password" {
     helm_release.argocd
   ]
 }
+
