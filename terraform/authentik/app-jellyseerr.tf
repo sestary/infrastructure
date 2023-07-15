@@ -42,7 +42,3 @@ resource "authentik_group" "jellyseerr_admins" {
     ]
   }
 }
-
-data "authentik_provider_oauth2_config" "jellyseerr" {
-  provider_id = authentik_provider_oauth2.jellyseerr.id
-}
