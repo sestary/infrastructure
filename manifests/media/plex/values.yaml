@@ -3,7 +3,7 @@ image:
   # -- image repository
   repository: lscr.io/linuxserver/plex
   # -- image tag
-  tag: 1.31.2.6810-a607d384f-ls157
+  tag: 1.32.6.7557-1cf77d501-ls186
 
 strategy:
   type: Recreate

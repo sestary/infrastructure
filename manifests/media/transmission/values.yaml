@@ -3,7 +3,7 @@ image:
   # -- image repository
   repository: linuxserver/transmission
   # -- image tag
-  tag: 4.0.2
+  tag: 4.0.4-r0-ls200
 
 strategy:
   type: Recreate
