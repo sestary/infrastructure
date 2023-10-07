@@ -43,16 +43,3 @@ resource "authentik_outpost" "sestary" {
 
   service_connection = authentik_service_connection_kubernetes.sestary.id
 }
-
-resource "authentik_outpost" "sestary_ldap" {
-  name = "sestary-ldap"
-
-  config = jsonencode(local.outpost_config)
-  type   = "ldap"
-
-  protocol_providers = [
-    authentik_provider_ldap.emby.id,
-  ]
-
-  service_connection = authentik_service_connection_kubernetes.sestary.id
-}
