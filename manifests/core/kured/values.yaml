@@ -1,4 +1,0 @@
----
-configuration:
-  annotateNodes: true
-  preferNoScheduleTaint: "weave.works/kured-node-reboot"
