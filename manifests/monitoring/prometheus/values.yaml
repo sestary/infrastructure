@@ -37,7 +37,7 @@ alertmanager:
     storage:
       volumeClaimTemplate:
         spec:
-          storageClassName: longhorn
+          storageClassName: truenas-iscsi-csi
           accessModes: ["ReadWriteOnce"]
           resources:
             requests:
@@ -72,12 +72,11 @@ prometheus:
     storageSpec:
       volumeClaimTemplate:
         spec:
-          storageClassName: longhorn
+          storageClassName: truenas-iscsi-csi
           accessModes: ["ReadWriteOnce"]
           resources:
             requests:
               storage: 50Gi
-
 
 # Using Grafana Cloud
 grafana:
