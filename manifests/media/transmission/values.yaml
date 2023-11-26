@@ -97,6 +97,13 @@ persistence:
     size: 1Gi
     mountPath: /config
     storageClass: longhorn
+  config-nas:
+    enabled: true
+    type: pvc
+    accessMode: ReadWriteOnce
+    size: 1Gi
+    mountPath: /config2
+    storageClass: truenas-iscsi-csi
 
   downloads:
     enabled: true
