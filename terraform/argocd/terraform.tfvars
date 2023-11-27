@@ -1,14 +1,14 @@
 charts_version = {
-  argocd      = "5.26.0"
-  argocd-apps = "0.0.9"
+  argocd      = "5.51.2"
+  argocd-apps = "1.4.1"
 }
 
 plugins_version = {
-  argo-vault-plugin = "1.13.1"
-  helm              = "3.11.1"
-  jq                = "1.6"
-  kustomize         = "5.0.0"
-  yq                = "4.24.5"
+  argo-vault-plugin = "1.17.0"
+  helm              = "3.13.2"
+  jq                = "1.7"
+  kustomize         = "5.2.1"
+  yq                = "4.40.3"
 }
 
 enable_ingress = true
