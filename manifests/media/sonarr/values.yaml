@@ -50,7 +50,7 @@ persistence:
     enabled: true
     type: pvc
     accessMode: ReadWriteOnce
-    size: 1Gi
+    size: 10Gi
     mountPath: /config
     storageClass: truenas-iscsi-csi
 
