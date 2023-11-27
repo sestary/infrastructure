@@ -36,7 +36,6 @@ resource "authentik_outpost" "sestary" {
     authentik_provider_proxy.radarr.id,
     authentik_provider_proxy.sonarr.id,
     authentik_provider_proxy.transmission.id,
-    authentik_provider_proxy.longhorn.id,
     authentik_provider_proxy.prometheus.id,
     authentik_provider_proxy.prometheus_alerts.id,
   ]
