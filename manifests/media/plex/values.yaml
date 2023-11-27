@@ -25,7 +25,6 @@ resources:
   limits:
     cpu: 16
     memory: "32Gi"
-    nvidia.com/gpu: 1
 
 ingress:
   # -- Enable and configure ingress settings for the chart under this key.
