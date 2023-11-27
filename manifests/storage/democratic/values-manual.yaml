@@ -1,6 +1,8 @@
 ---
 csiDriver:
   name: "org.democratic-csi.node-manual"
+  # See issue: https://github.com/democratic-csi/democratic-csi/issues/324
+  attachRequired: false
 
 node:
   kubeletHostPath: "/var/snap/microk8s/common/var/lib/kubelet"
