@@ -18,3 +18,5 @@ controller:
       http: 32080
       https: 32443
     externalTrafficPolicy: Local
+    externalIPs:
+      - 10.2.0.101
