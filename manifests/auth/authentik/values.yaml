@@ -57,5 +57,6 @@ postgresql:
 redis:
   enabled: true
 
-  persistence:
-    storageClass: truenas-iscsi-csi
+  master:
+    persistence:
+      storageClass: truenas-iscsi-csi
