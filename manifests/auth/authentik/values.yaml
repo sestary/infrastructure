@@ -50,8 +50,6 @@ ingress:
 postgresql:
   enabled: true
   postgresqlPassword: <path:secrets.enc.yaml#postgres-password>
-  image:
-    tag: 15.2.0-debian-11-r26
 
 redis:
   enabled: true
