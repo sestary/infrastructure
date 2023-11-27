@@ -35,17 +35,10 @@ ingress:
 
 # -- Configure persistence settings for the chart under this key.
 persistence:
-  config:
-    enabled: true
-    type: pvc
-    accessMode: ReadWriteOnce
-    size: 10Gi
-    mountPath: /app/config
-    storageClass: longhorn
   config-nas:
     enabled: true
     type: pvc
     accessMode: ReadWriteOnce
     size: 10Gi
-    mountPath: /app/config2
+    mountPath: /app/config
     storageClass: truenas-iscsi-csi
