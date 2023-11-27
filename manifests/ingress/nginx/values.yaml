@@ -13,4 +13,8 @@ controller:
     default: true
 
   service:
+    type: NodePort
+    nodePorts:
+      http: 32080
+      https: 32443
     externalTrafficPolicy: Local
