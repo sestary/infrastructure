@@ -4,12 +4,10 @@ image:
   repository: fallenbagel/jellyseerr
   # -- image tag
   tag: preview-pr184
+  pullPolicy: Always
 
 strategy:
   type: Recreate
-
-env:
-  JELLYFIN_TYPE: emby
 
 # -- Configures service settings for the chart.
 service:
