@@ -1,0 +1,44 @@
+---
+image:
+  # -- image repository
+  repository: ghcr.io/tautulli/tautulli
+  # -- image tag
+  tag: v2.13.2
+
+strategy:
+  type: Recreate
+
+env:
+  TZ: America/Toronto
+
+# -- Configures service settings for the chart.
+service:
+  main:
+    ports:
+      http:
+        port: 8181
+
+ingress:
+  # -- Enable and configure ingress settings for the chart under this key.
+  main:
+    enabled: true
+
+    ingressClassName: nginx
+    hosts:
+      - host: tautulli.sestary.eu
+        paths:
+          - path: /
+            pathType: Prefix
+    tls:
+      - hosts:
+          - tautulli.sestary.eu
+
+# -- Configure persistence settings for the chart under this key.
+persistence:
+  config-nas:
+    enabled: true
+    type: pvc
+    accessMode: ReadWriteOnce
+    size: 10Gi
+    mountPath: /config
+    storageClass: truenas-iscsi-csi
