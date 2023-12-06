@@ -1,5 +1,16 @@
 ---
 projects:
+  - name: argocd
+    namespace: argocd
+    description: ArgoCD related Services
+    sourceRepos:
+      - "https://github.com/sestary/infrastructure"
+    destinations:
+      - server: "https://kubernetes.default.svc"
+        namespace: "argocd"
+    clusterResourceWhitelist:
+      - group: '*'
+        kind: '*'
   - name: auth
     namespace: argocd
     description: Authentication Services
