@@ -1,0 +1,5 @@
+---
+argocd-image-updater:
+  config:
+    argocd:
+      serverAddress: https://argocd-server.argocd

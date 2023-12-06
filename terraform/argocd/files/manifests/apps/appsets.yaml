@@ -1,5 +1,28 @@
 ---
 applicationsets:
+  - name: argocd
+    namespace: argocd
+    generators:
+      - git:
+          repoURL: https://github.com/sestary/infrastructure
+          revision: HEAD
+          directories:
+            - path: manifests/argocd/*
+    template:
+      metadata:
+        name: '{{path.basename}}'
+      spec:
+        project: "argocd"
+        source:
+          repoURL: https://github.com/sestary/infrastructure
+          targetRevision: HEAD
+          path: '{{path}}'
+        destination:
+          server: https://kubernetes.default.svc
+          namespace: 'argocd'
+        syncPolicy:
+          syncStrategy:
+            hook: {}
   - name: auth
     namespace: argocd
     generators:

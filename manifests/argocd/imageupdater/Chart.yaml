@@ -1,0 +1,14 @@
+---
+apiVersion: v2
+name: imageupdater
+description: Deploy ArgoCD Image Updater
+
+type: application
+
+# This is the chart version, but is ignored by ArgoCD
+version: 0.1.0
+
+dependencies:
+  - name: argocd-image-updater
+    version: 0.9.1
+    repository: https://argoproj.github.io/argo-helm
