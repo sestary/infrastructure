@@ -1,9 +1,9 @@
 ---
 image:
   # -- image repository
-  repository: ghcr.io/tautulli/tautulli
+  repository: :lscr.io/linuxserver/tautulli
   # -- image tag
-  tag: v2.13.2
+  tag: v2.13.3-ls110
 
 strategy:
   type: Recreate

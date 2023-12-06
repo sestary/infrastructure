@@ -1,7 +1,7 @@
 ---
 image:
   # -- image repository
-  repository: linuxserver/transmission
+  repository: lscr.io/linuxserver/transmission
   # -- image tag
   tag: 4.0.4-r0-ls200
 
