@@ -1,7 +1,7 @@
 ---
 image:
   # -- image repository
-  repository: :lscr.io/linuxserver/tautulli
+  repository: lscr.io/linuxserver/tautulli
   # -- image tag
   tag: v2.13.3-ls110
 
