@@ -13,6 +13,8 @@ This repo contains all of the Infrastructure as Code pieces to build out my home
 
 ## Encrypting Secrets:
 
-Install Sops/Age and create a key, mine is stored in: ~/Library/Application\ Support/sops/age/key.txt
+Install Sops/Age and create a key, mine is stored in: `~/Library/Application\ Support/sops/age/key.txt`
 
+```bash
 sops --encrypt --age $(age-keygen -y p ~/Library/Application\ Support/sops/age/key.txt) secrets.yaml > secrets.enc.yaml
+```
