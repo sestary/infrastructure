@@ -1,0 +1,109 @@
+---
+image:
+  # -- image repository
+  repository: lscr.io/linuxserver/qbittorrent:latest
+  # -- image tag
+  tag: 4.6.2-r0-ls304
+
+strategy:
+  type: Recreate
+
+env:
+  PUID: 1000
+  PGID: 1000
+
+# -- Configures service settings for the chart.
+service:
+  main:
+    ports:
+      http:
+        port: 8080
+
+ingress:
+  # -- Enable and configure ingress settings for the chart under this key.
+  main:
+    enabled: true
+
+    annotations:
+      nginx.ingress.kubernetes.io/auth-url: |-
+        http://ak-outpost-sestary-outpost.auth-authentik.svc.cluster.local:9000/outpost.goauthentik.io/auth/nginx
+      nginx.ingress.kubernetes.io/auth-signin: |-
+        https://qbittorrent.sestary.eu/outpost.goauthentik.io/start?rd=$escaped_request_uri
+      nginx.ingress.kubernetes.io/auth-response-headers: |-
+        Set-Cookie,X-authentik-username,X-authentik-groups,X-authentik-email,X-authentik-name,X-authentik-uid
+      nginx.ingress.kubernetes.io/auth-snippet: |
+        proxy_set_header X-Forwarded-Host $http_host;
+
+    ingressClassName: nginx
+    hosts:
+      - host: qbittorrent.sestary.eu
+        paths:
+          - path: /
+            pathType: Prefix
+    tls:
+      - hosts:
+          - qbittorrent.sestary.eu
+
+# -- The common chart supports several add-ons.
+addons:
+  vpn:
+    # -- Enable running a VPN in the pod to route traffic through a VPN
+    enabled: true
+
+    # -- Specify the VPN type. Valid options are `gluetun`.
+    type: gluetun
+
+    # -- Set the VPN container securityContext
+    securityContext:
+      capabilities:
+        add:
+          - NET_ADMIN
+          - SYS_MODULE
+
+    # -- All variables specified here will be added to the vpn sidecar container
+    # See the documentation of the VPN image for all config values
+    env:
+      FIREWALL_INPUT_PORTS: 9091
+      FIREWALL_VPN_INPUT_PORTS: 62067
+      SERVER_CITIES: Toronto
+      VPN_SERVICE_PROVIDER: mullvad
+      VPN_TYPE: wireguard
+      WIREGUARD_ADDRESSES: 10.67.61.121/32
+      WIREGUARD_PRIVATE_KEY: <path:secrets.enc.yaml#wireguard_private_key>
+
+    networkPolicy:
+      # -- If set to true, will deploy a network policy that blocks all outbound
+      # traffic except traffic specified as allowed
+      enabled: true
+
+      # -- The egress configuration for your network policy, All outbound traffic
+      # from the pod will be blocked unless specified here.
+      # [[ref]](https://kubernetes.io/docs/concepts/services-networking/network-policies/)
+      # [[recipes]](https://github.com/ahmetb/kubernetes-network-policy-recipes)
+      egress:
+        - to:
+            - ipBlock:
+                cidr: 0.0.0.0/0
+          ports:
+            - port: 51820
+              protocol: UDP
+
+# -- Configure persistence settings for the chart under this key.
+persistence:
+  config-nas:
+    enabled: true
+    type: pvc
+    accessMode: ReadWriteOnce
+    size: 1Gi
+    mountPath: /config
+    storageClass: truenas-iscsi-csi
+
+  downloads:
+    enabled: true
+    type: pvc
+    accessMode: ReadWriteMany
+    size: 25Ti
+    mountPath: /downloads
+    subPath: downloads/
+    storageClass: "-"
+    volumeName: truenas-media-transmission
