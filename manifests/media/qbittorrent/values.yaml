@@ -106,4 +106,4 @@ persistence:
     mountPath: /downloads
     subPath: downloads/
     storageClass: "-"
-    volumeName: truenas-media-transmission
+    volumeName: truenas-media-qbittorrent
