@@ -17,7 +17,7 @@ service:
   main:
     ports:
       http:
-        port: 8080
+        port: 9090
 
 ingress:
   # -- Enable and configure ingress settings for the chart under this key.
@@ -106,4 +106,4 @@ persistence:
     mountPath: /downloads
     subPath: downloads/
     storageClass: "-"
-    volumeName: truenas-media-transmission
+    volumeName: truenas-media-qbittorrent
