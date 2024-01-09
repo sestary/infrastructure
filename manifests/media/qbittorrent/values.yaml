@@ -1,7 +1,7 @@
 ---
 image:
   # -- image repository
-  repository: lscr.io/linuxserver/qbittorrent:latest
+  repository: lscr.io/linuxserver/qbittorrent
   # -- image tag
   tag: 4.6.2-r0-ls304
 
