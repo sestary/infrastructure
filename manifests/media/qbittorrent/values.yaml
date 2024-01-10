@@ -3,8 +3,8 @@ image:
   # -- image repository
   repository: lscr.io/linuxserver/qbittorrent
   # -- image tag
-  tag: 4.6.2-r0-ls304
-
+  tag: libtorrentv1-release-4.6.2_v1.2.19-ls5
+  
 strategy:
   type: Recreate
 
