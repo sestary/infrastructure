@@ -31,13 +31,13 @@ resource "authentik_outpost" "sestary" {
   config = jsonencode(local.outpost_config)
 
   protocol_providers = [
+    authentik_provider_proxy.deluge.id,
     authentik_provider_proxy.filebrowser.id,
     authentik_provider_proxy.prowlarr.id,
     authentik_provider_proxy.radarr.id,
     authentik_provider_proxy.sonarr.id,
     authentik_provider_proxy.prometheus.id,
     authentik_provider_proxy.prometheus_alerts.id,
-    authentik_provider_proxy.qbittorrent.id,
   ]
 
   service_connection = authentik_service_connection_kubernetes.sestary.id
