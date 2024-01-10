@@ -35,9 +35,9 @@ resource "authentik_outpost" "sestary" {
     authentik_provider_proxy.prowlarr.id,
     authentik_provider_proxy.radarr.id,
     authentik_provider_proxy.sonarr.id,
-    authentik_provider_proxy.transmission.id,
     authentik_provider_proxy.prometheus.id,
     authentik_provider_proxy.prometheus_alerts.id,
+    authentik_provider_proxy.qbittorrent.id,
   ]
 
   service_connection = authentik_service_connection_kubernetes.sestary.id
