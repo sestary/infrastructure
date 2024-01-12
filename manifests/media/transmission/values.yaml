@@ -18,6 +18,11 @@ controllers:
     containers:
       # Configure the main application container
       main:
+        env:
+          - name: PGID
+            value: '1000'
+          - name: PUID
+            value: '1000'
         image:
           # -- image repository
           repository: lscr.io/linuxserver/transmission
@@ -132,4 +137,4 @@ persistence:
       main:
         main:
           - path: /downloads
-
+            subPath: downalods/
