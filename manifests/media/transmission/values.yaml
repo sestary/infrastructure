@@ -24,10 +24,6 @@ controllers:
           # -- image tag
           # this example is not automatically updated, so be sure to use the latest image
           tag: 4.0.4-r0-ls200
-        # Configure the container-specific securityContext
-        securityContext:
-          runAsUser: 1000
-          runAsGroup: 1000
 
       # Configure the gluetun sidecar
       gluetun:
