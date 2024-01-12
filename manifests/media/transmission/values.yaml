@@ -114,18 +114,20 @@ persistence:
   # Configure the main configuration storage location
   config-nas:
     enabled: true
-    type: pvc
+    type: persistentVolumeClaim
+    storageClass: truenas-iscsi-csi
     accessMode: ReadWriteOnce
     size: 1Gi
-    mountPath: /config
-    storageClass: truenas-iscsi-csi
+    advancedMounts:
+      main:
+        main:
+          - path: /config
 
   downloads:
     enabled: true
-    type: pvc
-    accessMode: ReadWriteMany
-    size: 25Ti
-    mountPath: /downloads
-    subPath: downloads/
-    storageClass: "-"
-    volumeName: truenas-media-transmission
+    existingClaim: truenas-media-transmission
+    advancedMounts:
+      main:
+        main:
+          - path: /downloads
+
