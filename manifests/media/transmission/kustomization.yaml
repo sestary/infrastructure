@@ -16,3 +16,4 @@ commonLabels:
 
 resources:
   - resources/pv.yaml
+  - resources/pvc.yaml
