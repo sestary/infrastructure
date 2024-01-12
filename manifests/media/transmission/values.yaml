@@ -63,6 +63,8 @@ ingress:
   main:
     enabled: true
 
+    className: nginx
+
     annotations:
       nginx.ingress.kubernetes.io/auth-url: |-
         http://ak-outpost-sestary-outpost.auth-authentik.svc.cluster.local:9000/outpost.goauthentik.io/auth/nginx
@@ -73,7 +75,6 @@ ingress:
       nginx.ingress.kubernetes.io/auth-snippet: |
         proxy_set_header X-Forwarded-Host $http_host;
 
-    ingressClassName: nginx
     hosts:
       - host: transmission.sestary.eu
         paths:
