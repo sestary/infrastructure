@@ -64,11 +64,11 @@ addons:
     # See the documentation of the VPN image for all config values
     env:
       FIREWALL_INPUT_PORTS: 9091
-      FIREWALL_VPN_INPUT_PORTS: 62067
+      FIREWALL_VPN_INPUT_PORTS: 6881
       SERVER_CITIES: Toronto
       VPN_SERVICE_PROVIDER: mullvad
       VPN_TYPE: wireguard
-      WIREGUARD_ADDRESSES: 10.67.61.121/32
+      WIREGUARD_ADDRESSES: 10.66.51.54/32
       WIREGUARD_PRIVATE_KEY: <path:secrets.enc.yaml#wireguard_private_key>
 
     networkPolicy:
