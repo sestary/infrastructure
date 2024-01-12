@@ -1,18 +1,61 @@
 ---
-image:
-  # -- image repository
-  repository: lscr.io/linuxserver/transmission
-  # -- image tag
-  tag: 4.0.4-r0-ls200
+# Configure options applied to all pods
+defaultPodOptions:
+  automountServiceAccountToken: false
 
-strategy:
-  type: Recreate
+controllers:
+  # Configure the main controller
+  main:
+    annotations:
+      reloader.stakater.com/auto: "true"
 
-env:
-  PUID: 1000
-  PGID: 1000
+    # Configure the pod-specific securityContext
+    pod:
+      securityContext:
+        fsGroup: 1000
+        fsGroupChangePolicy: "OnRootMismatch"
 
-# -- Configures service settings for the chart.
+    containers:
+      # Configure the main application container
+      main:
+        image:
+          # -- image repository
+          repository: lscr.io/linuxserver/transmission
+          # -- image tag
+          # this example is not automatically updated, so be sure to use the latest image
+          tag: 4.0.4-r0-ls200
+        # Configure the container-specific securityContext
+        securityContext:
+          runAsUser: 1000
+          runAsGroup: 1000
+
+      # Configure the gluetun sidecar
+      gluetun:
+        dependsOn: main
+        image:
+          # -- image repository
+          repository: ghcr.io/qdm12/gluetun
+          # -- image tag
+          # this example is not automatically updated, so be sure to use the latest image
+          tag: latest
+        # -- environment variables.
+        # See [image docs](https://github.com/qdm12/gluetun-wiki) for more details on how to configure
+        # your VPN and how to set up port-forwarding.
+        env:
+          FIREWALL_INPUT_PORTS: 9091
+          FIREWALL_VPN_INPUT_PORTS: 6881
+          SERVER_CITIES: Toronto
+          VPN_SERVICE_PROVIDER: mullvad
+          VPN_TYPE: wireguard
+          WIREGUARD_ADDRESSES: 10.66.51.54/32
+          WIREGUARD_PRIVATE_KEY: <path:secrets.enc.yaml#wireguard_private_key>
+
+        # Configure the container-specific securityContext
+        securityContext:
+          capabilities:
+            add:
+              - NET_ADMIN
+
 service:
   main:
     ports:
@@ -20,7 +63,7 @@ service:
         port: 9091
 
 ingress:
-  # -- Enable and configure ingress settings for the chart under this key.
+  # Configure an Ingress for the main application
   main:
     enabled: true
 
@@ -44,42 +87,21 @@ ingress:
       - hosts:
           - transmission.sestary.eu
 
-# -- The common chart supports several add-ons.
-addons:
-  vpn:
-    # -- Enable running a VPN in the pod to route traffic through a VPN
+networkpolicies:
+  main:
+    # -- Enables or disables the networkPolicy item. Defaults to true
     enabled: true
 
-    # -- Specify the VPN type. Valid options are `gluetun`.
-    type: gluetun
+    # -- Configure which controller this networkPolicy should target
+    controller: main
 
-    # -- Set the VPN container securityContext
-    securityContext:
-      capabilities:
-        add:
-          - NET_ADMIN
-          - SYS_MODULE
+    policyTypes:
+      - Egress
 
-    # -- All variables specified here will be added to the vpn sidecar container
-    # See the documentation of the VPN image for all config values
-    env:
-      FIREWALL_INPUT_PORTS: 9091
-      FIREWALL_VPN_INPUT_PORTS: 6881
-      SERVER_CITIES: Toronto
-      VPN_SERVICE_PROVIDER: mullvad
-      VPN_TYPE: wireguard
-      WIREGUARD_ADDRESSES: 10.66.51.54/32
-      WIREGUARD_PRIVATE_KEY: <path:secrets.enc.yaml#wireguard_private_key>
-
-    networkPolicy:
-      # -- If set to true, will deploy a network policy that blocks all outbound
-      # traffic except traffic specified as allowed
-      enabled: true
-
-      # -- The egress configuration for your network policy, All outbound traffic
-      # from the pod will be blocked unless specified here.
-      # [[ref]](https://kubernetes.io/docs/concepts/services-networking/network-policies/)
-      # [[recipes]](https://github.com/ahmetb/kubernetes-network-policy-recipes)
+    # -- The rulesets for this networkPolicy
+    # [[ref]](https://kubernetes.io/docs/concepts/services-networking/network-policies/#networkpolicy-resource)
+    rules:
+      # -- The egress rules for this networkPolicy. Allows all egress traffic by default.
       egress:
         - to:
             - ipBlock:
@@ -88,8 +110,8 @@ addons:
             - port: 51820
               protocol: UDP
 
-# -- Configure persistence settings for the chart under this key.
 persistence:
+  # Configure the main configuration storage location
   config-nas:
     enabled: true
     type: pvc
