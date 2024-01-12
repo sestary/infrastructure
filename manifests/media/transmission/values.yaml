@@ -132,7 +132,7 @@ persistence:
 
   downloads:
     enabled: true
-    existingClaim: truenas-media-transmission
+    existingClaim: transmission-downloads
     advancedMounts:
       main:
         main:

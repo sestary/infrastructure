@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: transmission-downloads
+  namespace: media-transmission
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 25Ti
+  storageClassName: ''
+  volumeMode: Filesystem
+  volumeName: truenas-media-transmission
