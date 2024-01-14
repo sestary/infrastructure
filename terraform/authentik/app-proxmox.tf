@@ -42,6 +42,10 @@ resource "authentik_group" "proxmox_admins" {
   }
 }
 
+data "authentik_provider_oauth2_config" "proxmox" {
+  provider_id = authentik_provider_oauth2.proxmox.id
+}
+
 resource "authentik_policy_binding" "proxmox_on_group_admins" {
   target = authentik_application.proxmox.uuid
   group  = authentik_group.proxmox_admins.id
