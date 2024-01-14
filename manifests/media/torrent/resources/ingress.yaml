@@ -15,7 +15,6 @@ metadata:
     app.kubernetes.io/instance: torrent
     app.kubernetes.io/name: torrent
   name: torrent
-  namespace: media-torrent
 spec:
   ingressClassName: nginx
   rules:

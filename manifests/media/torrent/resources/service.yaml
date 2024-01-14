@@ -17,8 +17,8 @@ metadata:
   name: torrent
 subsets:
   - addresses:
-    - ip: 10.2.3.50
-      ports:
-        - name: deluge
-          port: 8112
-          protocol: TCP
+      - ip: 10.2.3.50
+        ports:
+          - name: deluge
+            port: 8112
+            protocol: TCP
