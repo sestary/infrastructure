@@ -20,7 +20,7 @@ authentik:
 
 image:
   repository: ghcr.io/sestary/authentik
-imagePullPolicy: Always
+  pullPolicy: Always
 
 envValueFrom:
   AUTHENTIK_BOOTSTRAP_EMAIL:
