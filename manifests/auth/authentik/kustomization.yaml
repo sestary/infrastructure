@@ -8,7 +8,7 @@ helmCharts:
     releaseName: authentik
     repo: https://charts.goauthentik.io
     valuesFile: values.yaml
-    version: 2023.10.4
+    version: 2023.10.6
 
 resources:
   - resources/secret.yaml
