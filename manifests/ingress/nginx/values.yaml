@@ -19,4 +19,4 @@ controller:
       https: 32443
     externalTrafficPolicy: Local
     externalIPs:
-      - 10.2.0.101
+      - 10.2.0.60
