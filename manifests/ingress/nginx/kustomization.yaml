@@ -8,7 +8,7 @@ helmCharts:
     releaseName: nginx
     repo: https://kubernetes.github.io/ingress-nginx
     valuesFile: values.yaml
-    version: 4.5.2
+    version: 4.10.0
 
 resources:
   - resources/certificate.yaml
