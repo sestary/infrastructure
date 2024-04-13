@@ -51,7 +51,7 @@ postgresql:
   enabled: true
   postgresqlPassword: <path:secrets.enc.yaml#postgres-password>
 
-  persistence:
+  global:
     storageClass: truenas-iscsi-csi
 
 redis:
