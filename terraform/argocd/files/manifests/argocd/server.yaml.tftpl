@@ -10,12 +10,8 @@ server:
     annotations:
       nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
     ingressClassName: nginx
-    hosts:
-      - ${hostname}
-    tls:
-      - hosts:
-          - ${hostname}
-    https: true
+    hostname: ${hostname}
+    tls: true
   %{~ endif ~}
 
   %{~ if enable_oidc ~}

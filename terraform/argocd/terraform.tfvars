@@ -1,5 +1,5 @@
 charts_version = {
-  argocd      = "5.51.2"
+  argocd      = "6.7.11"
   argocd-apps = "2.0.0"
 }
 
