@@ -8,16 +8,16 @@ helmCharts:
     releaseName: democratic-csi-iscsi
     repo: https://democratic-csi.github.io/charts/
     valuesFile: values-iscsi.yaml
-    version: 0.14.2
+    version: 0.14.6
   - name: democratic-csi
     namespace: storage-democratic
     releaseName: democratic-csi-nfs
     repo: https://democratic-csi.github.io/charts/
     valuesFile: values-nfs.yaml
-    version: 0.14.2
+    version: 0.14.6
   - name: democratic-csi
     namespace: storage-democratic
     releaseName: democratic-csi-manual
     repo: https://democratic-csi.github.io/charts/
     valuesFile: values-manual.yaml
-    version: 0.14.2
+    version: 0.14.6
