@@ -1,5 +1,7 @@
 ---
 controller:
+  allowSnippetAnnotations: true
+
   replicaCount: 2
 
   config:
