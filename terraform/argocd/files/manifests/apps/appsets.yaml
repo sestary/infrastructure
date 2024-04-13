@@ -1,6 +1,6 @@
 ---
 applicationsets:
-  - name: argocd
+  argocd:
     namespace: argocd
     generators:
       - git:
@@ -23,7 +23,7 @@ applicationsets:
         syncPolicy:
           syncStrategy:
             hook: {}
-  - name: auth
+  auth:
     namespace: argocd
     generators:
       - git:
@@ -48,7 +48,7 @@ applicationsets:
             - CreateNamespace=true
           syncStrategy:
             hook: {}
-  - name: core
+  core:
     namespace: argocd
     generators:
       - git:
@@ -73,7 +73,7 @@ applicationsets:
             - CreateNamespace=true
           syncStrategy:
             hook: {}
-  - name: home
+  home:
     namespace: argocd
     generators:
       - git:
@@ -98,7 +98,7 @@ applicationsets:
             - CreateNamespace=true
           syncStrategy:
             hook: {}
-  - name: ingress
+  ingress:
     namespace: argocd
     generators:
       - git:
@@ -123,7 +123,7 @@ applicationsets:
             - CreateNamespace=true
           syncStrategy:
             hook: {}
-  - name: media
+  media:
     namespace: argocd
     generators:
       - git:
@@ -154,7 +154,7 @@ applicationsets:
             - CreateNamespace=true
           syncStrategy:
             hook: {}
-  - name: monitoring
+  monitoring:
     namespace: argocd
     generators:
       - git:
@@ -179,7 +179,7 @@ applicationsets:
             - CreateNamespace=true
           syncStrategy:
             hook: {}
-  - name: storage
+  storage:
     namespace: argocd
     generators:
       - git:

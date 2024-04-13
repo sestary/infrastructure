@@ -1,6 +1,6 @@
 ---
 projects:
-  - name: argocd
+  argocd:
     namespace: argocd
     description: ArgoCD related Services
     sourceRepos:
@@ -11,7 +11,7 @@ projects:
     clusterResourceWhitelist:
       - group: '*'
         kind: '*'
-  - name: auth
+  auth:
     namespace: argocd
     description: Authentication Services
     sourceRepos:
@@ -22,7 +22,7 @@ projects:
     clusterResourceWhitelist:
       - group: '*'
         kind: '*'
-  - name: core
+  core:
     namespace: argocd
     description: Kubernetes Core Services
     sourceRepos:
@@ -35,7 +35,7 @@ projects:
     clusterResourceWhitelist:
       - group: '*'
         kind: '*'
-  - name: home
+  home:
     namespace: argocd
     description: Home Services
     sourceRepos:
@@ -46,7 +46,7 @@ projects:
     clusterResourceWhitelist:
       - group: '*'
         kind: '*'
-  - name: ingress
+  ingress:
     namespace: argocd
     description: Kubernetes Ingress Services
     sourceRepos:
@@ -57,7 +57,7 @@ projects:
     clusterResourceWhitelist:
       - group: '*'
         kind: '*'
-  - name: media
+  media:
     namespace: argocd
     description: Media Services
     sourceRepos:
@@ -68,7 +68,7 @@ projects:
     clusterResourceWhitelist:
       - group: '*'
         kind: '*'
-  - name: monitoring
+  monitoring:
     namespace: argocd
     description: Kubernetes Monitoring Services
     sourceRepos:
@@ -79,7 +79,7 @@ projects:
     clusterResourceWhitelist:
       - group: '*'
         kind: '*'
-  - name: storage
+  storage:
     namespace: argocd
     description: Kubernetes Storage Services
     sourceRepos:

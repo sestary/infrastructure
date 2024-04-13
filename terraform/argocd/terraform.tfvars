@@ -1,6 +1,6 @@
 charts_version = {
   argocd      = "5.51.2"
-  argocd-apps = "1.4.1"
+  argocd-apps = "2.0.0"
 }
 
 plugins_version = {
