@@ -45,13 +45,7 @@ server:
     enabled: true
     ingressClassName: nginx
     hosts:
-      - host: sso.sestary.eu
-        paths:
-          - path: "/"
-            pathType: Prefix
-    tls:
-      - hosts:
-          - sso.sestary.eu
+      - sso.sestary.eu
 
 postgresql:
   enabled: true
