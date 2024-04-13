@@ -49,7 +49,9 @@ server:
 
 postgresql:
   enabled: true
-  postgresqlPassword: <path:secrets.enc.yaml#postgres-password>
+
+  auth:
+    password: <path:secrets.enc.yaml#postgres-password>
 
   global:
     storageClass: truenas-iscsi-csi
