@@ -31,7 +31,7 @@ jobs:
       # Read the tag from the YAML file
       - name: Get image tag
         id: image_tag
-        uses: pietrobolcato/action-read-yaml@1.0.0
+        uses: pietrobolcato/action-read-yaml@1.1.0
         with:
           config: images/${{ matrix.image }}/versions.yaml
 
