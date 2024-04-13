@@ -41,17 +41,17 @@ server:
           name: authentik-bootstrap
           key: token
 
-ingress:
-  enabled: true
-  ingressClassName: nginx
-  hosts:
-    - host: sso.sestary.eu
-      paths:
-        - path: "/"
-          pathType: Prefix
-  tls:
-    - hosts:
-        - sso.sestary.eu
+  ingress:
+    enabled: true
+    ingressClassName: nginx
+    hosts:
+      - host: sso.sestary.eu
+        paths:
+          - path: "/"
+            pathType: Prefix
+    tls:
+      - hosts:
+          - sso.sestary.eu
 
 postgresql:
   enabled: true
