@@ -1,5 +1,7 @@
+---
 authentik:
   avatars: none
+
   email:
     from: systems@sestary.eu
     host: mail.gandi.net
@@ -7,15 +9,20 @@ authentik:
     password: <path:secrets.enc.yaml#email-password>
     port: 587
     use_tls: true
+
   error_reporting:
     enabled: false
+
   postgresql:
     password: <path:secrets.enc.yaml#postgres-password>
+
   secret_key: <path:secrets.enc.yaml#secret-key>
+
 global:
   image:
     repository: ghcr.io/sestary/authentik
     pullPolicy: Always
+
 server:
   env:
     - name: AUTHENTIK_BOOTSTRAP_EMAIL
@@ -33,6 +40,7 @@ server:
         secretKeyRef:
           name: authentik-bootstrap
           key: token
+
 ingress:
   enabled: true
   ingressClassName: nginx
@@ -44,13 +52,17 @@ ingress:
   tls:
     - hosts:
         - sso.sestary.eu
+
 postgresql:
   enabled: true
   postgresqlPassword: <path:secrets.enc.yaml#postgres-password>
+
   persistence:
     storageClass: truenas-iscsi-csi
+
 redis:
   enabled: true
+
   master:
     persistence:
       storageClass: truenas-iscsi-csi
