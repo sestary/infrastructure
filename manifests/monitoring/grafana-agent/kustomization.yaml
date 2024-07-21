@@ -8,13 +8,13 @@ helmCharts:
     releaseName: grafana-agent-logs
     repo: https://grafana.github.io/helm-charts
     valuesFile: values-logs.yaml
-    version: 0.38.0
+    version: 0.41.0
   - name: grafana-agent
     namespace: monitoring-grafana-agent
     releaseName: grafana-agent-events
     repo: https://grafana.github.io/helm-charts
     valuesFile: values-events.yaml
-    version: 0.38.0
+    version: 0.41.0
 
 patches:
   - path: overlays/deamonset.yaml
