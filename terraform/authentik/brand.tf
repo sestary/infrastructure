@@ -1,4 +1,4 @@
-resource "authentik_tenant" "sestary" {
+resource "authentik_brand" "sestary" {
   domain = "sso.sestary.eu"
 
   branding_title   = "SeStary"
