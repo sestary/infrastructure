@@ -1,0 +1,27 @@
+---
+image:
+  # -- image repository
+  repository: jtee3d/prusa_connect_rtsp
+  # -- image tag
+  tag: latest
+
+strategy:
+  type: Recreate
+
+env:
+  RTSP_URLS: >
+    <path:secrets.enc.yaml#mini_url>,
+    <path:secrets.enc.yaml#xl_url>
+  TOKENS: >
+    <path:secrets.enc.yaml#mini_token>,
+    <path:secrets.enc.yaml#xl_token>
+
+# -- Configures service settings for the chart.
+service:
+  main:
+    enabled: false
+
+ingress:
+  # -- Enable and configure ingress settings for the chart under this key.
+  main:
+    enabled: false
