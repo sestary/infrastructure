@@ -11,6 +11,12 @@ This repo contains all of the Infrastructure as Code pieces to build out my home
 
 # Usage:
 
+## Locally Building with Podman (cause Docker sucks):
+
+```bash
+podman build -f images/<image>/Containerfile --build-arg IMAGE_TAG=latest .
+```
+
 ## Encrypting Secrets:
 
 Install Sops/Age and create a key, mine is stored in: `~/Library/Application\ Support/sops/age/key.txt`
