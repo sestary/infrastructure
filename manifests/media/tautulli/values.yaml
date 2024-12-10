@@ -3,7 +3,7 @@ image:
   # -- image repository
   repository: lscr.io/linuxserver/tautulli
   # -- image tag
-  tag: v2.13.4-ls110
+  tag: 2.15.0
 
 strategy:
   type: Recreate
