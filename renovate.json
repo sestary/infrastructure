@@ -3,4 +3,10 @@
   "extends": [
     "config:recommended"
   ]
+  "packageRules": [
+    {
+      "matchPackageNames": ["lscr.io/linuxserver/tautulli"],
+      "allowedVersions": "<=10.0"
+    }
+  ]
 }
