@@ -1,10 +1,10 @@
 ---
 controller:
-  allowSnippetAnnotations: true
-
   replicaCount: 2
 
   config:
+    allow-snippet-annotations: true
+    annotations-risk-level: critical
     force-ssl-redirect: true
 
   extraArgs:
