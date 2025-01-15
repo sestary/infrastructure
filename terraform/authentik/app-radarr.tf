@@ -4,6 +4,7 @@ resource "authentik_provider_proxy" "radarr" {
   mode = "forward_single"
 
   authorization_flow = authentik_flow.authorization_implicit_consent.uuid
+  invalidation_flow  = authentik_flow.invalidation.uuid
 
   external_host = "http://radarr.sestary.eu"
 
