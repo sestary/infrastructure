@@ -8,16 +8,23 @@ resource "authentik_provider_oauth2" "argocd" {
   client_id     = "argocd"
   client_secret = random_password.client_secret.result
 
-  redirect_uris = [
-    "https://argocd.sestary.eu/api/dex/callback",
-    "http://localhost:8085/auth/callback",
+  allowed_redirect_uris = [
+    {
+      matching_mode = "strict",
+      url           = "https://argocd.sestary.eu/api/dex/callback",
+    },
+    {
+      matching_mode = "strict",
+      url           = "http://localhost:8085/auth/callback",
+    },
   ]
 
   signing_key = authentik_certificate_key_pair.sso.id
 
   authorization_flow = authentik_flow.authorization_implicit_consent.uuid
+  invalidation_flow  = authentik_flow.invalidation.uuid
 
-  property_mappings = data.authentik_scope_mapping.oidc.ids
+  property_mappings = data.authentik_property_mapping_provider_scope.oidc.ids
 }
 
 resource "authentik_application" "argocd" {

@@ -8,15 +8,19 @@ resource "authentik_provider_oauth2" "proxmox" {
   client_id     = "proxmox"
   client_secret = random_password.client_secret_proxmox.result
 
-  redirect_uris = [
-    "https://pve.on.sestary.eu:8006",
+  allowed_redirect_uris = [
+    {
+      matching_mode = "strict",
+      url           = "https://pve.on.sestary.eu:8006",
+    }
   ]
 
   signing_key = authentik_certificate_key_pair.sso.id
 
   authorization_flow = authentik_flow.authorization_implicit_consent.uuid
+  invalidation_flow  = authentik_flow.invalidation.uuid
 
-  property_mappings = data.authentik_scope_mapping.oidc.ids
+  property_mappings = data.authentik_property_mapping_provider_scope.oidc.ids
 }
 
 resource "authentik_application" "proxmox" {
