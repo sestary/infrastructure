@@ -134,12 +134,6 @@ applicationsets:
     template:
       metadata:
         name: '{{path.basename}}'
-        annotations:
-          argocd-image-updater.argoproj.io/image-list: default=lscr.io/linuxserver/{{path.basename}}:latest
-          argocd-image-updater.argoproj.io/default.helm.image-name: image.repository
-          argocd-image-updater.argoproj.io/default.helm.image-tag: image.tag
-          argocd-image-updater.argoproj.io/update-strategy: digest
-          argocd-image-updater.argoproj.io/write-back-method: git
       spec:
         project: "media"
         source:
