@@ -3,7 +3,7 @@ image:
   # -- image repository
   repository: fallenbagel/jellyseerr
   # -- image tag
-  tag: v2.3.0
+  tag: 2.3.0
   pullPolicy: Always
 
 strategy:
