@@ -3,7 +3,7 @@ image:
   # -- image repository
   repository: lscr.io/linuxserver/sonarr
   # -- image tag
-  tag: 4.0.12
+  tag: 4.0.13
 
 strategy:
   type: Recreate
