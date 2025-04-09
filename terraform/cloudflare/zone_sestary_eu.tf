@@ -34,40 +34,6 @@ resource "cloudflare_record" "caa_letsencrypt" {
   proxied = false
 }
 
-# MX Records
-resource "cloudflare_record" "mx_10" {
-  zone_id = cloudflare_zone.sestary_eu.id
-
-  name     = "sestary.eu"
-  value    = "spool.mail.gandi.net"
-  type     = "MX"
-  priority = 10
-
-  proxied = false
-}
-
-resource "cloudflare_record" "mx_50" {
-  zone_id = cloudflare_zone.sestary_eu.id
-
-  name     = "sestary.eu"
-  value    = "fb.mail.gandi.net"
-  type     = "MX"
-  priority = 50
-
-  proxied = false
-}
-
-# TXT Records
-resource "cloudflare_record" "txt_spf" {
-  zone_id = cloudflare_zone.sestary_eu.id
-
-  name  = "sestary.eu"
-  value = "v=spf1 mx include:_mailcust.gandi.net -all"
-  type  = "TXT"
-
-  proxied = false
-}
-
 # Localhost Record
 resource "cloudflare_record" "localhost" {
   zone_id = cloudflare_zone.sestary_eu.id
@@ -88,5 +54,26 @@ resource "cloudflare_record" "grafana" {
   type  = "CNAME"
 
   proxied = false
+}
+
+# Public Services
+resource "cloudflare_record" "requests" {
+  zone_id = cloudflare_zone.sestary_eu.id
+
+  name  = "requests.sestary.eu"
+  value = "gw.on.sestary.eu"
+  type  = "CNAME"
+
+  proxied = true
+}
+
+resource "cloudflare_record" "sso" {
+  zone_id = cloudflare_zone.sestary_eu.id
+
+  name  = "sso.sestary.eu"
+  value = "gw.on.sestary.eu"
+  type  = "CNAME"
+
+  proxied = true
 }
 
