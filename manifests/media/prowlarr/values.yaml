@@ -3,7 +3,7 @@ image:
   # -- image repository
   repository: lscr.io/linuxserver/prowlarr
   # -- image tag
-  tag: 1.30.2
+  tag: 1.33.3
 
 strategy:
   type: Recreate
