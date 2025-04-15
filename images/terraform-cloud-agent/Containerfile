@@ -1,4 +1,5 @@
-FROM docker.io/hashicorp/tfc-agent:latest
+ARG IMAGE_TAG
+FROM docker.io/hashicorp/tfc-agent:${IMAGE_TAG}
 
 # Switch to the root user so we can install things
 USER root

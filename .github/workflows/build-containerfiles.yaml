@@ -22,6 +22,7 @@ jobs:
         image:
           - argocd-plugin
           - authentik
+          - terraform-cloud-image
 
     steps:
       # Checkout push-to-registry action github repository
