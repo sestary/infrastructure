@@ -44,6 +44,6 @@ resource "kubernetes_secret_v1" "argocd_vault_plugin_age_key" {
 
   data = {
     # This file exists outside of Terraform and is not managed in the project
-    "key.txt" = var.sops_key != null ? var.sops_key : file("/Library/Application Support/sops/age/key.txt")
+    "key.txt" = var.sops_key != null ? base64decode(var.sops_key) : file("/Library/Application Support/sops/age/key.txt")
   }
 }
