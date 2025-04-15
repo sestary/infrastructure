@@ -1,0 +1,15 @@
+FROM docker.io/hashicorp/tfc-agent:latest
+
+# Switch to the root user so we can install things
+USER root
+
+# Install python/ansible.
+RUN apt-get update \
+    && apt-get -y install \
+    gcc \
+    python-dev \
+    python3-pip \
+    && pip3 install ansible
+
+# Switch back to the TFC User
+USER tfc-agent
