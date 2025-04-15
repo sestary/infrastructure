@@ -1,12 +1,17 @@
-resource "random_password" "client_secret" {
+resource "random_password" "client_secret_argocd" {
   length  = 40
   special = false
+}
+
+moved {
+  from = random_password.client_secret
+  to = random_password.client_secret_argocd
 }
 
 resource "authentik_provider_oauth2" "argocd" {
   name          = "argocd"
   client_id     = "argocd"
-  client_secret = random_password.client_secret.result
+  client_secret = random_password.client_secret_argocd.result
 
   allowed_redirect_uris = [
     {
