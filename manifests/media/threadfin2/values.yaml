@@ -26,13 +26,13 @@ ingress:
 
     ingressClassName: nginx
     hosts:
-      - host: threadfin.sestary.eu
+      - host: threadfin2.sestary.eu
         paths:
           - path: /
             pathType: Prefix
     tls:
       - hosts:
-          - threadfin.sestary.eu
+          - threadfin2.sestary.eu
 
 # -- Configure persistence settings for the chart under this key.
 persistence:
