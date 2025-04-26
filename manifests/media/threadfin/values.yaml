@@ -9,6 +9,7 @@ strategy:
   type: Recreate
 
 env:
+  THREADFIN_PORT: 34400
   TZ: America/Toronto
 
 # -- Configures service settings for the chart.
