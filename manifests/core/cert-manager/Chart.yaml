@@ -1,7 +1,7 @@
 ---
 apiVersion: v2
-name: reloader
-description: Deploy K8s Reloader
+name: cert-manager
+description: Deploy K8s Cert Manager
 
 type: application
 
