@@ -8,7 +8,7 @@ COPY images/argocd-plugin/versions.yaml ./
 RUN mkdir /tools
 
 # Install base tools
-RUN apt-get update && apt-get install -y ca-certificates jq wget
+RUN apt-get update && apt-get install -y ca-certificates wget
 RUN wget -q https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/local/bin/yq && chmod +x /usr/local/bin/yq
 
 # Download the k8s tools
@@ -19,7 +19,9 @@ RUN export VERSION=$(yq ".kustomize" versions.yaml); wget -q https://github.com/
 # Build a clean container
 FROM ubuntu:${IMAGE_TAG}
 
+# Install JQ from Apt
+RUN apt-get update && apt-get install -y jq && rm -rf /var/lib/apt/lists/*
+
 # Copy all the files we actually want from the builder
-COPY --from=downloader /usr/bin/jq /usr/bin
 COPY --from=downloader /usr/local/bin/yq /tools/* /usr/local/bin
 COPY --from=downloader /etc/ssl /etc/ssl
