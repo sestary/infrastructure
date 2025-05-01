@@ -38,8 +38,8 @@ resource "helm_release" "argocd" {
     templatefile(
       "${path.module}/files/manifests/argocd/repo-server.yaml.tftpl",
       {
-        plugin_versions = var.plugins_version
-        plugins         = local.argocd_plugins
+        plugins_image_tag = var.plugins_image_tag
+        plugins           = local.argocd_plugins
       }
     ),
     templatefile(

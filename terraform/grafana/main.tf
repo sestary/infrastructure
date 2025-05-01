@@ -5,5 +5,5 @@ provider "grafana" {
 
 provider "grafana" {
   url  = grafana_cloud_stack.sestary.url
-  auth = grafana_cloud_stack_service_account_token.sestary.key
+  auth = grafana_cloud_stack_service_account_token.terraform.key
 }

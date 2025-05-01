@@ -3,13 +3,7 @@ charts_version = {
   argocd-apps = "2.0.2"
 }
 
-plugins_version = {
-  argo-vault-plugin = "1.18.1"
-  helm              = "3.16.2"
-  jq                = "1.7.1"
-  kustomize         = "5.5.0"
-  yq                = "4.44.6"
-}
+plugins_image_tag = "jammy"
 
 enable_ingress = true
 enable_oidc    = true
