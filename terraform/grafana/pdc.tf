@@ -4,6 +4,8 @@ resource "grafana_cloud_private_data_source_connect_network" "on" {
 
   stack_identifier = grafana_cloud_stack.sestary.id
   region           = grafana_cloud_stack.sestary.region_slug
+
+  provider = grafana.cloud
 }
 
 resource "grafana_cloud_private_data_source_connect_network_token" "on" {
@@ -12,4 +14,6 @@ resource "grafana_cloud_private_data_source_connect_network_token" "on" {
 
   name         = "pdc-on"
   display_name = "PDC PDC Token Ontario"
+
+  provider = grafana.cloud
 }
