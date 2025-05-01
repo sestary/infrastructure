@@ -38,7 +38,7 @@ spec:
         - name: HOSTED_GRAFANA_ID
           valueFrom:
             secretKeyRef:
-              key: hosted-grafana-id
+              key: hosted-tennent-id
               name: grafana-pdc-agent
         args:
         - -cluster
