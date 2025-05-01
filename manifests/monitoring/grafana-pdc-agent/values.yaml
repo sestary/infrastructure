@@ -5,6 +5,6 @@ image:
 
 secrets:
   cluster: <path:secrets.enc.yaml#cluster>
-  hosted_grafana_id: <path:secrets.enc.yaml#hosted_grafana_id>
+  hosted_tennent_id: <path:secrets.enc.yaml#hosted_tennent_id>
   token: <path:secrets.enc.yaml#token>
 
