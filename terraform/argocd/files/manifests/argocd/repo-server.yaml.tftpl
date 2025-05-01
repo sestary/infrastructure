@@ -8,7 +8,7 @@ repoServer:
     - name: plugin-${name}
       command: [/var/run/argocd/argocd-cmp-server]
       args: [--loglevel, debug]
-      image: ghcr.io/sestary/argocd-plugin:latest
+      image: ghcr.io/sestary/argocd-plugin:${plugins_image_tag}
       env:
         - name: AVP_TYPE
           value: sops

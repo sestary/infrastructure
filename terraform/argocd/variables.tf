@@ -15,9 +15,9 @@ variable "charts_version" {
   type        = map(string)
 }
 
-variable "plugins_version" {
-  description = "The ArgoCD plugins versions"
-  type        = map(string)
+variable "plugins_image_tag" {
+  description = "The ArgoCD plugins image tag"
+  type        = string
 }
 
 variable "kube_client_cert" {
