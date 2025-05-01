@@ -1,0 +1,10 @@
+---
+image:
+  name: grafana/pdc-agent
+  tag: 0.0.42
+
+secrets:
+  cluster: <path:secrets.enc.yaml#cluster>
+  hosted_grafana_id: <path:secrets.enc.yaml#hosted_grafana_id>
+  token: <path:secrets.enc.yaml#token>
+
