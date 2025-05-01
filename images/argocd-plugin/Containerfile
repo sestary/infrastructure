@@ -20,5 +20,6 @@ RUN export VERSION=$(yq ".kustomize" versions.yaml); wget -q https://github.com/
 FROM ubuntu:${IMAGE_TAG}
 
 # Copy all the files we actually want from the builder
+COPY --from=downloader /usr/bin/jq /usr/bin
 COPY --from=downloader /usr/local/bin/yq /tools/* /usr/local/bin
 COPY --from=downloader /etc/ssl /etc/ssl
