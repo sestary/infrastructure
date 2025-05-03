@@ -1,7 +1,0 @@
----
-apiVersion: apps/v1
-kind: DaemonSet
-metadata:
-  name: grafana-agent-logs
-  annotations:
-    reloader.stakater.com/auto: "true"
