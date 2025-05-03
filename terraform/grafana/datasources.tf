@@ -8,6 +8,9 @@ resource "grafana_data_source" "prometheus" {
     httpMethod        = "POST",
     prometheusType    = "Prometheus",
     prometheusVersion = "2.50.1"
+
+    enableSecureSocksProxy   = true
+    secureSocksProxyUsername = grafana_cloud_private_data_source_connect_network.on.pdc_network_id
   })
 
   private_data_source_connect_network_id = grafana_cloud_private_data_source_connect_network.on.id
