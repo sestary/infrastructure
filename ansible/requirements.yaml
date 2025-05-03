@@ -1,0 +1,4 @@
+---
+- name: containers.podman
+- name: wandansible.unattended_upgrades
+  src: https://github.com/wandansible/unattended_upgrades

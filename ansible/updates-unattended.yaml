@@ -1,0 +1,23 @@
+---
+- hosts: all
+  roles:
+    - role: wandansible.unattended_upgrades
+      become: true
+      vars:
+        unattended_upgrades_config: |
+          APT::Periodic::Unattended-Upgrade "1";
+          APT::Periodic::Update-Package-Lists "1";
+          APT::Periodic::AutocleanInterval "7";
+
+          Unattended-Upgrade::Origins-Pattern {
+            "origin=Debian,codename=${distro_codename},label=Debian-Security";
+          };
+
+          Unattended-Upgrade::Automatic-Reboot "true";
+          Unattended-Upgrade::Automatic-Reboot-Time "03:00";
+
+          Unattended-Upgrade::Remove-Unused-Kernel-Packages "true";
+          Unattended-Upgrade::Remove-Unused-Dependencies "true";
+
+          Unattended-Upgrade::Mail "sysadmin@sestary.eu";
+          Unattended-Upgrade::MailReport "only-on-error";

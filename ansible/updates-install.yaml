@@ -1,0 +1,12 @@
+---
+- name: Patching and Updating Linux Systems
+  hosts: all
+  become: true
+  tasks:
+    - name: Update thought Apt
+      apt:
+        autoclean: true
+        autoremove: true
+        update_cache: true
+        upgrade: safe
+        

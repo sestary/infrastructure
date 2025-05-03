@@ -1,0 +1,6 @@
+---
+debian:
+  hosts:
+    admin.on.sestary.eu:
+    plex.on.sestary.eu:
+

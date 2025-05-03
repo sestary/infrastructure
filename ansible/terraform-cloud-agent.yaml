@@ -1,0 +1,31 @@
+---
+- name: Setup Terraform Cloud Agent
+  hosts: admin.on.sestary.eu
+  become: true
+  tasks:
+    - name: Ensure Podman is installed
+      ansible.builtin.package:
+        name: podman
+        state: present
+
+    - name: The Terraform Cloud Agent container must exist
+      containers.podman.podman_container:
+        name: terraform-cloud-agent
+        image: ghcr.io/sestary/terraform-cloud-agent:latest
+        state: stopped
+        env:
+          TFC_AGENT_NAME: admin.on.sestary.eu
+          TFC_AGENT_TOKEN: "{{tfc_agent_token}}"
+
+    - name: Systemd unit files for Terrafrom Cloud Agent container must exist
+      containers.podman.podman_generate_systemd:
+        name: terraform-cloud-agent
+        dest: /etc/systemd/system
+        restart_policy: always
+
+    - name: Terraform Cloud Agent container must be started and enabled on systemd
+      ansible.builtin.systemd:
+        name: container-terraform-cloud-agent
+        daemon_reload: true
+        state: started
+        enabled: true
