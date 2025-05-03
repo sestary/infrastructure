@@ -12,4 +12,6 @@ helmCharts:
     includeCRDs: true
 
 patches:
-  - path: patches/crds.yaml
+  - target:
+      kind: CustomResourceDefinition
+    path: patches/crds.yaml
