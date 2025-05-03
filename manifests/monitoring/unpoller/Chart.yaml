@@ -1,0 +1,9 @@
+---
+apiVersion: v2
+name: unpoller 
+description: Deploy UniFi Metric Collector
+
+type: application
+
+# This is the chart version, but is ignored by ArgoCD
+version: 0.1.0
