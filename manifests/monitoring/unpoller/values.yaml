@@ -76,11 +76,11 @@ resources: {}
 livenessProbe:
   httpGet:
     path: /
-    port: tcp
+    port: metrics
 readinessProbe:
   httpGet:
     path: /
-    port: tcp
+    port: metrics
 
 nodeSelector: {}
 

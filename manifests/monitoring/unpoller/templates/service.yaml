@@ -8,10 +8,10 @@ metadata:
 spec:
   internalTrafficPolicy: Cluster
   ports:
-    - name: http-metrics
+    - name: metrics
       port: 9130
       protocol: TCP
-      targetPort: 9130
+      targetPort: metrics
   selector:
     {{- include "unpoller.selectorLabels" . | nindent 6 }}
   type: ClusterIP
