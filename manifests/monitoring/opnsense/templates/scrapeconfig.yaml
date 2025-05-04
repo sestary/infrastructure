@@ -10,5 +10,7 @@ spec:
     - labels:
         job: opnsene-telegraf
       targets:
-        - {{ .Values.ScrapeConfigs.targets }}
+      {{- range .Values.ScrapeConfigs.targets }}
+        - {{ . }}
+      {{- end }}   
   metricsPath: /metrics
