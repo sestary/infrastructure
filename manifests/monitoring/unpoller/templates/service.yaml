@@ -1,0 +1,17 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "unpoller.fullname" . }}
+  labels:
+    {{- include "unpoller.labels" . | nindent 4 }}
+spec:
+  internalTrafficPolicy: Cluster
+  ports:
+    - name: http-metrics
+      port: 9130
+      protocol: TCP
+      targetPort: 9130
+  selector:
+    {{- include "unpoller.selectorLabels" . | nindent 6 }}
+  type: ClusterIP

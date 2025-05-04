@@ -9,6 +9,33 @@ imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
+serviceMonitor:
+  # When set true then use a ServiceMonitor to configure scraping
+  enabled: true 
+
+  # Set how frequently Prometheus should scrape
+  interval: 30s
+  # Set labels for the ServiceMonitor, use this to define your scrape label for Prometheus Operator
+  # labels:
+  # Set timeout for scrape
+  # timeout: 10s
+  # Set of labels to transfer from the Kubernetes Service onto the target
+  # targetLabels: []
+  # MetricRelabelConfigs to apply to samples before ingestion
+  # metricRelabelings: []
+  # Set relabel_configs as per https://prometheus.io/docs/prometheus/latest/configuration/configuration/#relabel_config
+  # relabelings: []
+  # HTTP scheme to use for scraping. For example `http` or `https`. Default is `http`.
+  # scheme: http
+  # TLS configuration to use when scraping the metric endpoint by Prometheus.
+  # tlsConfig: {}
+
+  # Define each target's endpoint and name
+  # When not using sharedAuthModule the config file should have one authModule for each target with key "client.$name"
+  targets: 
+    - endpoint: https://unif.sestary.eu:8443
+      name: ontario
+
 serviceAccount:
   # Specifies whether a service account should be created
   create: true
@@ -33,8 +60,6 @@ securityContext: {}
   # readOnlyRootFilesystem: true
   # runAsNonRoot: true
   # runAsUser: 1000
-
-
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
