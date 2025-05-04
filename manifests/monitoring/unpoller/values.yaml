@@ -33,7 +33,7 @@ serviceMonitor:
   # Define each target's endpoint and name
   # When not using sharedAuthModule the config file should have one authModule for each target with key "client.$name"
   targets: 
-    - endpoint: https://unif.sestary.eu:8443
+    - endpoint: https://unifi.sestary.eu:8443
       name: ontario
 
 serviceAccount:
