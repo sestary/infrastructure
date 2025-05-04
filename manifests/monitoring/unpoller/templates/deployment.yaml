@@ -1,3 +1,4 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -38,9 +39,6 @@ spec:
             - containerPort: 9130
               name: tcp
               protocol: TCP
-            - containerPort: 9130
-              name: udp
-              protocol: UDP
           livenessProbe:
             {{- toYaml .Values.livenessProbe | nindent 12 }}
           readinessProbe:
