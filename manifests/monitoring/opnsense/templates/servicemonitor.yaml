@@ -1,0 +1,12 @@
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: opnsense-telegraf
+  labels:
+    app.kubernetes.io/name: opnsense-telegraf 
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: opnsense-telegraf 
+  jobLabel: opnsense-telegraf 
