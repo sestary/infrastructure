@@ -10,7 +10,7 @@ spec:
   endpoints:
   {{- range  .Values.serviceMonitor.targets }}
     - path: /scrape
-      port: {{ include "unpoller.fullname" $ }}
+      port: metrics 
   {{- if $.Values.serviceMonitor.interval }}
       interval: {{ $.Values.serviceMonitor.interval }}
   {{- end }}
