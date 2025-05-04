@@ -10,3 +10,7 @@ spec:
     matchLabels:
       app.kubernetes.io/name: opnsense-telegraf 
   jobLabel: opnsense-telegraf 
+  endpoints:
+    - port: metrics
+      interval: 10s
+      honorLabels: true
