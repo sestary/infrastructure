@@ -1,0 +1,14 @@
+---
+apiVersion: monitoring.coreos.com/v1alpha1
+kind: ScrapeConfig
+metadata:
+  name: opnsense-telegraf
+  labels:
+    release: prometheus-stack 
+spec:
+  staticConfigs:
+    - labels:
+        job: opnsene-telegraf
+      targets:
+        - {{ .Values.ScrapeConfigs.targets }}
+  metricsPath: /metrics

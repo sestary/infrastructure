@@ -1,1 +1,4 @@
 ---
+ScrapeConfigs:
+  targets:
+   - gw.on.sestary.eu:9273
