@@ -3,7 +3,7 @@ image:
   # -- image repository
   repository: lscr.io/linuxserver/radarr
   # -- image tag
-  tag: 5.22.4
+  tag: 5.23.3
 
 strategy:
   type: Recreate
