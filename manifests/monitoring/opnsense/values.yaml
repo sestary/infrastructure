@@ -1,4 +1,7 @@
 ---
 ScrapeConfigs:
   targets:
-   - gw.on.sestary.eu:9273
+    - gw.mi.sestary.eu:9273
+    - gw.mx.sestary.eu:9273
+    - gw.on.sestary.eu:9273
+    - gw.pt.sestary.eu:9273
