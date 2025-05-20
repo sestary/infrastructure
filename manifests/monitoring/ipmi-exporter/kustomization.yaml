@@ -1,0 +1,15 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+helmCharts:
+  - name: prometheus-ipmi-exporter
+    repo: https://prometheus-community.github.io/helm-charts
+    version: 0.6.0
+    releaseName: &releaseName ipmi-exporter
+    namespace: &releaseNamespace monitoring-ipmi-exporter
+    valuesFile: values.yaml
+commonAnnotations:
+  meta.helm.sh/release-name: *releaseName
+  meta.helm.sh/release-namespace: *releaseNamespace
+commonLabels:
+  app.kubernetes.io/managed-by: Helm
