@@ -1,4 +1,9 @@
 ---
+controller:
+  driver:
+    image:
+      tag: next
+
 csiDriver:
   name: "org.democratic-csi.nfs"
 
@@ -24,6 +29,9 @@ storageClasses:
       controller-expand-secret:
 
 driver:
+  image:
+    tag: next
+
   config:
     driver: freenas-api-nfs
 
