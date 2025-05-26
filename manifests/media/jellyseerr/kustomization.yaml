@@ -2,14 +2,16 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 helmCharts:
-  - name: app-template
-    repo: https://bjw-s.github.io/helm-charts/
-    version: 1.5.1
-    releaseName: &releaseName jellyseerr
-    namespace: &releaseNamespace media-jellyseerr
-    valuesFile: values.yaml
+- name: app-template
+  namespace: media-jellyseerr
+  releaseName: jellyseerr
+  repo: https://bjw-s-labs.github.io/helm-charts/
+  valuesFile: values.yaml
+  version: 1.5.1
 commonAnnotations:
-  meta.helm.sh/release-name: *releaseName
-  meta.helm.sh/release-namespace: *releaseNamespace
-commonLabels:
-  app.kubernetes.io/managed-by: Helm
+  meta.helm.sh/release-name: jellyseerr
+  meta.helm.sh/release-namespace: media-jellyseerr
+labels:
+- includeSelectors: true
+  pairs:
+    app.kubernetes.io/managed-by: Helm

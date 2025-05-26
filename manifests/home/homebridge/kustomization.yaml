@@ -2,14 +2,16 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 helmCharts:
-  - name: app-template
-    repo: https://bjw-s.github.io/helm-charts/
-    version: 1.5.1
-    releaseName: &releaseName homebridge
-    namespace: &releaseNamespace home-homebridge
-    valuesFile: values.yaml
+- name: app-template
+  namespace: home-homebridge
+  releaseName: homebridge
+  repo: https://bjw-s-labs.github.io/helm-charts/
+  valuesFile: values.yaml
+  version: 1.5.1
 commonAnnotations:
-  meta.helm.sh/release-name: *releaseName
-  meta.helm.sh/release-namespace: *releaseNamespace
-commonLabels:
-  app.kubernetes.io/managed-by: Helm
+  meta.helm.sh/release-name: homebridge
+  meta.helm.sh/release-namespace: home-homebridge
+labels:
+- includeSelectors: true
+  pairs:
+    app.kubernetes.io/managed-by: Helm
