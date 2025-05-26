@@ -1,4 +1,9 @@
 ---
+controller:
+  driver:
+    image:
+      tag: next
+
 csiDriver:
   name: "org.democratic-csi.iscsi"
 
@@ -15,6 +20,9 @@ storageClasses:
       csi.storage.k8s.io/fstype: ext4
 
 driver:
+  image:
+    tag: next
+  
   config:
     driver: freenas-api-iscsi
 

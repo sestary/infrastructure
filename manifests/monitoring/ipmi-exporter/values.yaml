@@ -3,7 +3,7 @@ image:
   repository: registry.hub.docker.com/prometheuscommunity/ipmi-exporter
   tag: v1.10.0
 
-modules:
+modules: |
   default:
     # These settings are used if no module is specified, the
     # specified module doesn't exist, or of course if
