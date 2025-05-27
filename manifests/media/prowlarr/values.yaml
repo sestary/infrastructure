@@ -1,16 +1,33 @@
 ---
-image:
-  # -- image repository
-  repository: lscr.io/linuxserver/prowlarr
-  # -- image tag
-  tag: 1.36.3
+controllers:
+  main:
+    strategy: Recreate
 
-strategy:
-  type: Recreate
+    containers:
+      main:
+        image:
+          # -- image repository
+          repository: lscr.io/linuxserver/prowlarr
+          # -- image tag
+          tag: 1.36.3
+
+        ports:
+          - name: http
+            containerPort: 9696
+
+        probes:
+          liveness:
+            enabled: true
+          readiness:
+            enabled: true
+          startup:
+            enabled: true
 
 # -- Configures service settings for the chart.
 service:
   main:
+    controller: main
+    primary: true
     ports:
       http:
         port: 9696
@@ -30,12 +47,16 @@ ingress:
       nginx.ingress.kubernetes.io/auth-snippet: |
         proxy_set_header X-Forwarded-Host $http_host;
 
-    ingressClassName: nginx
+    className: nginx
+
     hosts:
       - host: prowlarr.sestary.eu
         paths:
           - path: /
             pathType: Prefix
+            service:
+              identifier: main
+              port: http
     tls:
       - hosts:
           - prowlarr.sestary.eu
@@ -44,8 +65,14 @@ ingress:
 persistence:
   config-nas:
     enabled: true
-    type: pvc
+   
+    suffix: config-nas 
+    
+    type: persistentVolumeClaim
     accessMode: ReadWriteOnce
-    size: 1Gi
-    mountPath: /config
     storageClass: truenas-iscsi-csi
+
+    size: 1Gi
+
+    globalMounts:
+      - path: /config

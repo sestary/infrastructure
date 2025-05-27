@@ -7,7 +7,7 @@ helmCharts:
   releaseName: tautulli
   repo: https://bjw-s-labs.github.io/helm-charts/
   valuesFile: values.yaml
-  version: 1.5.1
+  version: 4.0.1
 commonAnnotations:
   meta.helm.sh/release-name: tautulli
   meta.helm.sh/release-namespace: media-tautulli
