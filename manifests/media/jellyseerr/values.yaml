@@ -1,17 +1,34 @@
 ---
-image:
-  # -- image repository
-  repository: fallenbagel/jellyseerr
-  # -- image tag
-  tag: 2.5.2
-  pullPolicy: Always
+controllers:
+  main:
+    strategy: Recreate
 
-strategy:
-  type: Recreate
+    containers:
+      main:
+        image:
+          # -- image repository
+          repository: fallenbagel/jellyseerr
+          # -- image tag
+          tag: 2.5.2
+          pullPolicy: Always
 
+        ports:
+          - name: http
+            containerPort: 5055
+
+        probes:
+          liveness:
+            enabled: true
+          readiness:
+            enabled: true
+          startup:
+            enabled: true
+        
 # -- Configures service settings for the chart.
 service:
   main:
+    controller: main
+    primary: true
     ports:
       http:
         port: 5055
@@ -21,12 +38,16 @@ ingress:
   main:
     enabled: true
 
-    ingressClassName: nginx
+    className: nginx
+
     hosts:
       - host: requests.sestary.eu
         paths:
           - path: /
             pathType: Prefix
+            service:
+              identifier: main
+              port: http
     tls:
       - hosts:
           - requests.sestary.eu
@@ -35,8 +56,14 @@ ingress:
 persistence:
   config-nas:
     enabled: true
-    type: pvc
+   
+    suffix: config-nas 
+    
+    type: persistentVolumeClaim
     accessMode: ReadWriteOnce
-    size: 10Gi
-    mountPath: /app/config
     storageClass: truenas-iscsi-csi
+
+    size: 10Gi
+    
+    globalMounts:
+      - path: /app/config
