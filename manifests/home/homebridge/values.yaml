@@ -23,10 +23,10 @@ controllers:
           startup:
             enabled: true
 
-        pod:
-          # Needed due to the HomeKit plugin
-          hostNetwork: true
-          dnsPolicy: ClusterFirstWithHostNet
+    pod:
+      # Needed due to the HomeKit plugin
+      hostNetwork: true
+      dnsPolicy: ClusterFirstWithHostNet
 
 # -- Configures service settings for the chart.
 service:
@@ -63,7 +63,7 @@ persistence:
 
     suffix: config-nas
 
-    type: persitentVolumeClaim
+    type: persistentVolumeClaim
     accessMode: ReadWriteOnce
     storageClass: truenas-iscsi-csi
 
