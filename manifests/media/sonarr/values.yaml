@@ -85,7 +85,7 @@ persistence:
     type: persistentVolumeClaim
     accessMode: ReadWriteMany
     storageClass: "-"
-    volumeName: truenas-media-radarr
+    volumeName: truenas-media-sonarr
 
     size: 25Ti
 
