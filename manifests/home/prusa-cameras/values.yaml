@@ -1,28 +1,21 @@
 ---
-image:
-  # -- image repository
-  repository: jtee3d/prusa_connect_rtsp
-  # -- image tag
-  tag: latest
-
-strategy:
-  type: Recreate
-
-env:
-  CAMERA_URLS: >
-    <path:secrets.enc.yaml#mini_url>,
-    <path:secrets.enc.yaml#xl_url>
-  TOKENS: >
-    <path:secrets.enc.yaml#mini_token>,
-    <path:secrets.enc.yaml#xl_token>
-  CAMERA_CYCLE_DELAY: 2
-
-# -- Configures service settings for the chart.
-service:
+controllers:
   main:
-    enabled: false
+    strategy: Recreate
 
-ingress:
-  # -- Enable and configure ingress settings for the chart under this key.
-  main:
-    enabled: false
+    containers:
+      main:
+        image:
+          # -- image repository
+          repository: jtee3d/prusa_connect_rtsp
+          # -- image tag
+          tag: latest
+
+        env:
+          CAMERA_URLS: >
+            <path:secrets.enc.yaml#mini_url>,
+            <path:secrets.enc.yaml#xl_url>
+          TOKENS: >
+            <path:secrets.enc.yaml#mini_token>,
+            <path:secrets.enc.yaml#xl_token>
+          CAMERA_CYCLE_DELAY: 2
