@@ -1,6 +1,6 @@
 ---
 image:
-  repository: quay.io/prometheuscommunity/prometheuscommunity/ipmi-exporter
+  repository: quay.io/prometheuscommunity/ipmi-exporter
   tag: v1.10.0
 
 modules: |
