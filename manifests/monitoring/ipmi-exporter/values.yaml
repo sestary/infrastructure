@@ -3,21 +3,7 @@ image:
   repository: quay.io/prometheuscommunity/ipmi-exporter
   tag: v1.10.0
 
-modules: |
-  default:
-    # These settings are used if no module is specified, the
-    # specified module doesn't exist, or of course if
-    # module=default is specified.
-    user: "prometheus"
-    pass: "<path:secrets.enc.yaml#ilo_password>"
-
-    # The below settings correspond to driver-type, privilege-level, and
-    # session-timeout respectively, see `man 5 freeipmi.conf` (and e.g.
-    # `man 8 ipmi-sensors` for a list of driver types).
-    driver: "LAN_2_0"
-    privilege: "user"
-    # The session timeout is in milliseconds. Note that a scrape can take up
-    # to (session-timeout * #-of-collectors) milliseconds, so set the scrape
-    # timeout in Prometheus accordingly.
-    # Must be larger than the retransmission timeout, which defaults to 1000.
-    timeout: 10000
+configSecret:
+  enabled: true
+  name: ipmi-exporter-config
+  key: config.yml
