@@ -65,7 +65,7 @@ persistence:
     accessMode: ReadWriteOnce
     storageClass: truenas-iscsi-csi
 
-    size: 1Gi
+    size: 10Gi
 
     globalMounts:
       - path: /config

@@ -75,7 +75,7 @@ ingress:
 
 # -- Configure persistence settings for the chart under this key.
 persistence:
-  config-nas:
+  threadfin-nas:
     enabled: true
    
     type: persistentVolumeClaim
@@ -84,8 +84,25 @@ persistence:
 
     size: 10Gi
 
-    globalMounts:
-      - path: /home/threadfin/conf
+    advancedMounts:
+      threadfin:
+        main:
+          - path: /home/threadfin/conf
+
+  threadfin2-nas:
+    enabled: true
+   
+    type: persistentVolumeClaim
+    accessMode: ReadWriteOnce
+    storageClass: truenas-iscsi-csi
+
+    size: 10Gi
+
+    advancedMounts:
+      threadfin2:
+        main:
+          - path: /home/threadfin/conf
+
 
   tmp:
     enabled: true
