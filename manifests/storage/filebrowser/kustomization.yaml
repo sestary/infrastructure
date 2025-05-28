@@ -4,7 +4,7 @@ helmCharts:
 - name: app-template
   namespace: storage-filebrowser
   releaseName: filebrowser
-  repo: https://bjw-s.github.io/helm-charts/
+  repo: https://bjw-s-labs.github.io/helm-charts/
   valuesFile: values.yaml
   version: 4.0.1
 commonAnnotations:
