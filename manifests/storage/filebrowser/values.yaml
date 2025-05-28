@@ -82,9 +82,9 @@ persistence:
     globalMounts:
       - path: /media
 
-  data:
+  database:
     enabled: true
     type: emptyDir
 
     globalMounts:
-      - path: /data
+      - path: /database
