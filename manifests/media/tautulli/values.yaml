@@ -40,7 +40,8 @@ ingress:
   main:
     enabled: true
 
-    ingressClassName: nginx
+    className: nginx
+
     hosts:
       - host: tautulli.sestary.eu
         paths:
