@@ -16,6 +16,7 @@ controllers:
           PGID: 1000
           FB_PORT: 8080
           FB_NOAUTH: true
+          FB_ROOT: /media
       
         ports:
           - name: http
