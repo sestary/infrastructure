@@ -1,49 +1,95 @@
 ---
-image:
-  # -- image repository
-  repository: fyb3roptik/threadfin
-  # -- image tag
-  tag: 1.2.34
+controllers:
+  threadfin:
+    strategy: Recreate
 
-strategy:
-  type: Recreate
+    containers:
+      main:
+        image:
+          # -- image repository
+          repository: fyb3roptik/threadfin
+          # -- image tag
+          tag: 1.2.34
 
-env:
-  THREADFIN_PORT: 34400
-  TZ: America/Toronto
+        env:
+          THREADFIN_PORT: 34400
+          TZ: America/Toronto
+
+  threadfin2:
+    strategy: Recreate
+
+    containers:
+      main:
+        image:
+          # -- image repository
+          repository: fyb3roptik/threadfin
+          # -- image tag
+          tag: 1.2.34
+
+        env:
+          THREADFIN_PORT: 34400
+          TZ: America/Toronto
 
 # -- Configures service settings for the chart.
 service:
-  main:
+  threadfin:
+    controller: threadfin
+    ports:
+      http:
+        port: 34400
+
+  threadfin2:
+    controller: threadfin2
     ports:
       http:
         port: 34400
 
 ingress:
   # -- Enable and configure ingress settings for the chart under this key.
-  main:
+  threadfin:
     enabled: true
 
-    ingressClassName: nginx
+    className: nginx
+
     hosts:
       - host: threadfin.sestary.eu
         paths:
           - path: /
             pathType: Prefix
+            service:
+              identifier: threadfin
+              port: http
+      
+      - host: threadfin2.sestary.eu
+        paths:
+          - path: /
+            pathType: Prefix
+            service:
+              identifier: threadfin2
+              port: http
+
     tls:
       - hosts:
           - threadfin.sestary.eu
+          - threadfin2.sestary.eu
 
 # -- Configure persistence settings for the chart under this key.
 persistence:
   config-nas:
     enabled: true
-    type: pvc
+   
+    type: persistentVolumeClaim
     accessMode: ReadWriteOnce
-    size: 10Gi
-    mountPath: /home/threadfin/conf
     storageClass: truenas-iscsi-csi
+
+    size: 10Gi
+
+    globalMounts:
+      - path: /home/threadfin/conf
+
   tmp:
     enabled: true
     type: emptyDir
-    mountPath: /tmp/threadfin
+
+    globalMounts:
+      - path: /tmp/threadfin
