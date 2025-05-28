@@ -77,7 +77,7 @@ persistence:
     size: 40Gi
     
     globalMounts:
-      - path: /app/config
+      - path: /config
 
   media:
     enabled: true
