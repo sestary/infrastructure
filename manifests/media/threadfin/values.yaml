@@ -9,7 +9,7 @@ controllers:
           # -- image repository
           repository: fyb3roptik/threadfin
           # -- image tag
-          tag: 1.2.34
+          tag: 1.2.35
 
         env:
           THREADFIN_PORT: 34400
@@ -24,7 +24,7 @@ controllers:
           # -- image repository
           repository: fyb3roptik/threadfin
           # -- image tag
-          tag: 1.2.34
+          tag: 1.2.35
 
         env:
           THREADFIN_PORT: 34400
