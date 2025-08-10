@@ -9,7 +9,7 @@ controllers:
           # -- image repository
           repository: lscr.io/linuxserver/sonarr
           # -- image tag
-          tag: 4.0.14
+          tag: 4.0.15
 
         env:
           PUID: 1000
