@@ -9,7 +9,7 @@ controllers:
           # -- image repository
           repository: fallenbagel/jellyseerr
           # -- image tag
-          tag: 2.5.2
+          tag: 2.7.2
           pullPolicy: Always
 
         ports:
