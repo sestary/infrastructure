@@ -1,7 +1,7 @@
 ---
 image:
   repository: quay.io/prometheuscommunity/ipmi-exporter
-  tag: v1.10.0
+  tag: v1.10.1
 
 configSecret:
   enabled: true
