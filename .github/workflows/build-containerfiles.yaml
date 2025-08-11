@@ -27,7 +27,7 @@ jobs:
     steps:
       # Checkout push-to-registry action github repository
       - name: Checkout Push to Registry action
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       # Read the tag from the YAML file
       - name: Get image tag
