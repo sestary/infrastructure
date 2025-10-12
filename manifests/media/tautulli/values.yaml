@@ -9,7 +9,7 @@ controllers:
           # -- image repository
           repository: lscr.io/linuxserver/tautulli
           # -- image tag
-          tag: 2.15.2
+          tag: 2.16.0
 
         env:
           TZ: America/Toronto
