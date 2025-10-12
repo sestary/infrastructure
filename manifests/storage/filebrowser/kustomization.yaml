@@ -6,7 +6,7 @@ helmCharts:
   releaseName: filebrowser
   repo: https://bjw-s-labs.github.io/helm-charts/
   valuesFile: values.yaml
-  version: 4.0.1
+  version: 4.3.0
 commonAnnotations:
   meta.helm.sh/release-name: filebrowser
   meta.helm.sh/release-namespace: storage-filebrowser
