@@ -9,7 +9,7 @@ controllers:
           # -- image repository
           repository: lscr.io/linuxserver/radarr
           # -- image tag
-          tag: 5.25.0
+          tag: 5.27.5
 
         env:
           PUID: 1000
