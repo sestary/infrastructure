@@ -7,7 +7,7 @@ helmCharts:
   releaseName: threadfin
   repo: https://bjw-s-labs.github.io/helm-charts/
   valuesFile: values.yaml
-  version: 4.3.0
+  version: 4.4.0
 commonAnnotations:
   meta.helm.sh/release-name: threadfin
   meta.helm.sh/release-namespace: media-threadfin
