@@ -1,5 +1,5 @@
 provider "helm" {
-  kubernetes {
+  kubernetes = {
     host = var.kube_host
 
     client_certificate     = var.kube_client_cert

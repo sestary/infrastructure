@@ -52,10 +52,12 @@ resource "helm_release" "argocd" {
     ),
   ]
 
-  set {
-    name  = "crds.install"
-    value = "false"
-  }
+  set = [
+    {
+      name  = "crds.install"
+      value = "false"
+    }
+  ]
 
   depends_on = [
     kubernetes_manifest.argocd_crds,
