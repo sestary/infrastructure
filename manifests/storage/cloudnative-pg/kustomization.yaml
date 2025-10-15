@@ -6,6 +6,6 @@ helmCharts:
   - name: cloudnative-pg
     namespace: core-cloudnative-pg
     releaseName: cloudnative-pg
-    repo: ttps://cloudnative-pg.github.io/charts
+    repo: https://cloudnative-pg.github.io/charts
     valuesFile: values.yaml
     version: 0.26.0
